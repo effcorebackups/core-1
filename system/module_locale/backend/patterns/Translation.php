@@ -37,11 +37,17 @@ class Translation implements has_Data_cache {
                         if ($c_translation instanceof External_cache)
                             $c_translation =
                             $c_translation->load_from_nosql_storage();
-                        if (!isset(static::$cache[$c_translation->code]))
-                                   static::$cache[$c_translation->code] = [];
-                        static::$cache[$c_translation->code] += $c_translation->data;
+                        if (!isset(static::$cache[$code]))
+                                   static::$cache[$code] = [];
+                                   static::$cache[$code] += $c_translation->data;
                     }
                 }
+            }
+            $custom_translations = Data::select('translations--'.$code);
+            if ($custom_translations instanceof Translation) {
+                if (!isset(static::$cache[$code]))
+                           static::$cache[$code] = [];
+                           static::$cache[$code] += $custom_translations->data;
             }
         }
     }

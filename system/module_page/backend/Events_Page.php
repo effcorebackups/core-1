@@ -16,7 +16,7 @@ use effcore\Request;
 use effcore\Selection;
 use effcore\Text;
 use effcore\Token;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page {
 
@@ -35,7 +35,7 @@ abstract class Events_Page {
             if ($page->origin === 'sql' || $page->origin === 'hybrid') {
                 if (Access::check((object)['roles'             => [  'admins'            =>   'admins'],
                                            'permissions_match' => ['%^manage_data__.+$%' => '%^manage_data__.+$%']])) {
-                    $url = clone Url::get_current();
+                    $url = clone URL::get_current();
                     $edit_mode = Request::value_get('manage_layout', 0, '_GET');
                     if ($edit_mode === 'true')
                          $url->query_arg_delete('manage_layout');
@@ -43,7 +43,7 @@ abstract class Events_Page {
                     $admin_actions = new Markup('x-admin-actions', ['data-entity_name' => 'page']);
                     if ($edit_mode !== 'true'                                                         ) $admin_actions->child_insert(new Markup('a', ['data-id' => 'manage-enter', 'href' => $url->relative_get()], 'enter edit mode'), 'manage_layout');
                     if ($edit_mode === 'true'                                                         ) $admin_actions->child_insert(new Markup('a', ['data-id' => 'manage-leave', 'href' => $url->relative_get()], 'leave edit mode'), 'manage_layout');
-                    if ($edit_mode === 'true' && Access::check(Entity::get('page')->access->on_update)) $admin_actions->child_insert(new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/content/page/'.$page->id.'/update?'.Url::back_part_make()], new Markup('x-action-title', ['data-action-title' => true], 'update')), 'update_page');
+                    if ($edit_mode === 'true' && Access::check(Entity::get('page')->access->on_update)) $admin_actions->child_insert(new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/content/page/'.$page->id.'/update?'.URL::back_part_make()], new Markup('x-action-title', ['data-action-title' => true], 'update')), 'update_page');
                     return $admin_actions;
                 }
             }
@@ -59,7 +59,7 @@ abstract class Events_Page {
                     $entity = Entity::get($entity_name);
                     if (!empty($entity->access->on_update) && Access::check($entity->access->on_update)) {
                         $block->header = new Markup('x-admin-actions', ['data-entity_name' => $entity_name],
-                            new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/content/'.$entity_name.'/'.$instance_id.'/update?'.Url::back_part_make()],
+                            new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/content/'.$entity_name.'/'.$instance_id.'/update?'.URL::back_part_make()],
                                 new Markup('x-action-title', ['data-action-title' => true], 'update')
                             )
                         );

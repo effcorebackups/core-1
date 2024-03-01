@@ -36,7 +36,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page of editing "Admin" user
     - request_url-admin-edit|Test_step_Request
         url: /user/Admin/edit
@@ -52,7 +52,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Security → Settings"
     - request_url-security|Test_step_Request
         url: /manage/security/settings
@@ -68,7 +68,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → View → Colors → Management"
     - request_url-view|Test_step_Request
         url: /manage/view/colors/manage
@@ -84,7 +84,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Locale"
     - request_url-locale|Test_step_Request
         url: /manage/locale
@@ -100,7 +100,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Modules → Install"
     - request_url-modules|Test_step_Request
         url: /manage/modules/install
@@ -116,7 +116,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Information"
     - request_url-info|Test_step_Request
         url: /manage/info
@@ -132,7 +132,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts"
     - request_url-select_multiple|Test_step_Request
         url: /manage/data/content/text
@@ -148,7 +148,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → select instance"
     - request_url-select|Test_step_Request
         url: /manage/data/content/text/test
@@ -164,7 +164,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → insert instance"
     - request_url-insert|Test_step_Request
         url: /manage/data/content/text//insert
@@ -180,7 +180,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → update instance"
     - request_url-update|Test_step_Request
         url: /manage/data/content/text/test/update
@@ -196,7 +196,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → delete instance"
     - request_url-delete|Test_step_Request
         url: /manage/data/content/text/test/delete
@@ -212,7 +212,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # ─────────────────────────────────────────────────────────────────────
     # registered user
     # ─────────────────────────────────────────────────────────────────────
@@ -254,7 +254,7 @@ tests
         match: 0
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page of "Admin" user
     - request_url-admin-registered|Test_step_Request
         url: /user/Admin
@@ -270,7 +270,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page of editing "Admin" user
     - request_url-admin-edit-registered|Test_step_Request
         url: /user/Admin/edit
@@ -286,7 +286,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Security → Settings"
     - request_url-security-registered|Test_step_Request
         url: /manage/security/settings
@@ -302,7 +302,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → View → Colors → Management"
     - request_url-view-registered|Test_step_Request
         url: /manage/view/colors/manage
@@ -318,7 +318,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Locale"
     - request_url-locale-registered|Test_step_Request
         url: /manage/locale
@@ -334,7 +334,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Modules → Install"
     - request_url-modules-registered|Test_step_Request
         url: /manage/modules/install
@@ -350,7 +350,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Information"
     - request_url-info-registered|Test_step_Request
         url: /manage/info
@@ -366,7 +366,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts"
     - request_url-select_multiple-registered|Test_step_Request
         url: /manage/data/content/text
@@ -382,7 +382,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → select instance"
     - request_url-select-registered|Test_step_Request
         url: /manage/data/content/text/test
@@ -398,7 +398,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → insert instance"
     - request_url-insert-registered|Test_step_Request
         url: /manage/data/content/text//insert
@@ -414,7 +414,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → update instance"
     - request_url-update-registered|Test_step_Request
         url: /manage/data/content/text/test/update
@@ -430,7 +430,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Data → Content → Texts → delete instance"
     - request_url-delete-registered|Test_step_Request
         url: /manage/data/content/text/test/delete
@@ -446,7 +446,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # ─────────────────────────────────────────────────────────────────────
     # registered user + role
     # ─────────────────────────────────────────────────────────────────────
@@ -474,7 +474,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page of editing "Admin" user
     - request_url-admin-edit-registered-role|Test_step_Request
         url: /user/Admin/edit
@@ -490,7 +490,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Security → Settings"
     - request_url-security-registered-role|Test_step_Request
         url: /manage/security/settings
@@ -506,7 +506,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → View → Colors → Management"
     - request_url-view-registered-role|Test_step_Request
         url: /manage/view/colors/manage
@@ -522,7 +522,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Locale"
     - request_url-locale-registered-role|Test_step_Request
         url: /manage/locale
@@ -538,7 +538,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Modules → Install"
     - request_url-modules-registered-role|Test_step_Request
         url: /manage/modules/install
@@ -554,7 +554,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # page "Management → Information"
     - request_url-info-registered-role|Test_step_Request
         url: /manage/info
@@ -570,7 +570,7 @@ tests
         match: 403
         on_failure
         - return_result|Test_step_Return
-            value: 0
+            value: false
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - transpositions|Test_step_Transpositions
         # ┌────╥─────────┬─────────┬─────────┬─────────┐
@@ -593,193 +593,185 @@ tests
         # │ 14 ║    x    │    x    │    x    │         │ ← 1110 === ▣▣▣□
         # │ 15 ║    x    │    x    │    x    │    x    │ ← 1111 === ▣▣▣▣
         # └────╨─────────┴─────────┴─────────┴─────────┘
-        action_before|Test_step_Set_role_permissions
-          id_role: test
-          is_reset: true
+        actions_before
+        - set_role_permissions|Test_step_Set_role_permissions
+            id_role: test
+            is_reset: true
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
         actions
-        - select|Test_step_Actions
-            actions
-            - set_role_permissions|Test_step_Set_role_permissions
-                id_role: test
-                permissions
-                - =: manage_data__content_page_text__select
-        - insert|Test_step_Actions
-            actions
-            - set_role_permissions|Test_step_Set_role_permissions
-                id_role: test
-                permissions
-                - =: manage_data__content_page_text__insert
-        - update|Test_step_Actions
-            actions
-            - set_role_permissions|Test_step_Set_role_permissions
-                id_role: test
-                permissions
-                - =: manage_data__content_page_text__update
-        - delete|Test_step_Actions
-            actions
-            - set_role_permissions|Test_step_Set_role_permissions
-                id_role: test
-                permissions
-                - =: manage_data__content_page_text__delete
+        - select|Test_step_Set_role_permissions
+            id_role: test
+            permissions
+            - =: manage_data__content_page_text__select
+        - insert|Test_step_Set_role_permissions
+            id_role: test
+            permissions
+            - =: manage_data__content_page_text__insert
+        - update|Test_step_Set_role_permissions
+            id_role: test
+            permissions
+            - =: manage_data__content_page_text__update
+        - delete|Test_step_Set_role_permissions
+            id_role: test
+            permissions
+            - =: manage_data__content_page_text__delete
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-        action_after|Test_step_Actions
-          actions
-          - title-select_multiple|Test_step_Title
-              title: SELECT MULTIPLE
-          # page "Management → Data → Content → Texts"
-          - request_url-select_multiple-registered-role|Test_step_Request
-              url: /manage/data/content/text
-              headers
-              - cookie: %%_test_response(cookies)
-              is_https|Param_from_form
-                name: is_https
-              proxy|Param_from_form
-                name: proxy
-          - response_check-select_multiple-registered-role|Test_step_Check
-              check: token
-              where: %%_test_step__transpositions__is_active__select
-              match: 1
-              on_success
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 200
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-              on_failure
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 403
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-          - title-select|Test_step_Title
-              title: SELECT
-          # page "Management → Data → Content → Texts → select instance"
-          - request_url-select-registered-role|Test_step_Request
-              url: /manage/data/content/text/test
-              headers
-              - cookie: %%_test_response(cookies)
-              is_https|Param_from_form
-                name: is_https
-              proxy|Param_from_form
-                name: proxy
-          - response_check-select-registered-role|Test_step_Check
-              check: token
-              where: %%_test_step__transpositions__is_active__select
-              match: 1
-              on_success
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 200
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-              on_failure
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 403
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-          - title-insert|Test_step_Title
-              title: INSERT
-          # page "Management → Data → Content → Texts → insert instance"
-          - request_url-insert-registered-role|Test_step_Request
-              url: /manage/data/content/text//insert
-              headers
-              - cookie: %%_test_response(cookies)
-              is_https|Param_from_form
-                name: is_https
-              proxy|Param_from_form
-                name: proxy
-          - response_check-insert-registered-role|Test_step_Check
-              check: token
-              where: %%_test_step__transpositions__is_active__insert
-              match: 1
-              on_success
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 200
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-              on_failure
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 403
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-          - title-update|Test_step_Title
-              title: UPDATE
-          # page "Management → Data → Content → Texts → update instance"
-          - request_url-update-registered-role|Test_step_Request
-              url: /manage/data/content/text/test/update
-              headers
-              - cookie: %%_test_response(cookies)
-              is_https|Param_from_form
-                name: is_https
-              proxy|Param_from_form
-                name: proxy
-          - response_check-update-registered-role|Test_step_Check
-              check: token
-              where: %%_test_step__transpositions__is_active__update
-              match: 1
-              on_success
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 200
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-              on_failure
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 403
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-          - title-delete|Test_step_Title
-              title: DELETE
-          # page "Management → Data → Content → Texts → delete instance"
-          - request_url-delete-registered-role|Test_step_Request
-              url: /manage/data/content/text/test/delete
-              headers
-              - cookie: %%_test_response(cookies)
-              is_https|Param_from_form
-                name: is_https
-              proxy|Param_from_form
-                name: proxy
-          - response_check-delete-registered-role|Test_step_Check
-              check: token
-              where: %%_test_step__transpositions__is_active__delete
-              match: 1
-              on_success
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 200
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
-              on_failure
-              - response_check-http_code|Test_step_Check
-                  check: token
-                  where: %%_test_response(http_code)
-                  match: 403
-                  on_failure
-                  - return_result|Test_step_Return
-                      value: 0
+        actions_after
+        - title-select_multiple|Test_step_Title
+            title: SELECT MULTIPLE
+        # page "Management → Data → Content → Texts"
+        - request_url-select_multiple-registered-role|Test_step_Request
+            url: /manage/data/content/text
+            headers
+            - cookie: %%_test_response(cookies)
+            is_https|Param_from_form
+              name: is_https
+            proxy|Param_from_form
+              name: proxy
+        - response_check-select_multiple-registered-role|Test_step_Check
+            check: token
+            where: %%_test_step__transpositions__is_active__select
+            match: 1
+            on_success
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 200
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+            on_failure
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 403
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+        - title-select|Test_step_Title
+            title: SELECT
+        # page "Management → Data → Content → Texts → select instance"
+        - request_url-select-registered-role|Test_step_Request
+            url: /manage/data/content/text/test
+            headers
+            - cookie: %%_test_response(cookies)
+            is_https|Param_from_form
+              name: is_https
+            proxy|Param_from_form
+              name: proxy
+        - response_check-select-registered-role|Test_step_Check
+            check: token
+            where: %%_test_step__transpositions__is_active__select
+            match: 1
+            on_success
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 200
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+            on_failure
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 403
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+        - title-insert|Test_step_Title
+            title: INSERT
+        # page "Management → Data → Content → Texts → insert instance"
+        - request_url-insert-registered-role|Test_step_Request
+            url: /manage/data/content/text//insert
+            headers
+            - cookie: %%_test_response(cookies)
+            is_https|Param_from_form
+              name: is_https
+            proxy|Param_from_form
+              name: proxy
+        - response_check-insert-registered-role|Test_step_Check
+            check: token
+            where: %%_test_step__transpositions__is_active__insert
+            match: 1
+            on_success
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 200
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+            on_failure
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 403
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+        - title-update|Test_step_Title
+            title: UPDATE
+        # page "Management → Data → Content → Texts → update instance"
+        - request_url-update-registered-role|Test_step_Request
+            url: /manage/data/content/text/test/update
+            headers
+            - cookie: %%_test_response(cookies)
+            is_https|Param_from_form
+              name: is_https
+            proxy|Param_from_form
+              name: proxy
+        - response_check-update-registered-role|Test_step_Check
+            check: token
+            where: %%_test_step__transpositions__is_active__update
+            match: 1
+            on_success
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 200
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+            on_failure
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 403
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+        - title-delete|Test_step_Title
+            title: DELETE
+        # page "Management → Data → Content → Texts → delete instance"
+        - request_url-delete-registered-role|Test_step_Request
+            url: /manage/data/content/text/test/delete
+            headers
+            - cookie: %%_test_response(cookies)
+            is_https|Param_from_form
+              name: is_https
+            proxy|Param_from_form
+              name: proxy
+        - response_check-delete-registered-role|Test_step_Check
+            check: token
+            where: %%_test_step__transpositions__is_active__delete
+            match: 1
+            on_success
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 200
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
+            on_failure
+            - response_check-http_code|Test_step_Check
+                check: token
+                where: %%_test_response(http_code)
+                match: 403
+                on_failure
+                - return_result|Test_step_Return
+                    value: false
     - reset_role_permissions|Test_step_Set_role_permissions
         id_role: test
         is_reset: true
@@ -790,4 +782,4 @@ tests
     # return
     # ─────────────────────────────────────────────────────────────────────
     - return_result|Test_step_Return
-        value: 1
+        value: true

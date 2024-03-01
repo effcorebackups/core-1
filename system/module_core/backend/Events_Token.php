@@ -35,20 +35,28 @@ abstract class Events_Token {
             if ($type === 'query'   ) {$result = Request::query_get();                                        if ($args->get_named('preg_quote') === 'yes') $result = preg_quote($result); return $result;}
         }
 
+        if ($name === 'time') {
+            if ($args->get_named('utc') === 'yes' && $args->get_named('not_formatted') === 'yes') return                         Core::time_get() ;
+            if ($args->get_named('utc') === 'yes' && $args->get_named('not_formatted') !== 'yes') return Locale::format_utc_time(Core::time_get());
+            if ($args->get_named('utc') !== 'yes' && $args->get_named('not_formatted') === 'yes') return Locale::time_utc_to_loc(Core::time_get());
+            if ($args->get_named('utc') !== 'yes' && $args->get_named('not_formatted') !== 'yes') return Locale::format_loc_time(Core::time_get());
+        }
+
+        if ($name === 'date') {
+            if ($args->get_named('utc') === 'yes' && $args->get_named('not_formatted') === 'yes') return                         Core::date_get() ;
+            if ($args->get_named('utc') === 'yes' && $args->get_named('not_formatted') !== 'yes') return Locale::format_utc_date(Core::date_get());
+            if ($args->get_named('utc') !== 'yes' && $args->get_named('not_formatted') === 'yes') return Locale::date_utc_to_loc(Core::date_get());
+            if ($args->get_named('utc') !== 'yes' && $args->get_named('not_formatted') !== 'yes') return Locale::format_loc_date(Core::date_get());
+        }
+
+        if ($name === 'datetime') {
+            if ($args->get_named('utc') === 'yes' && $args->get_named('not_formatted') === 'yes') return                             Core::datetime_get() ;
+            if ($args->get_named('utc') === 'yes' && $args->get_named('not_formatted') !== 'yes') return Locale::format_utc_datetime(Core::datetime_get());
+            if ($args->get_named('utc') !== 'yes' && $args->get_named('not_formatted') === 'yes') return Locale::datetime_utc_to_loc(Core::datetime_get());
+            if ($args->get_named('utc') !== 'yes' && $args->get_named('not_formatted') !== 'yes') return Locale::format_loc_datetime(Core::datetime_get());
+        }
+
         switch ($name) {
-            case 'current_time_utc'                : return                              Core::    time_get();
-            case 'current_date_utc'                : return                              Core::    date_get();
-            case 'current_datetime_utc'            : return                              Core::datetime_get();
-            case 'current_time_utc_formatted'      : return Locale:: format_utc_time    (Core::    time_get());
-            case 'current_date_utc_formatted'      : return Locale:: format_utc_date    (Core::    date_get());
-            case 'current_datetime_utc_formatted'  : return Locale:: format_utc_datetime(Core::datetime_get());
-            case 'current_time_local'              : return Locale::     time_utc_to_loc(Core::    time_get());
-            case 'current_date_local'              : return Locale::     date_utc_to_loc(Core::    date_get());
-            case 'current_datetime_local'          : return Locale:: datetime_utc_to_loc(Core::datetime_get());
-            case 'current_time_local_formatted'    : return Locale:: format_loc_time    (Core::    time_get());
-            case 'current_date_local_formatted'    : return Locale:: format_loc_date    (Core::    date_get());
-            case 'current_datetime_local_formatted': return Locale:: format_loc_datetime(Core::datetime_get());
-            # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             case 'return_if_token':
                 if ($args->get_count() > 2) {
                     if (!str_contains($args->get(0), '%%')) {

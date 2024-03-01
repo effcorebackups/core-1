@@ -15,7 +15,7 @@ use effcore\Text;
 
 abstract class Events_Test__Class_Storage_Data {
 
-    static function test_step_code__parse(&$test, $dpath, &$c_results) {
+    static function test_step_code__parse(&$test, $dpath) {
 
         $data[0] =
             'корень'                 .NL. # 01
@@ -253,20 +253,19 @@ abstract class Events_Test__Class_Storage_Data {
 
         foreach ($data as $c_key => $c_text) {
             $c_expected = $expected[$c_key];
-            $c_gotten = Storage_Data::text_to_data($data[$c_key])->data;
-            $c_result = Core::data_serialize($c_gotten, false, true) === Core::data_serialize($c_expected, false, true);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('failure'))->render()]);
+            $с_received = Storage_Data::text_to_data($data[$c_key])->data;
+            $c_result = Core::data_serialize($с_received, false, true) === Core::data_serialize($c_expected, false, true);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__text_to_data_to_text(&$test, $dpath, &$c_results) {
+    static function test_step_code__text_to_data_to_text(&$test, $dpath) {
 
         $data = 'example'                          .NL.
             '- integer: 123'                       .NL.
@@ -341,22 +340,21 @@ abstract class Events_Test__Class_Storage_Data {
             '    text: some text'                  .NL.
             '    custom_preperty: null';
 
-        $gotten = Storage_Data::data_to_text(
+        $received = Storage_Data::data_to_text(
             Storage_Data::text_to_data($data)->data->example, 'example'
         );
 
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Storage_Data::text_to_data() → Storage_Data::data_to_text()', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Storage_Data::text_to_data() → Storage_Data::data_to_text()', 'result' => (new Text('failure'))->render()]);
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Storage_Data::text_to_data() → Storage_Data::data_to_text()', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Storage_Data::text_to_data() → Storage_Data::data_to_text()', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 
-    static function test_step_code__select_array(&$test, $dpath, &$c_results) {
+    static function test_step_code__select_array(&$test, $dpath) {
 
         $storage = Storage::get('data');
 
@@ -432,20 +430,19 @@ abstract class Events_Test__Class_Storage_Data {
 
         foreach ($data as $c_key => $c_path) {
             $c_expected = $expected[$c_key];
-            $c_gotten = $storage->select_array($c_path);
-            $c_result = Core::data_serialize($c_gotten, false, true) === Core::data_serialize($c_expected, false, true);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('failure'))->render()]);
+            $с_received = $storage->select_array($c_path);
+            $c_result = Core::data_serialize($с_received, false, true) === Core::data_serialize($c_expected, false, true);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_key, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__changes(&$test, $dpath, &$c_results) {
+    static function test_step_code__changes(&$test, $dpath) {
 
         $storage = Storage::get('data');
 
@@ -486,7 +483,7 @@ abstract class Events_Test__Class_Storage_Data {
         ### select ###
         ##############
 
-        $gotten = $storage->select_array('test_data_dynamic/test');
+        $received = $storage->select_array('test_data_dynamic/test');
 
         $expected = [
             'integer' => 123,
@@ -508,14 +505,13 @@ abstract class Events_Test__Class_Storage_Data {
             'object_empty' => (object)[]
         ];
 
-        $result = Core::data_serialize($gotten, false, true) === Core::data_serialize($expected, false, true);
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'select', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'select', 'result' => (new Text('failure'))->render()]);
+        $result = Core::data_serialize($received, false, true) === Core::data_serialize($expected, false, true);
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'select', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'select', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         #######################
@@ -540,7 +536,7 @@ abstract class Events_Test__Class_Storage_Data {
             'property_6' => 'property value 6 (insert)'
         ]);
 
-        $gotten = $storage->select_array('test_data_dynamic/test');
+        $received = $storage->select_array('test_data_dynamic/test');
 
         $expected = [
             'integer' => 123,
@@ -580,14 +576,13 @@ abstract class Events_Test__Class_Storage_Data {
             ]
         ];
 
-        $result = Core::data_serialize($gotten, false, true) === Core::data_serialize($expected, false, true);
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'insert to array + select', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'insert to array + select', 'result' => (new Text('failure'))->render()]);
+        $result = Core::data_serialize($received, false, true) === Core::data_serialize($expected, false, true);
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'insert to array + select', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'insert to array + select', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         #######################
@@ -612,7 +607,7 @@ abstract class Events_Test__Class_Storage_Data {
             'property_9' => 'property value 9'
         ]);
 
-        $gotten = $storage->select_array('test_data_dynamic/test');
+        $received = $storage->select_array('test_data_dynamic/test');
 
         $expected = [
             'integer' => 123,
@@ -656,14 +651,13 @@ abstract class Events_Test__Class_Storage_Data {
             ]
         ];
 
-        $result = Core::data_serialize($gotten, false, true) === Core::data_serialize($expected, false, true);
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'update in array + select', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'update in array + select', 'result' => (new Text('failure'))->render()]);
+        $result = Core::data_serialize($received, false, true) === Core::data_serialize($expected, false, true);
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'update in array + select', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'update in array + select', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         #######################
@@ -681,7 +675,7 @@ abstract class Events_Test__Class_Storage_Data {
         $storage->changes_register('test', 'delete', 'test_data_dynamic/test/array_insert');
         $storage->changes_register('test', 'delete', 'test_data_dynamic/test/object_insert');
 
-        $gotten = $storage->select_array('test_data_dynamic/test');
+        $received = $storage->select_array('test_data_dynamic/test');
 
         $expected = [
             'integer' => 123,
@@ -725,14 +719,13 @@ abstract class Events_Test__Class_Storage_Data {
           # ]
         ];
 
-        $result = Core::data_serialize($gotten, false, true) === Core::data_serialize($expected, false, true);
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'delete in array + select', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'delete in array + select', 'result' => (new Text('failure'))->render()]);
+        $result = Core::data_serialize($received, false, true) === Core::data_serialize($expected, false, true);
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'delete in array + select', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'delete in array + select', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 

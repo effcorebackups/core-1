@@ -16,13 +16,16 @@ translations
     - - no -: - нет -
     - - root -: - корень -
     - - select -: - выбрать -
+    - - string in English #1\: translated string #1: - string in English #1: переведённая строка №1
+    - - string in English #2\: translated string #2: - string in English #2: переведённая строка №2
+    - - string in English #3\: translated string #3: - string in English #3: переведённая строка №3
     - - system value -: - системное значение -
     - %%_entity_title_context \| append: %%_entity_title_context | добавить
     - %%_entity_title_context \| change: %%_entity_title_context | изменить
     - %%_entity_title_context \| delete: %%_entity_title_context | удалить
-    - %%_number sec.: %%_number сек.
     - %%_number file%%_plural(number\|s): %%_number файл%%_plural(number|ov-a)
     - %%_number piece%%_plural(number\|s): %%_number штук%%_plural(number|a-i)
+    - %%_number sec.: %%_number сек.
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-ji)
     - A new password was sent to the selected EMail address.: Новый пароль был отправлен на выбранный адрес электронной почты.
     - Absolute URL as link: Абсолютный URL как ссылка
@@ -243,6 +246,7 @@ translations
     - Event: Событие
     - events: события
     - Events: События
+    - Example: Пример
     - Examples: Примеры
     - Examples\: %%_examples: Примеры: %%_examples
     - Execution: Выполнение
@@ -731,7 +735,9 @@ translations
     - press to show or hide nested content: нажмите, чтобы показать или скрыть вложенное содержимое
     - Preview: Предварительный просмотр
     - profile export: экспорт профиля
+    - profile: профиль
     - Profile: Профиль
+    - profiles: профили
     - Profiles: Профили
     - Project: Проект
     - Projects: Проекты
@@ -942,6 +948,7 @@ translations
     - Uninstall: Удалить
     - universal handlers: универсальные обработчики
     - Unknown error!: Неизвестная ошибка!
+    - Unknown user!: Неизвестный пользователь!
     - Unordered list: Неупорядоченный список
     - update: обновить
     - Update: Обновить

@@ -13,7 +13,7 @@ use effcore\Module;
 use effcore\Session;
 use effcore\Text_multiline;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use effcore\User;
 
 abstract class Events_Form_Registration {
@@ -47,10 +47,10 @@ abstract class Events_Form_Registration {
                         'password_hash' => User::password_hash($new_password)
                     ]);
                     if ($user) {
-                        $domain = Url::get_current()->domain;
+                        $domain = URL::get_current()->domain;
                         if (Mail::send('registration', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
                             Message::insert('A new password was sent to the selected EMail address.');
-                            Url::go(Url::back_url_get() ?: '/login');
+                            URL::go(URL::back_url_get() ?: '/login');
                         }
                     } else {
                         Message::insert(
@@ -76,7 +76,7 @@ abstract class Events_Form_Registration {
                         Message::insert(
                             new Text('Welcome, %%_nickname!', ['nickname' => $user->nickname])
                         );
-                        Url::go(Url::back_url_get() ?: '/user/'.$user->nickname);
+                        URL::go(URL::back_url_get() ?: '/user/'.$user->nickname);
                     } else {
                         Message::insert(
                             'User was not registered!', 'error'

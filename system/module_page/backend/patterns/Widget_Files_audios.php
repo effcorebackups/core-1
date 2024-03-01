@@ -57,7 +57,7 @@ class Widget_Files_audios extends Widget_Files {
         if ($item->settings['data-cover-is-embedded']) {
             $result = Template::make_new(Template::pick_name('picture'), [
                 'id'         => $row_id,
-                'src'        => $url.'?cover=middle',
+                'src'        => $url ? $url.'?cover=middle' : '',
                 'attributes' => Core::data_to_attributes([
                     'alt'       => new Text('cover'),
                     'width'     => '300',
@@ -68,9 +68,11 @@ class Widget_Files_audios extends Widget_Files {
             $result.= Template::make_new(Template::pick_name('audio'), [
                 'id'         => $row_id,
                 'src'        => $url,
-                'attributes' => Core::data_to_attributes(
-                    ['data-cover-thumbnail' => $url.'?cover=middle'] + $item->settings
-                )
+                'attributes' => Core::data_to_attributes([
+                    'data-path-cover-small'  => $url ? $url.'?cover=small'  : '',
+                    'data-path-cover-middle' => $url ? $url.'?cover=middle' : '',
+                    'data-path-cover-big'    => $url ? $url.'?cover=big'    : '',
+                ] + $item->settings)
             ])->render();
         } else {
             $result = Template::make_new(Template::pick_name('audio'), [

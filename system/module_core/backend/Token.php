@@ -6,7 +6,6 @@
 
 namespace effcore;
 
-use effcore\Token_args;
 use stdClass;
 
 abstract class Token {

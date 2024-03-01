@@ -49,7 +49,7 @@ abstract class Events_Token {
             case 'thumbnail_path_poster_default': return $settings->thumbnail_path_poster_default;
             case 'page_width_mobile'            : return $settings->page_width_mobile;
         }
-        # colors
+
         if ($name === 'color') {
             $scope      = $args->get(0);
             $is_encoded = $args->get_named('encoded');
@@ -70,6 +70,7 @@ abstract class Events_Token {
                 }
             }
         }
+
         if ($name === 'return_if_scope_is_dark') {
             $scope      = $args->get(0);
             $profile_id = $args->get_named('profile') ?: Color_profile::get_current()->id;

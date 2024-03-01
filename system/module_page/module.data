@@ -4,7 +4,7 @@ module|Module_embedded
   title: Page
   description: Module for working with pages.
   copyright: Copyright © 2017—2024 Maxim Rysevets. All rights reserved.
-  version: 0.914
+  version: 0.915
   dependencies
     system
-    - core: 0.914
+    - core: 0.915

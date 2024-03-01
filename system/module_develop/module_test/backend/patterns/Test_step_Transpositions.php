@@ -10,53 +10,69 @@ namespace effcore;
 
 class Test_step_Transpositions {
 
-    public $action_before;
+    public $actions_before;
     public $actions = [];
-    public $action_after;
+    public $actions_after;
 
-    function run(&$test, $dpath, &$c_results) {
+    function run(&$test, $dpath) {
+        yield new Text_simple('');
+        yield Test_message::send_dpath($dpath);
         $row_ids = array_keys($this->actions);
         $actions_count = count($this->actions);
         $max = 2 ** $actions_count;
         for ($i = 1; $i < $max; $i++) {
             $c_bits = str_pad(decbin($i), $actions_count, '0', STR_PAD_LEFT);
             $c_total_state = str_replace(['0', '1'], ['□', '▣'], $c_bits);
-            $c_results['reports'][$dpath.':'.$i]['dpath'] = '### dpath: '.$dpath.':'.$i;
-            $c_results['reports'][$dpath.':'.$i]['title'] = new Text('TRANSPOSITION %%_cur FROM %%_max | %%_state', ['cur' => $i + 1, 'max' => $max, 'state' => $c_total_state]);
+
+            yield new Text_simple('');
+            yield Test_message::send_dpath($dpath.'/i:'.$i);
+            yield new Text('TRANSPOSITION %%_cur FROM %%_max | %%_state', ['cur' => $i + 1, 'max' => $max, 'state' => $c_total_state]);
+
             # insert dynamic tokens
             for ($j = $actions_count - 1; $j >= 0; $j--) {
                 $c_row_id = $row_ids[$actions_count - 1 - $j];
                 $c_state = $i >> $j & 1;
                 Token::insert('test_step__transpositions__is_active__'.$c_row_id, 'text', $c_state, null, 'test');
             }
-            # run "action_before"
-            if ($this->action_before) {
-                $c_results['reports'][$dpath.':'.$i.'/action_before']['dpath'] = '### dpath: '.$dpath.':'.$i.'/action_before';
-                $c_results['reports'][$dpath.':'.$i.'/action_before']['action_before_title'] = new Text('action "%%_name" will be started', ['name' => 'action_before']);
-                $this->action_before->run($test, $dpath.':'.$i.'/action_before', $c_results);
-                if (array_key_exists('return', $c_results)) {
-                    return;
-                }
-            }
-            # run each "action"
-            for ($j = $actions_count - 1; $j >= 0; $j--) {
-                if ($i >> $j & 1) {
-                    $c_row_id = $row_ids[$actions_count - 1 - $j];
-                    $c_results['reports'][$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id]['dpath'] = '### dpath: '.$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id;
-                    $c_results['reports'][$dpath.':'.$i.':'.$j.'/actions:'.$c_row_id]['actions_title'] = new Text('action with row_id = "%%_row_id" will be started', ['row_id' => $c_row_id]);
-                    $this->actions[$c_row_id]->run($test, $dpath.':'.$i.':'.$j.'/actions:'.$c_row_id, $c_results);
-                    if (array_key_exists('return', $c_results)) {
-                        return;
+
+            # run "actions_before"
+            if ($this->actions_before) {
+                yield new Text_simple('');
+                yield Test_message::send_dpath($dpath.'/i:'.$i.'/actions_before');
+                yield new Text('action "%%_name" will be started', ['name' => 'actions_before']);
+                foreach ($this->actions_before as $c_row_id => $c_action) {
+                    foreach ($c_action->run($test, $dpath.'/i:'.$i.'/actions_before/'.$c_row_id) as $c_tick) {
+                        yield $c_tick;
                     }
                 }
             }
-            # run "action_after"
-            if ($this->action_after) {
-                $c_results['reports'][$dpath.':'.$i.'/action_after']['dpath'] = '### dpath: '.$dpath.':'.$i.'/action_after';
-                $c_results['reports'][$dpath.':'.$i.'/action_after']['action_after_title'] = new Text('action "%%_name" will be started', ['name' => 'action_after']);
-                $this->action_after->run($test, $dpath.':'.$i.'/action_after', $c_results);
-                if (array_key_exists('return', $c_results)) {
-                    return;
+
+            # run each "action"
+            if ($this->actions) {
+                yield new Text_simple('');
+                yield Test_message::send_dpath($dpath.'/i:'.$i.'/actions');
+                yield new Text('action "%%_name" will be started', ['name' => 'actions']);
+                for ($j = $actions_count - 1; $j >= 0; $j--) {
+                    if ($i >> $j & 1) {
+                        $c_row_id = $row_ids[$actions_count - 1 - $j];
+                        yield new Text_simple('');
+                        yield Test_message::send_dpath($dpath.'/i:'.$i.'/actions/j:'.$j);
+                        foreach ($this->actions[$c_row_id]->run($test, $dpath.'/i:'.$i.'/actions/j:'.$j.'/'.$c_row_id) as $c_tick) {
+                            yield $c_tick;
+                        }
+                    }
+                }
+            }
+
+            # run "actions_after"
+            if ($this->actions_after) {
+                yield new Text_simple('');
+                yield Test_message::send_dpath($dpath.'/i:'.$i.'/actions_after');
+                yield new Text('action "%%_name" will be started', ['name' => 'actions_after']);
+                foreach ($this->actions_after as $c_row_id => $c_action) {
+                    foreach ($c_action->run($test, $dpath.'/'.$i.'/actions_after/'.$c_row_id) as $c_tick) {
+                        yield $c_tick;
+                    }
                 }
             }
         }

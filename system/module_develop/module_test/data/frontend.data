@@ -3,42 +3,15 @@ frontend
     display
       check: url
       where: path
-      match: %^/develop/tests/.*__js$%
+      match: %^/develop/tests/js__.*$%
     scripts
-    - class_EffcoreTest
-        path: frontend/EffcoreTest.jsd
+    - class__Test
+        path: frontend/components/Test.js
         weight: +600
         attributes
-        - defer: true
-- page_test__js__js__develop|Frontend
-    display
-      check: url
-      where: path
-      match: %^/develop/tests/js__js$%
-    scripts
-    - events
-        path: frontend/Events_Test__JS.js
+        - type: module
+    - mount__test
+        path: frontend/components/test-mount.js
         weight: +500
         attributes
-        - defer: true
-    - runner
-        path: frontend/Events_Test__JS__runner.js
-        weight: +400
-        attributes
-        - defer: true
-- page_test__class_url__js__develop|Frontend
-    display
-      check: url
-      where: path
-      match: %^/develop/tests/class__url__js$%
-    scripts
-    - events
-        path: frontend/Events_Test__Class_Url.js
-        weight: +500
-        attributes
-        - defer: true
-    - runner
-        path: frontend/Events_Test__Class_URL__runner.js
-        weight: +400
-        attributes
-        - defer: true
+        - type: module

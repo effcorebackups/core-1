@@ -16,6 +16,7 @@ class Frontend {
     public $favicons = [];
     public $styles   = [];
     public $scripts  = [];
+    public $module_id;
 
     ###########################
     ### static declarations ###
@@ -49,14 +50,14 @@ class Frontend {
         return static::$cache[$row_id] ?? null;
     }
 
-    static function insert($row_id, $display = null, $type = 'styles', $element = [], $element_row_id = null, $mudule_id = null) {
+    static function insert($row_id, $element_row_id = null, $display = null, $type = 'styles', $data = [], $mudule_id = null) {
         static::init();
         if (!isset(static::$cache[$row_id]))
                    static::$cache[$row_id] = new static;
         static::$cache[$row_id]->display   = $display;
         static::$cache[$row_id]->module_id = $mudule_id;
-        if ($element_row_id) static::$cache[$row_id]->{$type}[$element_row_id] = (object)$element;
-        else                 static::$cache[$row_id]->{$type}[               ] = (object)$element;
+        if ($element_row_id) static::$cache[$row_id]->{$type}[$element_row_id] = (object)$data;
+        else                 static::$cache[$row_id]->{$type}[               ] = (object)$data;
     }
 
     static function markup_get($used_blocks_dpath, $used_blocks_cssid) {
@@ -72,37 +73,50 @@ class Frontend {
 
                 # collect favicons
                 foreach ($c_items->favicons as $c_item) {
-                    $c_url        = new Url($c_item->path[0] === '/' ? $c_item->path : '/'.Module::get($c_items->module_id)->path.$c_item->path);
                     $c_attributes = $c_item->attributes ?? [];
                     $c_weight     = $c_item->weight     ?? 0;
                     $result->icons->child_insert(new Markup_simple('link', [
-                        'href' => Token::apply($c_url->relative_get())
+                        'href' => Token::apply(static::path_resolve($c_item->path, $c_items->module_id))
                     ] + $c_attributes, $c_weight));
                 }
 
                 # collect styles
                 foreach ($c_items->styles as $c_item) {
-                    $c_url        = new Url($c_item->path[0] === '/' ? $c_item->path : '/'.Module::get($c_items->module_id)->path.$c_item->path);
                     $c_attributes = $c_item->attributes ?? [];
                     $c_weight     = $c_item->weight     ?? 0;
                     $result->styles->child_insert(new Markup_simple('link', [
-                        'href' => Token::apply($c_url->relative_get())
+                        'href' => Token::apply(static::path_resolve($c_item->path, $c_items->module_id))
                     ] + $c_attributes, $c_weight));
                 }
 
                 # collect scripts
                 foreach ($c_items->scripts as $c_item) {
-                    $c_url        = new Url($c_item->path[0] === '/' ? $c_item->path : '/'.Module::get($c_items->module_id)->path.$c_item->path);
                     $c_attributes = $c_item->attributes ?? [];
                     $c_weight     = $c_item->weight     ?? 0;
-                    $result->scripts->child_insert(new Markup('script', [
-                        'src' => Token::apply($c_url->relative_get())
-                    ] + $c_attributes, [], $c_weight));
+                    if (!empty($c_item->path)) $result->scripts->child_insert(new Markup('script', ['src' => Token::apply(static::path_resolve($c_item->path, $c_items->module_id))] + $c_attributes,                     [], $c_weight));
+                    else                       $result->scripts->child_insert(new Markup('script',                                                                                     $c_attributes, $c_item->content ?? [], $c_weight));
                 }
 
             }
         }
         return $result;
+    }
+
+    # resolving rules:
+    # ┌────────────────────────────────────────╥─────────────────────────────┐
+    # │ url                                    ║ behavior                    │
+    # ╞════════════════════════════════════════╬═════════════════════════════╡
+    # │ http://example.com/page.css            ║ absolute external path      │
+    # │ frontend/page.cssd                     ║ relative path from www-root │
+    # │ /system/module_page/frontend/page.cssd ║ absolute path from www-root │
+    # └────────────────────────────────────────╨─────────────────────────────┘
+
+    static function path_resolve($path, $module_id = null, $return_absolute = false) {
+        if (strpos($path, '://') !== false)                              return                                            $path                  ;
+        if ($path[0] === '/' && $return_absolute === true              ) return (new URL(                                  $path))->absolute_get();
+        if ($path[0] === '/' && $return_absolute !== true              ) return (new URL(                                  $path))->relative_get();
+        if ($path[0] !== '/' && $return_absolute === true && $module_id) return (new URL('/'.Module::get($module_id)->path.$path))->absolute_get();
+        if ($path[0] !== '/' && $return_absolute !== true && $module_id) return (new URL('/'.Module::get($module_id)->path.$path))->relative_get();
     }
 
     static function is_visible_by_block_dpath($display, $used_blocks_dpath) {
@@ -118,14 +132,14 @@ class Frontend {
     }
 
     static function is_visible_by_url($display) {
-        return ($display->check === 'url' && $display->where === 'protocol'  && preg_match($display->match, Url::get_current()->protocol       )) ||
-               ($display->check === 'url' && $display->where === 'domain'    && preg_match($display->match, Url::get_current()->domain         )) ||
-               ($display->check === 'url' && $display->where === 'path'      && preg_match($display->match, Url::get_current()->path           )) ||
-               ($display->check === 'url' && $display->where === 'query'     && preg_match($display->match, Url::get_current()->query          )) ||
-               ($display->check === 'url' && $display->where === 'anchor'    && preg_match($display->match, Url::get_current()->anchor         )) ||
-               ($display->check === 'url' && $display->where === 'file_type' && preg_match($display->match, Url::get_current()->file_type_get())) ||
-               ($display->check === 'url' && $display->where === 'relative'  && preg_match($display->match, Url::get_current()-> relative_get())) ||
-               ($display->check === 'url' && $display->where === 'absolute'  && preg_match($display->match, Url::get_current()-> absolute_get()));
+        return ($display->check === 'url' && $display->where === 'protocol'  && preg_match($display->match, URL::get_current()->protocol       )) ||
+               ($display->check === 'url' && $display->where === 'domain'    && preg_match($display->match, URL::get_current()->domain         )) ||
+               ($display->check === 'url' && $display->where === 'path'      && preg_match($display->match, URL::get_current()->path           )) ||
+               ($display->check === 'url' && $display->where === 'query'     && preg_match($display->match, URL::get_current()->query          )) ||
+               ($display->check === 'url' && $display->where === 'anchor'    && preg_match($display->match, URL::get_current()->anchor         )) ||
+               ($display->check === 'url' && $display->where === 'file_type' && preg_match($display->match, URL::get_current()->file_type_get())) ||
+               ($display->check === 'url' && $display->where === 'relative'  && preg_match($display->match, URL::get_current()-> relative_get())) ||
+               ($display->check === 'url' && $display->where === 'absolute'  && preg_match($display->match, URL::get_current()-> absolute_get()));
     }
 
 }

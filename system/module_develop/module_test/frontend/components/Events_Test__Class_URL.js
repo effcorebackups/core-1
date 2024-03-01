@@ -5,13 +5,26 @@
 
 'use strict';
 
+import Core from '/system/module_core/frontend/components/Core.jsd';
+import URL from '/system/module_core/frontend/components/URL.js';
+
 // ─────────────────────────────────────────────────────────────────────
-// Class Events_Test__Class_Url
+// Class Events_Test__Class_URL
 // ─────────────────────────────────────────────────────────────────────
 
-class Events_Test__Class_Url {
+export default class Events_Test__Class_URL {
 
-    static test_step_code__construct(test, dpath, c_results) {
+    static methods() {
+        return [
+            this.test_step_code__construct,
+            this.test_step_code__has_error,
+            this.test_step_code__absolute_get,
+            this.test_step_code__relative_get,
+            this.test_step_code__query_args
+        ]
+    }
+
+    static *test_step_code__construct(dpath) {
         let protocol = window.location.protocol.replace(/[:]*$/g, '');
         let domain = window.location.host;
         let data = {
@@ -106,24 +119,23 @@ class Events_Test__Class_Url {
 
         for (let c_value in data) {
             let c_expected = data[c_value];
-            let c_url = new EffURL(c_value);
+            let c_url = new URL(c_value);
             let c_result = c_url.protocol === c_expected.protocol &&
                            c_url.domain   === c_expected.domain   &&
                            c_url.path     === c_expected.path     &&
                            c_url.query    === c_expected.query    &&
                            c_url.anchor   === c_expected.anchor;
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(c_url)}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(c_url)});
+                yield false;
             }
         }
     }
 
-    static test_step_code__has_error(test, dpath, c_results) {
+    static *test_step_code__has_error(dpath) {
         let urls = [
             ':',
             ':/',
@@ -136,17 +148,16 @@ class Events_Test__Class_Url {
         ];
 
         for (let c_value of urls) {
-            let c_url = new EffURL(c_value);
+            let c_url = new URL(c_value);
             let c_expected = true;
-            let c_gotten = c_url.has_error;
-            let c_result = c_gotten === c_expected;
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
+            let с_received = c_url.has_error;
+            let c_result = с_received === c_expected;
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(c_gotten)}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(с_received)});
+                yield false;
             }
         }
 
@@ -303,17 +314,16 @@ class Events_Test__Class_Url {
             if (i & 0b0010000) c_value += parts[5];
             if (i & 0b0100000) c_value += parts[6];
             if (i & 0b1000000) c_value += parts[7];
-            let c_url = new EffURL(c_value);
+            let c_url      = new URL(c_value);
             let c_expected = expected[c_value];
-            let c_gotten = c_url.has_error;
-            let c_result = c_gotten === c_expected;
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
+            let с_received = c_url.has_error;
+            let c_result   = с_received === c_expected;
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(c_gotten)}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(с_received)});
+                yield false;
             }
         }
 
@@ -470,117 +480,114 @@ class Events_Test__Class_Url {
             if (i & 0b0010000) c_value += parts[5];
             if (i & 0b0100000) c_value += parts[6];
             if (i & 0b1000000) c_value += parts[7];
-            let c_url = new EffURL(c_value);
+            let c_url = new URL(c_value);
             let c_expected = expected[c_value];
-            let c_gotten = c_url.has_error;
-            let c_result = c_gotten === c_expected;
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
+            let с_received = c_url.has_error;
+            let c_result = с_received === c_expected;
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(c_gotten)}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(с_received)});
+                yield false;
             }
         }
     }
 
-    static test_step_code__absolute_get(test, dpath, c_results) {
+    static *test_step_code__absolute_get(dpath) {
         let protocol = window.location.protocol.replace(/[:]*$/g, '');
         let domain = window.location.host;
         let data = {};
-            data[                            '/'                                ] = protocol + '://' + domain;
-            data[                            '/?key=value'                      ] = protocol + '://' + domain + '/?key=value';
-            data[                            '/#anchor'                         ] = protocol + '://' + domain + '/#anchor';
-            data[                            '/?key=value#anchor'               ] = protocol + '://' + domain + '/?key=value#anchor';
-            data[                            '/dir/subdir/page'                 ] = protocol + '://' + domain + '/dir/subdir/page';
-            data[                            '/dir/subdir/page?key=value'       ] = protocol + '://' + domain + '/dir/subdir/page?key=value';
-            data[                            '/dir/subdir/page#anchor'          ] = protocol + '://' + domain + '/dir/subdir/page#anchor';
-            data[                            '/dir/subdir/page?key=value#anchor'] = protocol + '://' + domain + '/dir/subdir/page?key=value#anchor';
-            data[                   domain                                      ] = protocol + '://' + domain;
-            data[                   domain + '/'                                ] = protocol + '://' + domain;
-            data[                   domain + '/?key=value'                      ] = protocol + '://' + domain + '/?key=value';
-            data[                   domain + '/#anchor'                         ] = protocol + '://' + domain + '/#anchor';
-            data[                   domain + '/?key=value#anchor'               ] = protocol + '://' + domain + '/?key=value#anchor';
-            data[                   domain + '/dir/subdir/page'                 ] = protocol + '://' + domain + '/dir/subdir/page';
-            data[                   domain + '/dir/subdir/page?key=value'       ] = protocol + '://' + domain + '/dir/subdir/page?key=value';
-            data[                   domain + '/dir/subdir/page#anchor'          ] = protocol + '://' + domain + '/dir/subdir/page#anchor';
-            data[                   domain + '/dir/subdir/page?key=value#anchor'] = protocol + '://' + domain + '/dir/subdir/page?key=value#anchor';
-            data[protocol + '://' + domain                                      ] = protocol + '://' + domain;
-            data[protocol + '://' + domain + '/'                                ] = protocol + '://' + domain;
-            data[protocol + '://' + domain + '/?key=value'                      ] = protocol + '://' + domain + '/?key=value';
-            data[protocol + '://' + domain + '/#anchor'                         ] = protocol + '://' + domain + '/#anchor';
-            data[protocol + '://' + domain + '/?key=value#anchor'               ] = protocol + '://' + domain + '/?key=value#anchor';
-            data[protocol + '://' + domain + '/dir/subdir/page'                 ] = protocol + '://' + domain + '/dir/subdir/page';
-            data[protocol + '://' + domain + '/dir/subdir/page?key=value'       ] = protocol + '://' + domain + '/dir/subdir/page?key=value';
-            data[protocol + '://' + domain + '/dir/subdir/page#anchor'          ] = protocol + '://' + domain + '/dir/subdir/page#anchor';
-            data[protocol + '://' + domain + '/dir/subdir/page?key=value#anchor'] = protocol + '://' + domain + '/dir/subdir/page?key=value#anchor';
+            data[                       '/'                                ] = `${protocol}://${domain}`;
+            data[                       '/?key=value'                      ] = `${protocol}://${domain}/?key=value`;
+            data[                       '/#anchor'                         ] = `${protocol}://${domain}/#anchor`;
+            data[                       '/?key=value#anchor'               ] = `${protocol}://${domain}/?key=value#anchor`;
+            data[                       '/dir/subdir/page'                 ] = `${protocol}://${domain}/dir/subdir/page`;
+            data[                       '/dir/subdir/page?key=value'       ] = `${protocol}://${domain}/dir/subdir/page?key=value`;
+            data[                       '/dir/subdir/page#anchor'          ] = `${protocol}://${domain}/dir/subdir/page#anchor`;
+            data[                       '/dir/subdir/page?key=value#anchor'] = `${protocol}://${domain}/dir/subdir/page?key=value#anchor`;
+            data[              `${domain}`                                 ] = `${protocol}://${domain}`;
+            data[              `${domain}/`                                ] = `${protocol}://${domain}`;
+            data[              `${domain}/?key=value`                      ] = `${protocol}://${domain}/?key=value`;
+            data[              `${domain}/#anchor`                         ] = `${protocol}://${domain}/#anchor`;
+            data[              `${domain}/?key=value#anchor`               ] = `${protocol}://${domain}/?key=value#anchor`;
+            data[              `${domain}/dir/subdir/page`                 ] = `${protocol}://${domain}/dir/subdir/page`;
+            data[              `${domain}/dir/subdir/page?key=value`       ] = `${protocol}://${domain}/dir/subdir/page?key=value`;
+            data[              `${domain}/dir/subdir/page#anchor`          ] = `${protocol}://${domain}/dir/subdir/page#anchor`;
+            data[              `${domain}/dir/subdir/page?key=value#anchor`] = `${protocol}://${domain}/dir/subdir/page?key=value#anchor`;
+            data[`${protocol}://${domain}`                                 ] = `${protocol}://${domain}`;
+            data[`${protocol}://${domain}/`                                ] = `${protocol}://${domain}`;
+            data[`${protocol}://${domain}/?key=value`                      ] = `${protocol}://${domain}/?key=value`;
+            data[`${protocol}://${domain}/#anchor`                         ] = `${protocol}://${domain}/#anchor`;
+            data[`${protocol}://${domain}/?key=value#anchor`               ] = `${protocol}://${domain}/?key=value#anchor`;
+            data[`${protocol}://${domain}/dir/subdir/page`                 ] = `${protocol}://${domain}/dir/subdir/page`;
+            data[`${protocol}://${domain}/dir/subdir/page?key=value`       ] = `${protocol}://${domain}/dir/subdir/page?key=value`;
+            data[`${protocol}://${domain}/dir/subdir/page#anchor`          ] = `${protocol}://${domain}/dir/subdir/page#anchor`;
+            data[`${protocol}://${domain}/dir/subdir/page?key=value#anchor`] = `${protocol}://${domain}/dir/subdir/page?key=value#anchor`;
 
         for (let c_value in data) {
             let c_expected = data[c_value];
-            let c_url = new EffURL(c_value);
-            let c_gotten = c_url.absoluteGet();
-            let c_result = c_gotten === c_expected;
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
+            let c_url = new URL(c_value);
+            let с_received = c_url.absoluteGet();
+            let c_result = с_received === c_expected;
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : c_expected}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : c_gotten}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : c_expected});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : с_received});
+                yield false;
             }
         }
     }
 
-    static test_step_code__relative_get(test, dpath, c_results) {
+    static *test_step_code__relative_get(dpath) {
         let protocol = window.location.protocol.replace(/[:]*$/g, '');
         let domain = window.location.host;
         let data = {};
-            data[                            '/'                                ] = '/';
-            data[                            '/?key=value'                      ] = '/?key=value';
-            data[                            '/#anchor'                         ] = '/#anchor';
-            data[                            '/?key=value#anchor'               ] = '/?key=value#anchor';
-            data[                            '/dir/subdir/page'                 ] = '/dir/subdir/page';
-            data[                            '/dir/subdir/page?key=value'       ] = '/dir/subdir/page?key=value';
-            data[                            '/dir/subdir/page#anchor'          ] = '/dir/subdir/page#anchor';
-            data[                            '/dir/subdir/page?key=value#anchor'] = '/dir/subdir/page?key=value#anchor';
-            data[                   domain                                      ] = '/';
-            data[                   domain + '/'                                ] = '/';
-            data[                   domain + '/?key=value'                      ] = '/?key=value';
-            data[                   domain + '/#anchor'                         ] = '/#anchor';
-            data[                   domain + '/?key=value#anchor'               ] = '/?key=value#anchor';
-            data[                   domain + '/dir/subdir/page'                 ] = '/dir/subdir/page';
-            data[                   domain + '/dir/subdir/page?key=value'       ] = '/dir/subdir/page?key=value';
-            data[                   domain + '/dir/subdir/page#anchor'          ] = '/dir/subdir/page#anchor';
-            data[                   domain + '/dir/subdir/page?key=value#anchor'] = '/dir/subdir/page?key=value#anchor';
-            data[protocol + '://' + domain                                      ] = '/';
-            data[protocol + '://' + domain + '/'                                ] = '/';
-            data[protocol + '://' + domain + '/?key=value'                      ] = '/?key=value';
-            data[protocol + '://' + domain + '/#anchor'                         ] = '/#anchor';
-            data[protocol + '://' + domain + '/?key=value#anchor'               ] = '/?key=value#anchor';
-            data[protocol + '://' + domain + '/dir/subdir/page'                 ] = '/dir/subdir/page';
-            data[protocol + '://' + domain + '/dir/subdir/page?key=value'       ] = '/dir/subdir/page?key=value';
-            data[protocol + '://' + domain + '/dir/subdir/page#anchor'          ] = '/dir/subdir/page#anchor';
-            data[protocol + '://' + domain + '/dir/subdir/page?key=value#anchor'] = '/dir/subdir/page?key=value#anchor';
+            data[                       '/'                                ] = '/';
+            data[                       '/?key=value'                      ] = '/?key=value';
+            data[                       '/#anchor'                         ] = '/#anchor';
+            data[                       '/?key=value#anchor'               ] = '/?key=value#anchor';
+            data[                       '/dir/subdir/page'                 ] = '/dir/subdir/page';
+            data[                       '/dir/subdir/page?key=value'       ] = '/dir/subdir/page?key=value';
+            data[                       '/dir/subdir/page#anchor'          ] = '/dir/subdir/page#anchor';
+            data[                       '/dir/subdir/page?key=value#anchor'] = '/dir/subdir/page?key=value#anchor';
+            data[              `${domain}`                                 ] = '/';
+            data[              `${domain}/`                                ] = '/';
+            data[              `${domain}/?key=value`                      ] = '/?key=value';
+            data[              `${domain}/#anchor`                         ] = '/#anchor';
+            data[              `${domain}/?key=value#anchor`               ] = '/?key=value#anchor';
+            data[              `${domain}/dir/subdir/page`                 ] = '/dir/subdir/page';
+            data[              `${domain}/dir/subdir/page?key=value`       ] = '/dir/subdir/page?key=value';
+            data[              `${domain}/dir/subdir/page#anchor`          ] = '/dir/subdir/page#anchor';
+            data[              `${domain}/dir/subdir/page?key=value#anchor`] = '/dir/subdir/page?key=value#anchor';
+            data[`${protocol}://${domain}`                                 ] = '/';
+            data[`${protocol}://${domain}/`                                ] = '/';
+            data[`${protocol}://${domain}/?key=value`                      ] = '/?key=value';
+            data[`${protocol}://${domain}/#anchor`                         ] = '/#anchor';
+            data[`${protocol}://${domain}/?key=value#anchor`               ] = '/?key=value#anchor';
+            data[`${protocol}://${domain}/dir/subdir/page`                 ] = '/dir/subdir/page';
+            data[`${protocol}://${domain}/dir/subdir/page?key=value`       ] = '/dir/subdir/page?key=value';
+            data[`${protocol}://${domain}/dir/subdir/page#anchor`          ] = '/dir/subdir/page#anchor';
+            data[`${protocol}://${domain}/dir/subdir/page?key=value#anchor`] = '/dir/subdir/page?key=value#anchor';
 
         for (let c_value in data) {
             let c_expected = data[c_value];
-            let c_url = new EffURL(c_value);
-            let c_gotten = c_url.relativeGet();
-            let c_result = c_gotten === c_expected;
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Effcore.getTranslation('failure')}) );
+            let c_url = new URL(c_value);
+            let с_received = c_url.relativeGet();
+            let c_result = с_received === c_expected;
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_value, 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : c_expected}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : c_gotten}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : c_expected});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : с_received});
+                yield false;
             }
         }
     }
 
-    static test_step_code__query_args(test, dpath, c_results) {
-        let url, data, value, gotten, expected, result;
+    static *test_step_code__query_args(dpath) {
+        let url, data, value, received, expected, result;
 
         //////////////////
         /// buildQuery ///
@@ -613,15 +620,14 @@ class Events_Test__Class_Url {
                    '%D0%BA%D0%BB%D1%8E%D1%87%201=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201&' +
                    'no_value=';
 
-        gotten = EffURL.buildQuery(data);
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : 'buildQuery', 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : 'buildQuery', 'result' : Effcore.getTranslation('failure')}) );
+        received = URL.buildQuery(data);
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : 'buildQuery', 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : 'buildQuery', 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         /////////////////
@@ -661,15 +667,14 @@ class Events_Test__Class_Url {
 
         for (let c_value in data) {
             let c_expected = data[c_value];
-            let c_gotten = EffURL.parseQuery(c_value);
-            let c_result = JSON.stringify(c_gotten) === JSON.stringify(c_expected);
-            if (c_result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (c_value.length < 80 ? c_value : c_value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-            if (c_result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (c_value.length < 80 ? c_value : c_value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+            let с_received = URL.parseQuery(c_value);
+            let c_result = JSON.stringify(с_received) === JSON.stringify(c_expected);
+            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (c_value.length < 80 ? c_value : c_value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (c_value.length < 80 ? c_value : c_value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
             if (c_result !== true) {
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)}) );
-                c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(c_gotten)}) );
-                c_results['return'] = 0;
-                return;
+                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(c_expected)});
+                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(с_received)});
+                yield false;
             }
         }
 
@@ -678,41 +683,38 @@ class Events_Test__Class_Url {
         //////////////////////
 
         value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202&%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
-        url = new EffURL(value);
+        url = new URL(value);
         expected = 'encode_[]=_value';
-        gotten = url.queryArgSelect('scalar');
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.queryArgSelect('scalar');
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         expected = {0 : 'value 1', 'string' : 'value 2'};
-        gotten = url.queryArgSelect('array');
-        result = JSON.stringify(gotten) === JSON.stringify(expected);
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.queryArgSelect('array');
+        result = JSON.stringify(received) === JSON.stringify(expected);
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(expected)}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(gotten)}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(expected)});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(received)});
+            yield false;
         }
 
         expected = 'значение 1';
-        gotten = url.queryArgSelect('ключ_1');
-        result = JSON.stringify(gotten) === JSON.stringify(expected);
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.queryArgSelect('ключ_1');
+        result = JSON.stringify(received) === JSON.stringify(expected);
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(expected)}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : JSON.stringify(gotten)}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : JSON.stringify(expected)});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : JSON.stringify(received)});
+            yield false;
         }
 
         //////////////////////
@@ -721,63 +723,59 @@ class Events_Test__Class_Url {
 
         value = 'http://example.com/';
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('scalar', 'encode_[]=_value');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/';
         expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('array', {0 : 'value 1', 'string' : 'value 2'});
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/';
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('scalar', 'encode_[]=_value');
         url.queryArgInsert('array', {0 : 'value 1', 'string' : 'value 2'});
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/';
         expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('ключ_1', 'значение 1');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         ////////////////////////////////
@@ -786,63 +784,59 @@ class Events_Test__Class_Url {
 
         value = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_new_value';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('scalar', 'encode_[]=_new_value');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/?array[0]=value%201&array[string]=value%202';
         expected = 'http://example.com/?array[0]=new%20value%201&array[string]=new%20value%202';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('array', {0 : 'new value 1', 'string' : 'new value 2'});
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_new_value&array[0]=new%20value%201&array[string]=new%20value%202';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('scalar', 'encode_[]=_new_value');
         url.queryArgInsert('array', {0 : 'new value 1', 'string' : 'new value 2'});
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
         expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%202';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgInsert('ключ_1', 'значение 2');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         //////////////////////
@@ -851,64 +845,62 @@ class Events_Test__Class_Url {
 
         value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgDelete('scalar');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgDelete('array');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         expected = 'http://example.com';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgDelete('scalar');
         url.queryArgDelete('array');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
 
         value = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
         expected = 'http://example.com';
-        url = new EffURL(value);
+        url = new URL(value);
         url.queryArgDelete('ключ_1');
-        gotten = url.absoluteGet();
-        result = gotten === expected;
-        if (result === true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('success')}) );
-        if (result !== true) c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Effcore.getTranslation('failure')}) );
+        received = url.absoluteGet();
+        result = received === expected;
+        if (result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('success')});
+        if (result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : (value.length < 80 ? value : value.substring(0, 80) + '…'), 'result' : Core.getTranslation('failure')});
         if (result !== true) {
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('expected value: "@@_value"'), {'value' : expected}) );
-            c_results['reports'][dpath].push( Effcore.argsApply(Effcore.getTranslation('gotten value: "@@_value"'), {'value' : gotten}) );
-            c_results['return'] = 0;
-            return;
+            yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : expected});
+            yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : received});
+            yield false;
         }
+
+        yield true;
     }
 
 }

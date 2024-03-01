@@ -7,7 +7,6 @@
 namespace effcore\modules\user;
 
 use effcore\Access;
-use effcore\Page;
 use effcore\User;
 
 abstract class Events_Token {

@@ -20,7 +20,7 @@ use effcore\Tab_item;
 use effcore\Text_multiline;
 use effcore\Text;
 use effcore\Tree_item;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page_Demo {
 
@@ -28,7 +28,7 @@ abstract class Events_Page_Demo {
         $type = $page->args_get('type');
         if ($type === null) {
             $items = Tab_item::select_all(null, 'demo_embedded');
-            Url::go($page->args_get('base').'/'.reset($items)->action_name);
+            URL::go($page->args_get('base').'/'.reset($items)->action_name);
         }
     }
 

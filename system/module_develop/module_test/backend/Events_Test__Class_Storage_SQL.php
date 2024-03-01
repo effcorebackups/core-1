@@ -16,7 +16,7 @@ use effcore\Text;
 
 abstract class Events_Test__Class_Storage_SQL {
 
-    static function test_step_code__query_prepare(&$test, $dpath, &$c_results) {
+    static function test_step_code__query_prepare(&$test, $dpath) {
 
         # possible transpositions of '.' + 'table_name' + 'field_name' + 'value'
         # ┌───────────────────────┬─────────────┐
@@ -122,21 +122,20 @@ abstract class Events_Test__Class_Storage_SQL {
 
         foreach ($data as $c_row_id => $c_info) {
             $c_expected = $expected[$c_row_id];
-            $c_gotten = $c_info;
-            $storage->prepare_query($c_gotten, true);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_info;
+            $storage->prepare_query($с_received, true);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__join(&$test, $dpath, &$c_results) {
+    static function test_step_code__join(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # pure SQL query
@@ -236,23 +235,22 @@ abstract class Events_Test__Class_Storage_SQL {
         ]);
 
         $expected = true;
-        $gotten = isset($result_1[0]) &&
-                  isset($result_2[0]) &&
-                  isset($result_3[0]) &&
-                  $result_1[0]->values_get() === $result_2[0]->values_get() &&
-                  $result_2[0]->values_get() === $result_3[0]->values_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'join', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'join', 'result' => (new Text('failure'))->render()]);
+        $received = isset($result_1[0]) &&
+                    isset($result_2[0]) &&
+                    isset($result_3[0]) &&
+                    $result_1[0]->values_get() === $result_2[0]->values_get() &&
+                    $result_2[0]->values_get() === $result_3[0]->values_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'join', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'join', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 
-    static function test_step_code__group_by(&$test, $dpath, &$c_results) {
+    static function test_step_code__group_by(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # pure SQL query
@@ -370,23 +368,22 @@ abstract class Events_Test__Class_Storage_SQL {
         ]);
 
         $expected = true;
-        $gotten = isset($result_1[0]) &&
-                  isset($result_2[0]) &&
-                  isset($result_3[0]) &&
-                  $result_1[0]->values_get() === $result_2[0]->values_get() &&
-                  $result_2[0]->values_get() === $result_3[0]->values_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'group by', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'group by', 'result' => (new Text('failure'))->render()]);
+        $received = isset($result_1[0]) &&
+                    isset($result_2[0]) &&
+                    isset($result_3[0]) &&
+                    $result_1[0]->values_get() === $result_2[0]->values_get() &&
+                    $result_2[0]->values_get() === $result_3[0]->values_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'group by', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'group by', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 
-    static function test_step_code__in(&$test, $dpath, &$c_results) {
+    static function test_step_code__in(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # pure SQL query
@@ -423,19 +420,18 @@ abstract class Events_Test__Class_Storage_SQL {
         ]);
 
         $expected = true;
-        $gotten = Core::data_serialize($result_1, false, true) === Core::data_serialize($result_2, false, true);
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'in', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'in', 'result' => (new Text('failure'))->render()]);
+        $received = Core::data_serialize($result_1, false, true) === Core::data_serialize($result_2, false, true);
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'in', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'in', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 
-    static function test_step_code__distinct(&$test, $dpath, &$c_results) {
+    static function test_step_code__distinct(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # pure SQL query
@@ -475,19 +471,18 @@ abstract class Events_Test__Class_Storage_SQL {
         foreach ($result_2 as $c_instance) $c_instance->entity_name = null;
 
         $expected = true;
-        $gotten = Core::data_serialize($result_1, false, true) === Core::data_serialize($result_2, false, true);
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'distinct', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'distinct', 'result' => (new Text('failure'))->render()]);
+        $received = Core::data_serialize($result_1, false, true) === Core::data_serialize($result_2, false, true);
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'distinct', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'distinct', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 
-    static function test_step_code__transaction(&$test, $dpath, &$c_results) {
+    static function test_step_code__transaction(&$test, $dpath) {
 
         $session_id = Core::is_CLI() ? str_repeat('0', 65) : Session::id_get();
 
@@ -535,15 +530,14 @@ abstract class Events_Test__Class_Storage_SQL {
         Entity::get('message')->instances_delete($where_clause);
 
         $expected = true;
-        $gotten = $count_0 === 3 && $count_1 === 3;
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('failure'))->render()]);
+        $received = $count_0 === 3 && $count_1 === 3;
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         ####################################################
@@ -577,15 +571,14 @@ abstract class Events_Test__Class_Storage_SQL {
         $count_1 = Entity::get('message')->instances_select_count($where_clause);
 
         $expected = true;
-        $gotten = $count_0 === 3 && $count_1 === 0;
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('failure'))->render()]);
+        $received = $count_0 === 3 && $count_1 === 0;
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'transaction', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 

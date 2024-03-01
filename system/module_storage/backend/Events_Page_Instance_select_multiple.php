@@ -10,7 +10,7 @@ use effcore\Access;
 use effcore\Entity;
 use effcore\Response;
 use effcore\Tabs;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page_Instance_select_multiple {
 
@@ -45,7 +45,7 @@ abstract class Events_Page_Instance_select_multiple {
         if (count($entities_by_groups)) {
             if (empty($entities_by_groups[$managing_group_id][$entity_name])) {
                 $first_branch = Tabs::select('data')->get_first_branch();
-                if (count($first_branch)) Url::go($page->args_get('base').'/'.end($first_branch)->action_name);
+                if (count($first_branch)) URL::go($page->args_get('base').'/'.end($first_branch)->action_name);
                 else Response::send_header_and_exit('page_access_forbidden');
         }}      else Response::send_header_and_exit('page_access_forbidden');
     }

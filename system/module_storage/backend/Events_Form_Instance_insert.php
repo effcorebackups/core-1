@@ -14,7 +14,7 @@ use effcore\Markup;
 use effcore\Message;
 use effcore\Page;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use ReflectionClass;
 
 abstract class Events_Form_Instance_insert {
@@ -124,10 +124,10 @@ abstract class Events_Form_Instance_insert {
                 # redirect if no error
                 if ($form->_result !== null) {
                     if ($form->is_redirect_enabled) {
-                        if ($form->clicked_button->value_get() === 'insert') Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                        if ($form->clicked_button->value_get() === 'insert') URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                         if ($form->clicked_button->value_get() === 'insert_and_update') {
                             if ($form->_result instanceof Instance) {
-                                Url::go($form->_result->make_url_for_update().'?'.Url::back_part_make('back', $entity->make_url_for_select_multiple()));
+                                URL::go($form->_result->make_url_for_update().'?'.URL::back_part_make('back', $entity->make_url_for_select_multiple()));
                             }
                         }
                     }
@@ -135,7 +135,7 @@ abstract class Events_Form_Instance_insert {
                 break;
             case 'cancel':
                 if ($form->is_redirect_enabled) {
-                    Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                    URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                 }
                 break;
         }

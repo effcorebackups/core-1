@@ -16,7 +16,7 @@ use effcore\Media;
 use effcore\Module;
 use effcore\Text_simple;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use effcore\Widget_Attributes;
 use effcore\Widget_Files_audios;
 use effcore\Widget_Files_pictures;
@@ -90,7 +90,7 @@ abstract class Events_Selection {
     static function handler__any__url_as_link_absolute($c_cell_id, $c_row, $c_instance, $origin) {
         if (array_key_exists('url', $c_instance->values_get())) {
             if ($c_instance->url) {
-                $url_absolute = (new Url($c_instance->url))->absolute_get();
+                $url_absolute = (new URL($c_instance->url))->absolute_get();
                    return new Markup('a', ['href' => $url_absolute, 'target' => '_blank'], new Text_simple($url_absolute));
             } else return '';
         }     else return new Text('FIELD "%%_name" IS REQUIRED', ['name' => 'url']);
@@ -183,7 +183,7 @@ abstract class Events_Selection {
                 $this_attributes = Widget_Attributes::value_to_attributes($c_instance->     attributes ?? [], $origin->is_apply_translation ?? true);
                 $this_attributes['src'] = Core::to_url_from_path($c_instance->path);
                 if (isset($c_instance->url)) {
-                       $link_attributes[ 'href' ] = (new Url($c_instance->url))->absolute_get();
+                       $link_attributes[ 'href' ] = (new URL($c_instance->url))->absolute_get();
                        $link_attributes['target'] = '_blank';
                        return new Markup('a', $link_attributes, new Markup_simple('img', $this_attributes));
                 } else return                                   new Markup_simple('img', $this_attributes);

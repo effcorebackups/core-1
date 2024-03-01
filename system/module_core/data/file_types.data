@@ -309,6 +309,11 @@ file_types
     type: midi
     headers
     - content-type: audio/midi
+- mjs
+    type: mjs
+    headers
+    - content-type: application/javascript
+    - x-content-type-options: nosniff
 - mkv
     type: mkv
     headers

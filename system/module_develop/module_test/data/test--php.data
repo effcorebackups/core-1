@@ -93,4 +93,4 @@ tests
         handler: \effcore\modules\test\Events_Test__PHP::test_step_code__str_contains
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
-        value: 1
+        value: true

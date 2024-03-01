@@ -58,14 +58,17 @@ class Widget_Files_pictures extends Widget_Files {
         $url = Core::to_url_from_path($item->object->get_current_path(true));
         return Template::make_new(Template::pick_name('picture_in_link'), [
             'id'  => $row_id,
-            'url' => $url, /* original size if JS is disabled */
+            'url' => $url, /* link to original size if JS is disabled */
             'src' => $url ? $url.'?thumb=middle' : '',
             'link_attributes' => Core::data_to_attributes([
                 'data-type' => 'picture-wrapper',
                 'title'     => new Text($item->settings['title']),
                 'target'    => $item->settings['target']]),
             'attributes' => Core::data_to_attributes([
-                'alt' => new Text($item->settings['alt'])
+                'alt'                    => new Text($item->settings['alt']),
+                'data-path-thumb-small'  => $url ? $url.'?thumb=small'  : '',
+                'data-path-thumb-middle' => $url ? $url.'?thumb=middle' : '',
+                'data-path-thumb-big'    => $url ? $url.'?thumb=big'    : '',
             ])
         ])->render();
     }

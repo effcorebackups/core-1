@@ -11,7 +11,7 @@ use effcore\Page;
 use effcore\Tab_item;
 use effcore\Text_multiline;
 use effcore\Tree;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page_Instance_select_multiple {
 
@@ -22,7 +22,7 @@ abstract class Events_Page_Instance_select_multiple {
             $trees = Tree::select_all('sql');
             Core::array_sort_by_string($trees, 'description');
             if (empty($trees[$category_id])) {
-                Url::go(Page::get_current()->args_get('base').'/menu/tree_item///'.reset($trees)->id);
+                URL::go(Page::get_current()->args_get('base').'/menu/tree_item///'.reset($trees)->id);
             }
         }
     }

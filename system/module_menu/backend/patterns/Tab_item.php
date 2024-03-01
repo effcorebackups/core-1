@@ -49,10 +49,27 @@ class Tab_item extends Node {
     }
 
     function href_get        () {if ($this->cache_href         === null) $this->cache_href         = rtrim(Page::get_current()->args_get('base').'/'.($this->action_name         ?: $this->action_name), '/'); return $this->cache_href;        }
-    function href_default_get() {if ($this->cache_href_default === null) $this->cache_href_default = rtrim(Page::get_current()->args_get('base').'/'.($this->action_name_default ?: $this->action_name), '/'); return $this->cache_href_default;}
+    function href_get_default() {if ($this->cache_href_default === null) $this->cache_href_default = rtrim(Page::get_current()->args_get('base').'/'.($this->action_name_default ?: $this->action_name), '/'); return $this->cache_href_default;}
 
-    function is_active      () {$href = $this->href_get(); if ($href && Url::is_active      ($href, 'path')) return true;}
-    function is_active_trail() {$href = $this->href_get(); if ($href && Url::is_active_trail($href        )) return true;}
+    function is_active      () {$href = $this->href_get(); if ($href && URL::is_active      ($href, 'path')) return true;}
+    function is_active_trail() {$href = $this->href_get(); if ($href && URL::is_active_trail($href        )) return true;}
+
+   function render_self() {
+        if ($this->action_name !== null) {
+            $href_default = $this->href_get_default();
+            if ($href_default           ) $this->attribute_insert('href', $href_default,         'element_attributes');
+            if ($this->is_active      ()) $this->attribute_insert('aria-selected'      , 'true', 'element_attributes');
+            if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');
+                                          $this->attribute_insert('title', new Text('click to open the tab "%%_title"', ['title' => (new Text($this->title, [], true, true))->render() ]), 'element_attributes');
+            return (new Markup('a', $this->attributes_select('element_attributes'),
+                new Text($this->title, [], true, true)
+            ))->render();
+        } else {
+            return (new Markup('a', [],
+                new Text($this->title, [], true, true)
+            ))->render();
+        }
+    }
 
     function render() {
         if (empty($this->is_hidden)) {
@@ -67,17 +84,6 @@ class Tab_item extends Node {
                 ]))->render();
             }
         }
-    }
-
-    function render_self() {
-        $href_default = $this->href_default_get();
-        if ($href_default           ) $this->attribute_insert('href', $href_default,         'element_attributes');
-        if ($this->is_active      ()) $this->attribute_insert('aria-selected'      , 'true', 'element_attributes');
-        if ($this->is_active_trail()) $this->attribute_insert('data-selected-trail', 'true', 'element_attributes');
-                                      $this->attribute_insert('title', new Text('click to open the tab "%%_title"', ['title' => (new Text($this->title, [], true, true))->render() ]), 'element_attributes');
-        return (new Markup('a', $this->attributes_select('element_attributes'),
-            new Text($this->title, [], true, true)
-        ))->render();
     }
 
     ###########################

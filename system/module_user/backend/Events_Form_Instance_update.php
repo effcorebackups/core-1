@@ -11,7 +11,7 @@ use effcore\Field_Password;
 use effcore\Page;
 use effcore\Text_multiline;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Instance_update {
 
@@ -123,8 +123,8 @@ abstract class Events_Form_Instance_update {
             case 'update':
             case 'cancel':
                 if ($entity->name === 'user' && Page::get_current()->id === 'user_edit') {
-                    if (!Url::back_url_get())
-                         Url::back_url_set('back', '/user/'.$items['#nickname']->value_get());
+                    if (!URL::back_url_get())
+                         URL::back_url_set('back', '/user/'.$items['#nickname']->value_get());
                 }
                 break;
         }

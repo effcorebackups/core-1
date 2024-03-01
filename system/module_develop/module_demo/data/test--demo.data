@@ -42,13 +42,13 @@ tests
               name: is_https
             proxy|Param_from_form
               name: proxy
-        - check|Test_step_Check
+        - check_request|Test_step_Check
             check: token
             where: %%_test_response(http_code)
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - code|Test_step_Code
             handler: \effcore\modules\demo\Events_Test::test_step_code__demo_handler
             args
@@ -57,6 +57,22 @@ tests
             - param_3: value 3
             - current_iteration: %%_test_step__repeat_i__cycle_1
             is_apply_tokens: true
+        - check_code_result|Test_step_Check
+            check: token
+            where: %%_test_step_code__demo_handler__value
+            match: value from handler
+            on_success
+            - message|Test_step_Title
+                title|Text
+                  text: action "%%_name"
+                  args
+                  - name: on_success
+            on_failure
+            - message|Test_step_Title
+                title|Text
+                  text: action "%%_name"
+                  args
+                  - name: on_failure
         - transpositions|Test_step_Transpositions
             # ┌───╥───────────┬───────────┬───────────┐
             # │ i ║ action #1 │ action #2 │ action #3 │
@@ -70,37 +86,44 @@ tests
             # │ 6 ║     x     │     x     │           │ ← 110 == ▣▣□
             # │ 7 ║     x     │     x     │     x     │ ← 111 == ▣▣▣
             # └───╨───────────┴───────────┴───────────┘
-            action_before|Test_step_Actions
-              actions
-              - title|Test_step_Title
-                  title: transposition "action before"
+            actions_before
+            - title|Test_step_Title
+                title|Text
+                  text: action "%%_name"
+                  args
+                  - name: action before
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             actions
             - action-1|Test_step_Actions
                 actions
                 - title|Test_step_Title
                     title|Text
-                      text: transposition "action" #%%_num
+                      text: action "%%_name" #%%_num
                       args
+                      - name: action
                       - num: 1
             - action-2|Test_step_Actions
                 actions
                 - title|Test_step_Title
                     title|Text
-                      text: transposition "action" #%%_num
+                      text: action "%%_name" #%%_num
                       args
+                      - name: action
                       - num: 2
             - action-3|Test_step_Actions
                 actions
                 - title|Test_step_Title
                     title|Text
-                      text: transposition "action" #%%_num
+                      text: action "%%_name" #%%_num
                       args
+                      - name: action
                       - num: 3
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-            action_after|Test_step_Actions
-              actions
-              - title|Test_step_Title
-                  title: transposition "action after"
+            actions_after
+            - title|Test_step_Title
+                title|Text
+                  text: action "%%_name"
+                  args
+                  - name: action after
     - return|Test_step_Return
-        value: 1
+        value: true

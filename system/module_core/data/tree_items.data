@@ -17,7 +17,7 @@ tree_items
     id_tree: system
     title: Modules
     url: /manage/modules
-    weight: +400
+    weight: -480
     access
       roles
       - =: admins

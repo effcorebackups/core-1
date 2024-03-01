@@ -35,7 +35,7 @@ $_FILES = Request::sanitize_structure_FILES();
 $raw_url = Request::scheme_get().'://'.
            Request::host_get(false).
            Request::URI_get();
-if (Security::sanitize_url($raw_url) !== $raw_url || Security::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || Url::get_current()->has_error === true) {
+if (Security::sanitize_url($raw_url) !== $raw_url || Security::validate_url($raw_url, FILTER_FLAG_PATH_REQUIRED) === false || URL::get_current()->has_error === true) {
     Response::send_header_and_exit('bad_request');
 }
 
@@ -77,7 +77,7 @@ if (Request::URI_get()     !== '/' &&
 ### return the FILE ###
 #######################
 
-$file = Url::get_current()->file_info_get();
+$file = URL::get_current()->file_info_get();
 if ($file instanceof File && $file->type) {
 
     $file_types = File::types_get();
@@ -156,8 +156,8 @@ if ($file instanceof File && $file->type) {
 #######################
 
 if (!Storage::get('sql')->is_installed()) {
-    if (!preg_match('%^/install(/[a-z]{2}|)$%', Url::get_current()->path)) {
-        Url::go('/install/en');
+    if (!preg_match('%^/install(/[a-z]{2}|)$%', URL::get_current()->path)) {
+        URL::go('/install/en');
     }
 }
 
@@ -168,7 +168,7 @@ if (!Storage::get('sql')->is_installed()) {
 if (Storage::get('sql')->is_installed()) {
     if (Cron::get_auto_run_frequency()) {
         if (!Cron::is_runned()) {
-            if (!preg_match('%^/manage/cron/.*$%', Url::get_current()->path)) {
+            if (!preg_match('%^/manage/cron/.*$%', URL::get_current()->path)) {
                 Cron::run();
             }
         }

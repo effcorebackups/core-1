@@ -9,7 +9,7 @@ namespace effcore\modules\user;
 use effcore\Instance;
 use effcore\Mail;
 use effcore\Message;
-use effcore\Url;
+use effcore\URL;
 use effcore\User;
 
 abstract class Events_Form_Recovery {
@@ -39,10 +39,10 @@ abstract class Events_Form_Recovery {
                     $new_password = User::password_generate();
                     $user->password_hash = User::password_hash($new_password);
                     if ($user->update()) {
-                        $domain = Url::get_current()->domain;
+                        $domain = URL::get_current()->domain;
                         if (Mail::send('recovery', 'no-reply@'.$domain, $user, ['domain' => $domain], ['domain' => $domain, 'new_password' => $new_password], $form, $items)) {
                             Message::insert('A new password was sent to the selected EMail address.');
-                            Url::go(Url::back_url_get() ?: '/login');
+                            URL::go(URL::back_url_get() ?: '/login');
                         }
                     }
                 }

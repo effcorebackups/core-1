@@ -6,29 +6,29 @@
 'use strict';
 
 // ─────────────────────────────────────────────────────────────────────
-// Effcore singleton class
+// Core singleton class
 // ─────────────────────────────────────────────────────────────────────
 
-class Effcore {
+export default class Core {
 
     constructor() {
         this.translations = [];
-        this.translations['No items.'] = '%%_translation(No items.)';
-        this.translations['select all rows'] = '%%_translation(select all rows)';
+        this.translations['call "@@_call"'] = '%%_translation(call "%%_call")';
+        this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
         this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
         this.translations['expected value: "@@_value"'] = '%%_translation(expected value: %%_value)';
-        this.translations['checking of item "@@_id": "@@_result"'] = '%%_translation(checking of item "%%_id": "%%_result")';
-        this.translations['gotten value: "@@_value"'] = '%%_translation(gotten value: %%_value)';
-        this.translations['success'] = '%%_translation(success)';
         this.translations['failure'] = '%%_translation(failure)';
-        this.translations['call "@@_call"'] = '%%_translation(call "%%_call")';
-        this.translations['The test was successful.'] = '%%_translation(The test was successful.)';
+        this.translations['No items.'] = '%%_translation(No items.)';
+        this.translations['received value: "@@_value"'] = '%%_translation(received value: %%_value)';
+        this.translations['select all rows'] = '%%_translation(select all rows)';
+        this.translations['success'] = '%%_translation(success)';
         this.translations['The test was failed!'] = '%%_translation(The test was failed!)';
+        this.translations['The test was successful.'] = '%%_translation(The test was successful.)';
         this.tokens = [];
         this.tokens['thumbnail_path_cover_default' ] = '%%_thumbnail_path_cover_default';
         this.tokens['thumbnail_path_poster_default'] = '%%_thumbnail_path_poster_default';
         console.log(
-            'Effcore singleton class was initialized'
+            'Core singleton class was initialized'
         );
     }
 
@@ -68,7 +68,7 @@ class Effcore {
                 messages = document.createElement('x-messages');
                 messages_place.append(messages);
             }
-            let list = messages.querySelector('ul[data-type="' + type + '"]');
+            let list = messages.querySelector(`ul[data-type="${type}"]`);
             if (list === null) {
                 list = document.createElement('ul');
                 list.setAttribute('data-type', type);

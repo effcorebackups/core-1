@@ -13,7 +13,7 @@ use effcore\Page;
 use effcore\Tab_item;
 use effcore\Text_simple;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page {
 
@@ -25,12 +25,12 @@ abstract class Events_Page {
 
     static function on_redirect($event, $page) {
         $section = $page->args_get('section');
-        if ($section === null) Url::go($page->args_get('base').'/general');
+        if ($section === null) URL::go($page->args_get('base').'/general');
         if ($section && str_starts_with($section, 'by_language')) {
             $languages = Language::get_all();
             $lang_code = $page->args_get('lang_code');
             if (!isset($languages[$lang_code])) {
-                Url::go($page->args_get('base').'/by_language/en');
+                URL::go($page->args_get('base').'/by_language/en');
             }
         }
     }
@@ -64,7 +64,7 @@ abstract class Events_Page {
                        $c_language->title_native :
                        $c_language->title_en;
             $c_href = $page->args_get('base').'/'.$c_language->code;
-            if (Url::is_active($c_href, 'path'))
+            if (URL::is_active($c_href, 'path'))
                  $menu->child_select('container')->child_insert(new Markup('li', ['data-id' => 'language_'.$c_language->code, 'aria-selected' => 'true'], new Markup('a', ['href' => $c_href, 'title' => new Text('go to %%_language language', ['language' => $c_language->title_en], false), 'aria-selected' => 'true'], new Text_simple($c_title)) ), $c_language->code);
             else $menu->child_select('container')->child_insert(new Markup('li', ['data-id' => 'language_'.$c_language->code                           ], new Markup('a', ['href' => $c_href, 'title' => new Text('go to %%_language language', ['language' => $c_language->title_en], false)                           ], new Text_simple($c_title)) ), $c_language->code);
         }

@@ -11,7 +11,7 @@ use effcore\Entity;
 use effcore\Module;
 use effcore\Poll;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use effcore\Widget_Texts;
 
 abstract class Events_Form_Instance_insert {
@@ -75,11 +75,11 @@ abstract class Events_Form_Instance_insert {
                         $form->components_build();
                         $form->components_init();
                         # redirect if no error
-                        Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                        URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                     }
                     break;
                 case 'cancel':
-                    Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                    URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                     break;
             }
         }

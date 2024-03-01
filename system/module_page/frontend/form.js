@@ -5,14 +5,16 @@
 
 'use strict';
 
+import Core from '/system/module_core/frontend/components/Core.jsd';
+
 document.addEventListener('DOMContentLoaded', function () {
 
     // ─────────────────────────────────────────────────────────────────────
     // range
     // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('input[type="range"]').forEach((c_input) => {
-        c_input.parentNode.querySelector__withHandler('x-value', (x_value) => {
+    document.querySelectorAll('x-field[data-type="range"] input[type="range"]').forEach((c_input) => {
+        c_input.parentNode.querySelectorWithProcessing('x-value', (x_value) => {
             c_input.addEventListener('mousemove', () => {
                 x_value.innerText = c_input.title = c_input.value;
             });
@@ -23,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // color
     // ─────────────────────────────────────────────────────────────────────
 
-    document.querySelectorAll('input[type="color"]').forEach((c_input) => {
-        c_input.parentNode.querySelector__withHandler('x-value', (x_value) => {
+    document.querySelectorAll('x-field[data-type="color"] input[type="color"]').forEach((c_input) => {
+        c_input.parentNode.querySelectorWithProcessing('x-value', (x_value) => {
             c_input.addEventListener('change', () => {
                 x_value.innerText = c_input.title = c_input.value;
             });
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ─────────────────────────────────────────────────────────────────────
 
     document.querySelectorAll('x-group[data-type="palette"]').forEach((c_palette) => {
-        c_palette.querySelector__withHandler('input[data-opener-type="palette"]', (opener) => {
+        c_palette.querySelectorWithProcessing('input[data-opener-type="palette"]', (opener) => {
             c_palette.querySelectorAll('x-field input').forEach((c_input) => {
                 c_input.addEventListener('click', () => {
                     opener.style.backgroundColor = c_input.style.backgroundColor;
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ─────────────────────────────────────────────────────────────────────
 
     document.querySelectorAll('[data-selection]').forEach((c_selection) => {
-        c_selection.querySelector__withHandler('[data-decorator][data-view-type="table-adaptive"]', (decorator) => {
+        c_selection.querySelectorWithProcessing('[data-decorator][data-view-type="table-adaptive"]', (decorator) => {
             let head_cell       = decorator.querySelector   ('x-head x-cell[data-cell-id$="checkbox_select"]');
             let body_checkboxes = decorator.querySelectorAll('x-body x-cell[data-cell-id$="checkbox_select"] input[type="checkbox"]');
             let query_checker   = 'x-body x-cell[data-cell-id$="checkbox_select"] input[type="checkbox"]:not(:checked)';
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // insert checkbox "check_all"
                 let check_all = document.createElement('input');
                     check_all.type = 'checkbox';
-                    check_all.title = Effcore.getTranslation('select all rows');
+                    check_all.title = Core.getTranslation('select all rows');
                     check_all.checked = decorator.querySelectorAll(query_checker).length === 0;
                 head_cell.append(check_all);
                 // when clicking on "check_all"

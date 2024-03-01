@@ -13,7 +13,7 @@ forms
         - document|Markup
             tag_name: x-document
             attributes
-            - data-style: report
+            - data-style: report-test
             children
             - data|Text
                 text: The report will be created after submitting the form.

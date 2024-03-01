@@ -1,7 +1,7 @@
 
 :root {
-  --gallery-thumbnails-height:  90px;
-  --thumbnail-width-big: %%_thumbnail_width_big(null)px;
+  --thumbnails-height: 90px;
+  --content-width-max: %%_thumbnail_width_big(null)px;
 }
 
 
@@ -33,9 +33,9 @@ x-gallery-player * {
 
 x-gallery-player x-thumbnails {
   display: block;
-  height: var(--gallery-thumbnails-height);
+  height: var(--thumbnails-height);
   margin-right: 50px;
-  padding-left: 3px;
+  margin-left: 3px;
   overflow: auto;
   white-space: nowrap;
   text-align: center;
@@ -54,7 +54,7 @@ x-gallery-player x-thumbnails x-thumbnail {display: inline-block}
 x-gallery-player x-thumbnails x-thumbnail img {
   display: block;
   width: auto;
-  height: calc(var(--gallery-thumbnails-height) - 40px);
+  height: calc(var(--thumbnails-height) - 40px);
   margin: 1px;
 }
 
@@ -87,8 +87,8 @@ x-gallery-player x-button-c:hover {background-position: -290px 0}
 
 x-gallery-player x-viewing-part {
   display: grid;
-  grid-template-columns: 1fr 70px minmax(70px, calc(var(--thumbnail-width-big) + 50px)) 70px 1fr;
-  height: calc(100% - var(--gallery-thumbnails-height));
+  grid-template-columns: 1fr 70px minmax(70px, calc(var(--content-width-max) + 50px)) 70px 1fr;
+  height: calc(100% - var(--thumbnails-height));
 }
 
 x-gallery-player x-viewing-part x-button-l {cursor: pointer; background: url('pictures/icons.svg') no-repeat; grid-column-start: 2}
@@ -126,10 +126,10 @@ x-gallery-player x-viewing-part x-viewing-area {
   overflow: auto;
 }
 
-x-gallery-player x-viewing-part x-viewing-area > * {grid-column-start: 2; grid-row-start: 2}
-x-gallery-player x-viewing-part x-viewing-area img {max-width: var(--thumbnail-width-big)}
-x-gallery-player x-viewing-part x-viewing-area video {max-width: var(--thumbnail-width-big)}
-x-gallery-player x-viewing-part x-viewing-area x-audio-player {width: 300px}
+x-gallery-player x-viewing-part x-viewing-area x-centerer {display: block; grid-column-start: 2; grid-row-start: 2; text-align: center}
+x-gallery-player x-viewing-part x-viewing-area img            {width: 100%; max-width: var(--content-width-max)}
+x-gallery-player x-viewing-part x-viewing-area video          {width: 100%; max-width: var(--content-width-max)}
+x-gallery-player x-viewing-part x-viewing-area x-audio-player {width: 100%; max-width: var(--content-width-max)}
 
 
 

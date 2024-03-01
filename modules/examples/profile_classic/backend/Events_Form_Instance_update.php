@@ -8,7 +8,7 @@ namespace effcore\modules\profile_classic;
 
 use effcore\Entity;
 use effcore\Page;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Instance_update {
 
@@ -18,8 +18,8 @@ abstract class Events_Form_Instance_update {
             case 'update':
             case 'cancel':
                 if ($entity->name === 'user' && Page::get_current()->id === 'user_edit_ru') {
-                    if (!Url::back_url_get())
-                         Url::back_url_set('back', '/ru/user/'.$items['#nickname']->value_get());
+                    if (!URL::back_url_get())
+                         URL::back_url_set('back', '/ru/user/'.$items['#nickname']->value_get());
                 }
                 break;
         }

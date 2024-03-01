@@ -10,7 +10,7 @@ use effcore\Core;
 use effcore\Pager;
 use effcore\Test;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Test__Class_Pager {
 
@@ -82,7 +82,7 @@ abstract class Events_Test__Class_Pager {
     # http://domain/path?page[1]=value      │ max: 2 → 2 │ out cur: 1 │ + │   │   │   │   │
     # ──────────────────────────────────────┴────────────┴────────────┴───┴───┴───┴───┴───┘
 
-    static function test_step_code__build(&$test, $dpath, &$c_results) {
+    static function test_step_code__build(&$test, $dpath) {
 
         global $_GET;
         $ORIGINAL = $_GET;
@@ -153,33 +153,32 @@ abstract class Events_Test__Class_Pager {
         $_GET['page'] = [1 => 'value'];   $pager = new Pager(1, 2);  $pager->build();  $result['1_2_array_1_string_value'] = ['max' => $pager->max === 2, 'cur' => $pager->cur === 1, 'err' => $pager->error_code_get() === (pager::ERR_CODE_OK        ) ];
 
         foreach ($result as $c_row_id => $c_info) {
-            $c_gotten = $c_info['max'] === true &&
-                        $c_info['cur'] === true &&
-                        $c_info['err'] === true;
+            $с_received = $c_info['max'] === true &&
+                          $c_info['cur'] === true &&
+                          $c_info['err'] === true;
             $c_expected = true;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
         $_GET = $ORIGINAL;
     }
 
-    static function test_step_code__url_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__url_get(&$test, $dpath) {
         global $_GET;
         $ORIGINAL = $_GET;
 
         if (Core::is_CLI()) {
-            Url::set_current('http://example.com');
+            URL::set_current('http://example.com');
         }
 
-        $url = clone Url::get_current();
+        $url = clone URL::get_current();
         $url->query_arg_delete('page');
         $base_url = $url->relative_get();
 
@@ -231,16 +230,15 @@ abstract class Events_Test__Class_Pager {
             if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
             if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
 
-            $c_gotten = Pager::url_get('page', 0, 1);
+            $с_received = Pager::url_get('page', 0, 1);
             $c_expected = $result__pager_0__to_page_1[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -273,16 +271,15 @@ abstract class Events_Test__Class_Pager {
             if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
             if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
 
-            $c_gotten = Pager::url_get('page', 0, 5);
+            $с_received = Pager::url_get('page', 0, 5);
             $c_expected = $result__pager_0__to_page_5[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_5: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_5: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_5: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_0__to_page_5: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -315,16 +312,15 @@ abstract class Events_Test__Class_Pager {
             if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
             if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
 
-            $c_gotten = Pager::url_get('page', 2, 1);
+            $с_received = Pager::url_get('page', 2, 1);
             $c_expected = $result__pager_2__to_page_1[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_1: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -357,16 +353,15 @@ abstract class Events_Test__Class_Pager {
             if ($c_state['pager_2'] !== null) $_GET['page'][ 2 ] = $c_state['pager_2'];
             if ($c_state['pager_x'] !== null) $_GET['page']['x'] = $c_state['pager_x'];
 
-            $c_gotten = Pager::url_get('page', 2, 6);
+            $с_received = Pager::url_get('page', 2, 6);
             $c_expected = $result__pager_2__to_page_6[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_6: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_6: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_6: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'pager_2__to_page_6: '.$c_row_id.' = '.$c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 

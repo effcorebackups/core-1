@@ -15,9 +15,9 @@ use effcore\Text;
 
 abstract class Events_Test__Class_Data_validator {
 
-    static function test_step_code__validate(&$test, $dpath, &$c_results) {
+    static function test_step_code__validate(&$test, $dpath) {
 
-        $gotten = array_keys(Data_validator::get('attributes')->validate([
+        $received = array_keys(Data_validator::get('attributes')->validate([
             'attributes_other_1' => /* error */ [[['some value 1']]],
             'attributes_other_2' => /* error */ [[['some value 2']]],
             'attributes'         => /* error */ null,
@@ -34,25 +34,23 @@ abstract class Events_Test__Class_Data_validator {
         ];
 
         foreach ($expected as $c_expected) {
-            $c_result = Core::in_array($c_expected, $gotten);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = Core::in_array($c_expected, $received);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => 'undefined']);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => 'undefined']);
+                yield Test::FAILED;
             }
         }
 
-        $structure_mismatching = array_diff($gotten, $expected);
-        foreach ($structure_mismatching as $c_gotten) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => 'n/a']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten]);
+        $structure_mismatching = array_diff($received, $expected);
+        foreach ($structure_mismatching as $с_received) {
+            yield new Text('expected value: %%_value', ['value' => 'n/a']);
+            yield new Text('received value: %%_value', ['value' => $с_received]);
         }
         if (count($structure_mismatching)) {
-            $c_results['return'] = 0;
-            return;
+            yield Test::FAILED;
         }
 
         #####################
@@ -74,7 +72,7 @@ abstract class Events_Test__Class_Data_validator {
         $object_text_simple->weight          = null; /* error */
         $object_text_simple->delimiter       = null; /* error */
 
-        $gotten = array_keys(Data_validator::get('attributes')->validate([
+        $received = array_keys(Data_validator::get('attributes')->validate([
             'attributes_other_1' => /* error */ [[['some value 1']]],
             'attributes_other_2' => /* error */ [[['some value 2']]],
             'attributes'         => [
@@ -150,25 +148,23 @@ abstract class Events_Test__Class_Data_validator {
         ];
 
         foreach ($expected as $c_expected) {
-            $c_result = Core::in_array($c_expected, $gotten);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = Core::in_array($c_expected, $received);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => 'undefined']);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => 'undefined']);
+                yield Test::FAILED;
             }
         }
 
-        $structure_mismatching = array_diff($gotten, $expected);
-        foreach ($structure_mismatching as $c_gotten) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => 'n/a']);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten]);
+        $structure_mismatching = array_diff($received, $expected);
+        foreach ($structure_mismatching as $с_received) {
+            yield new Text('expected value: %%_value', ['value' => 'n/a']);
+            yield new Text('received value: %%_value', ['value' => $с_received]);
         }
         if (count($structure_mismatching)) {
-            $c_results['return'] = 0;
-            return;
+            yield Test::FAILED;
         }
     }
 

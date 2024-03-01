@@ -46,40 +46,62 @@ frontend
         path: frontend/form.js
         weight: +400
         attributes
-        - defer: true
-- gallery_player|Frontend
+        - type: module
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- components|Frontend
+    display
+      check: url
+      where: path
+      match: %^.*$%
+    scripts
+    - class__BaseComponent
+        path: frontend/components/BaseComponent.js
+        weight: +400
+        attributes
+        - type: module
+- components__gallery_player|Frontend
     display
       check: block
       where: cssid
       match: %^block__gallery_.*$%
     styles
     - style
-        path: frontend/gallery_player/styles.cssd
+        path: frontend/components/gallery_player/gallery.cssd
         weight: +300
         attributes
         - rel: stylesheet
         - media: all
     scripts
-    - script
-        path: frontend/gallery_player/script.js
+    - class__GalleryComponent
+        path: frontend/components/gallery_player/GalleryComponent.js
         weight: +300
         attributes
-        - defer: true
-- audio_player|Frontend
+        - type: module
+    - mount__GalleryComponent
+        path: frontend/components/gallery_player/gallerycomponent-mount.jsd
+        weight: +280
+        attributes
+        - type: module
+- components__audio_player|Frontend
     display
       check: url
       where: path
       match: %^.*$%
     styles
     - style
-        path: frontend/audio_player/styles.cssd
+        path: frontend/components/audio_player/player.cssd
         weight: +300
         attributes
         - rel: stylesheet
         - media: all
     scripts
-    - script
-        path: frontend/audio_player/script.js
+    - class__AudioPlayerComponent
+        path: frontend/components/audio_player/AudioPlayerComponent.js
         weight: +300
         attributes
-        - defer: true
+        - type: module
+    - mount__AudioPlayerComponent
+        path: frontend/components/audio_player/audioplayercomponent-mount.js
+        weight: +280
+        attributes
+        - type: module

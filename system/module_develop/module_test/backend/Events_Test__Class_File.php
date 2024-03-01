@@ -12,12 +12,13 @@ use effcore\File;
 use effcore\Temporary;
 use effcore\Test;
 use effcore\Text_multiline;
+use effcore\Text_simple;
 use effcore\Text;
 use Exception;
 
 abstract class Events_Test__Class_File {
 
-    static function test_step_code__path_parse(&$test, $dpath, &$c_results) {
+    static function test_step_code__path_parse(&$test, $dpath) {
         $data = [
 
             # ─────────────────────────────────────────────────────────────────────
@@ -987,24 +988,23 @@ abstract class Events_Test__Class_File {
         ];
 
         foreach ($data as $c_value => $c_expected) {
-            $c_gotten = (array)File::__path_parse($c_value);
-            $c_result = ($c_gotten === [] && $c_expected === []) ||
-                        ($c_gotten && count($c_gotten) &&
-                         $c_gotten['dirs'] === $c_expected['dirs'] &&
-                         $c_gotten['name'] === $c_expected['name'] &&
-                         $c_gotten['type'] === $c_expected['type']);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received = (array)File::__path_parse($c_value);
+            $c_result = ($с_received === [] && $c_expected === []) ||
+                        ($с_received && count($с_received) &&
+                         $с_received['dirs'] === $c_expected['dirs'] &&
+                         $с_received['name'] === $c_expected['name'] &&
+                         $с_received['type'] === $c_expected['type']);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__path_parse__with_protocol(&$test, $dpath, &$c_results) {
+    static function test_step_code__path_parse__with_protocol(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # Available components
@@ -1527,25 +1527,24 @@ abstract class Events_Test__Class_File {
         ];
 
         foreach ($data as $c_value => $c_expected) {
-            $c_gotten = File::__path_parse($c_value);
-            $c_result = ($c_gotten === null && $c_expected === null) ||
-                        ($c_gotten !== null &&
-                         $c_gotten->protocol === $c_expected['protocol'] &&
-                         $c_gotten->dirs     === $c_expected['dirs'    ] &&
-                         $c_gotten->name     === $c_expected['name'    ] &&
-                         $c_gotten->type     === $c_expected['type'    ]);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received = File::__path_parse($c_value);
+            $c_result = ($с_received === null && $c_expected === null) ||
+                        ($с_received !== null &&
+                         $с_received->protocol === $c_expected['protocol'] &&
+                         $с_received->dirs     === $c_expected['dirs'    ] &&
+                         $с_received->name     === $c_expected['name'    ] &&
+                         $с_received->type     === $c_expected['type'    ]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare((array)$c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare((array)$с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__get_mode_info(&$test, $dpath, &$c_results) {
+    static function test_step_code__get_mode_info(&$test, $dpath) {
         $data = [
             'r'   => ['is_readable' => true , 'is_writable' => false, 'is_auto_creation' => false],
             'r+'  => ['is_readable' => true , 'is_writable' => true , 'is_auto_creation' => false],
@@ -1569,28 +1568,27 @@ abstract class Events_Test__Class_File {
             $c_expected_is_writable      = $c_expected['is_writable'];
             $c_expected_is_auto_creation = $c_expected['is_auto_creation'];
             $c_mode_info = File::get_mode_info($c_value);
-            $c_gotten_is_readable      = $c_mode_info['is_readable'];
-            $c_gotten_is_writable      = $c_mode_info['is_writable'];
-            $c_gotten_is_auto_creation = $c_mode_info['is_auto_creation'];
-            $c_result = $c_gotten_is_readable        === $c_expected_is_readable &&
-                        $c_gotten_is_writable        === $c_expected_is_writable &&
-                        $c_expected_is_auto_creation === $c_gotten_is_auto_creation;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received_is_readable      = $c_mode_info['is_readable'];
+            $с_received_is_writable      = $c_mode_info['is_writable'];
+            $с_received_is_auto_creation = $c_mode_info['is_auto_creation'];
+            $c_result = $с_received_is_readable      === $c_expected_is_readable &&
+                        $с_received_is_writable      === $c_expected_is_writable &&
+                        $c_expected_is_auto_creation === $с_received_is_auto_creation;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected_is_readable)]);
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected_is_writable)]);
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected_is_auto_creation)]);
-                $c_results['reports'][$dpath][] = new Text(  'gotten value: %%_value', ['value' => Test::result_prepare($c_gotten_is_readable)]);
-                $c_results['reports'][$dpath][] = new Text(  'gotten value: %%_value', ['value' => Test::result_prepare($c_gotten_is_writable)]);
-                $c_results['reports'][$dpath][] = new Text(  'gotten value: %%_value', ['value' => Test::result_prepare($c_gotten_is_auto_creation)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected_is_readable)]);
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected_is_writable)]);
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected_is_auto_creation)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received_is_readable)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received_is_writable)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received_is_auto_creation)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__fopen(&$test, $dpath, &$c_results) {
+    static function test_step_code__fopen(&$test, $dpath) {
 
         # ┌──────────────────────────────────┬────────────────────┬──────────────────────────┬────────────────────┬───────┬─────────────────────────────────────────┐
         # │ DIRECTORY permission has     'x' │ FILE is     exists │ FILE permission is '---' │ FOPEN mode is 'r'  │ ERROR │ File::ERR_CODE_PERM_ARE_TOO_STRICT      │
@@ -1705,11 +1703,10 @@ abstract class Events_Test__Class_File {
         }
 
         if (!Directory::create($path_root)) {
-            $c_results['reports'][$dpath][] = new Text_multiline([
+            yield new Text_multiline([
                 'Directory "%%_directory" cannot be created!',
                 'Parent directory permissions are too strict!'], ['directory' => $path_root]);
-            $c_results['return'] = 0;
-            return;
+            yield Test::FAILED;
         }
 
         ########################
@@ -1722,27 +1719,25 @@ abstract class Events_Test__Class_File {
         if (file_exists($path_file)) {
             chmod($path_file, 0b110000000); # -rw-------
             if (!File::delete($path_file)) {
-                $c_results['reports'][$dpath][] = new Text_multiline([
+                yield new Text_multiline([
                     'File "%%_file" cannot be deleted!',
                     'Directory permissions are too strict!'], ['file' => $path_file]);
-                $c_results['return'] = 0;
-                return;
+                yield Test::FAILED;
             }
         }
 
         if (!@file_put_contents($path_file, 'test fopen() modes')) {
-            $c_results['reports'][$dpath][] = new Text_multiline([
+            yield new Text_multiline([
                 'File "%%_file" cannot be created!',
                 'Directory permissions are too strict!'], ['file' => $path_file]);
-            $c_results['return'] = 0;
-            return;
+            yield Test::FAILED;
         }
 
         ###################
         ### FILE EXISTS ###
         ###################
 
-        $c_results['reports'][$dpath][] = new Text('TEST FOR THE CASE WHEN THE FILE EXISTS');
+        yield new Text('TEST FOR THE CASE WHEN THE FILE EXISTS');
 
         foreach ([
             ['value' => 0b001000000, 'value_text' => '--x------'],
@@ -1764,17 +1759,17 @@ abstract class Events_Test__Class_File {
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
@@ -1792,30 +1787,28 @@ abstract class Events_Test__Class_File {
             ];
 
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten = null;
-                try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+                $с_received = null;
+                try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
                 $c_expected = $c_info['expected'];
-                $c_result = (bool)$c_gotten === $c_expected;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+                $c_result = (bool)$с_received === $c_expected;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                    yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                    yield Test::FAILED;
                 }
             }
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+                $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
                 $c_expected_reason = $c_info['reason'];
-                $c_result = $c_gotten_reason === $c_expected_reason;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+                $c_result = $с_received_reason === $c_expected_reason;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                    yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                    yield Test::FAILED;
                 }
             }
 
@@ -1832,17 +1825,17 @@ abstract class Events_Test__Class_File {
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
@@ -1860,30 +1853,28 @@ abstract class Events_Test__Class_File {
             ];
 
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten = null;
-                try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+                $с_received = null;
+                try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
                 $c_expected = $c_info['expected'];
-                $c_result = (bool)$c_gotten === $c_expected;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+                $c_result = (bool)$с_received === $c_expected;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                    yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                    yield Test::FAILED;
                 }
             }
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+                $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
                 $c_expected_reason = $c_info['reason'];
-                $c_result = $c_gotten_reason === $c_expected_reason;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+                $c_result = $с_received_reason === $c_expected_reason;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                    yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                    yield Test::FAILED;
                 }
             }
 
@@ -1900,17 +1891,17 @@ abstract class Events_Test__Class_File {
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
@@ -1928,30 +1919,28 @@ abstract class Events_Test__Class_File {
             ];
 
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten = null;
-                try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+                $с_received = null;
+                try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
                 $c_expected = $c_info['expected'];
-                $c_result = (bool)$c_gotten === $c_expected;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+                $c_result = (bool)$с_received === $c_expected;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                    yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                    yield Test::FAILED;
                 }
             }
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+                $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
                 $c_expected_reason = $c_info['reason'];
-                $c_result = $c_gotten_reason === $c_expected_reason;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+                $c_result = $с_received_reason === $c_expected_reason;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                    yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                    yield Test::FAILED;
                 }
             }
 
@@ -1968,17 +1957,17 @@ abstract class Events_Test__Class_File {
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file permission'          , 'state' => $c_file_permission_text]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
 
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
@@ -1996,30 +1985,28 @@ abstract class Events_Test__Class_File {
             ];
 
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten = null;
-                try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+                $с_received = null;
+                try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
                 $c_expected = $c_info['expected'];
-                $c_result = (bool)$c_gotten === $c_expected;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+                $c_result = (bool)$с_received === $c_expected;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | file perm.: '.$c_file_permission_text.' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                    yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                    yield Test::FAILED;
                 }
             }
             foreach ($data as $c_fopen_mode => $c_info) {
-                $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+                $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
                 $c_expected_reason = $c_info['reason'];
-                $c_result = $c_gotten_reason === $c_expected_reason;
-                if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-                if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+                $c_result = $с_received_reason === $c_expected_reason;
+                if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+                if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
                 if ($c_result !== true) {
-                    $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                    $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                    $c_results['return'] = 0;
-                    return;
+                    yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                    yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                    yield Test::FAILED;
                 }
             }
         }
@@ -2028,17 +2015,16 @@ abstract class Events_Test__Class_File {
         ### FILE NOT EXISTS ###
         #######################
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('TEST FOR THE CASE WHEN THE FILE NOT EXISTS');
+        yield new Text_simple('');
+        yield new Text('TEST FOR THE CASE WHEN THE FILE NOT EXISTS');
 
         chmod($path_root, 0b111000000); # rwx------
         if (file_exists($path_file)) {
             if (!File::delete($path_file)) {
-                $c_results['reports'][$dpath][] = new Text_multiline([
+                yield new Text_multiline([
                     'File "%%_file" cannot be deleted!',
                     'Directory permissions are too strict!'], ['file' => $path_file]);
-                $c_results['return'] = 0;
-                return;
+                yield Test::FAILED;
             }
         }
 
@@ -2068,58 +2054,54 @@ abstract class Events_Test__Class_File {
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
-            $c_gotten = null;
-            try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            $с_received = null;
+            try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
             $c_expected = $c_info['expected'];
-            $c_result = (bool)$c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+            $c_result = (bool)$с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+            $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
             $c_expected_reason = $c_info['reason'];
-            $c_result = $c_gotten_reason === $c_expected_reason;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received_reason === $c_expected_reason;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                yield Test::FAILED;
             }
         }
 
@@ -2149,58 +2131,54 @@ abstract class Events_Test__Class_File {
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
-            $c_gotten = null;
-            try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            $с_received = null;
+            try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
             $c_expected = $c_info['expected'];
-            $c_result = (bool)$c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+            $c_result = (bool)$с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+            $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
             $c_expected_reason = $c_info['reason'];
-            $c_result = $c_gotten_reason === $c_expected_reason;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received_reason === $c_expected_reason;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                yield Test::FAILED;
             }
         }
 
@@ -2230,58 +2208,54 @@ abstract class Events_Test__Class_File {
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
-            $c_gotten = null;
-            try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            $с_received = null;
+            try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
             $c_expected = $c_info['expected'];
-            $c_result = (bool)$c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+            $c_result = (bool)$с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+            $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
             $c_expected_reason = $c_info['reason'];
-            $c_result = $c_gotten_reason === $c_expected_reason;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received_reason === $c_expected_reason;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                yield Test::FAILED;
             }
         }
 
@@ -2311,58 +2285,54 @@ abstract class Events_Test__Class_File {
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_results['reports'][$dpath][] = '';
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
-            $c_results['reports'][$dpath][] = new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
-            $c_gotten = null;
-            try { $c_gotten = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
+            yield new Text_simple('');
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory permission'     , 'state' => $c_root_permission_info['value_text']]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_exists()'         , 'state' => Test::result_prepare(  file_exists($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_readable()'       , 'state' => Test::result_prepare(  is_readable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_writable()'       , 'state' => Test::result_prepare(  is_writable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'file is_executable()'     , 'state' => Test::result_prepare(is_executable($path_file))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_exists()'    , 'state' => Test::result_prepare(  file_exists($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_readable()'  , 'state' => Test::result_prepare(  is_readable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_writable()'  , 'state' => Test::result_prepare(  is_writable($path_root))]);
+            yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'directory is_executable()', 'state' => Test::result_prepare(is_executable($path_root))]);
+            $с_received = null;
+            try { $с_received = @fopen($path_file, $c_fopen_mode); } catch (Exception $e) {}
             $c_expected = $c_info['expected'];
-            $c_result = (bool)$c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($c_gotten ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
+            $c_result = (bool)$с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'directory perm.: '.$c_root_permission_info['value_text'].' | fopen mode: '.str_pad($c_fopen_mode, 2).' | result: '.($с_received ? 'ok' : 'error'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
             # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
             chmod($path_root, 0b111000000); # rwx------
                 if (file_exists($path_file)) {
                     if (!File::delete($path_file)) {
-                        $c_results['reports'][$dpath][] = new Text(
+                        yield new Text(
                             'File "%%_file" cannot be deleted!', ['file' => $path_file]);
-                        $c_results['return'] = 0;
-                        return;
+                        yield Test::FAILED;
                     }
                 }
             chmod($path_root, $c_root_permission_info['value']);
             clearstatcache();
-            $c_gotten_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
+            $с_received_reason = File::get_fopen_error_reason($path_root, $path_file, $c_fopen_mode);
             $c_expected_reason = $c_info['reason'];
-            $c_result = $c_gotten_reason === $c_expected_reason;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received_reason === $c_expected_reason;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'fopen mode: '.str_pad($c_fopen_mode, 2).' | reason: '.($c_expected_reason ?: 'OK'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => $c_gotten_reason === null ? 'null' : $c_gotten_reason]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => $c_expected_reason === null ? 'null' : $c_expected_reason]);
+                yield new Text('received value: %%_value', ['value' => $с_received_reason === null ? 'null' : $с_received_reason]);
+                yield Test::FAILED;
             }
         }
 
@@ -2371,11 +2341,10 @@ abstract class Events_Test__Class_File {
         #############################
 
         if (!Directory::delete($path_root)) {
-            $c_results['reports'][$dpath][] = new Text_multiline([
+            yield new Text_multiline([
                 'Directory "%%_directory" cannot be deleted!',
                 'Parent directory permissions are too strict!'], ['directory' => $path_root]);
-            $c_results['return'] = 0;
-            return;
+            yield Test::FAILED;
         }
     }
 

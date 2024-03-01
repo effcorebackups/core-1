@@ -58,8 +58,12 @@ class Widget_Files_videos extends Widget_Files {
             return Template::make_new(Template::pick_name('video'), [
                 'id'         => $row_id,
                 'src'        => $url,
-                'poster'     => $url.'?poster=big',
-                'attributes' => Core::data_to_attributes($item->settings)
+                'poster'     => $url ? $url.'?poster=big' : '',
+                'attributes' => Core::data_to_attributes([
+                    'data-path-poster-small'  => $url ? $url.'?poster=small'  : '',
+                    'data-path-poster-middle' => $url ? $url.'?poster=middle' : '',
+                    'data-path-poster-big'    => $url ? $url.'?poster=big'    : '',
+                ] + $item->settings)
             ])->render();
         } else {
             return Template::make_new(Template::pick_name('video'), [

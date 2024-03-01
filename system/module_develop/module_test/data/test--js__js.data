@@ -1,9 +1,10 @@
 tests
-- js__js|Test
+- js__js|Test_JS
     id: js__js
     title|Text
-      text: JS functioning (JS)
+      text: JS functioning
     type: js
+    path: frontend/components/Events_Test__JS.js
     scenario
     - return|Test_step_Return
-        value: 0
+        value: false

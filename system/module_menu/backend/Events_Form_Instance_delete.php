@@ -10,7 +10,7 @@ use effcore\Entity;
 use effcore\Markup;
 use effcore\Text;
 use effcore\Tree_item;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Instance_delete {
 
@@ -40,8 +40,8 @@ abstract class Events_Form_Instance_delete {
             case 'delete':
             case 'cancel':
                 if ($entity->name === 'tree_item') {
-                    if (!Url::back_url_get())
-                         Url::back_url_set('back', $entity->make_url_for_select_multiple().'///'.$form->_instance->id_tree);
+                    if (!URL::back_url_get())
+                         URL::back_url_set('back', $entity->make_url_for_select_multiple().'///'.$form->_instance->id_tree);
                 }
                 break;
         }

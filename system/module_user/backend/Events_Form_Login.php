@@ -13,7 +13,7 @@ use effcore\Module;
 use effcore\Session;
 use effcore\Text_multiline;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Login {
 
@@ -57,7 +57,7 @@ abstract class Events_Form_Login {
                 if ($user && hash_equals($user->password_hash, $items['#password']->value_get())) {
                     Session::insert($user->id, Core::array_keys_map($items['*session_params']->value_get()));
                     Message::insert(new Text('Welcome, %%_nickname!', ['nickname' => $user->nickname]));
-                    Url::go(Url::back_url_get() ?: '/user/'.$user->nickname);
+                    URL::go(URL::back_url_get() ?: '/user/'.$user->nickname);
                 }
                 break;
         }

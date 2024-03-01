@@ -106,8 +106,8 @@ tab_items
     id: view_colors_profiles
     id_parent: view_colors
     id_tab: view
-    action_name: colors/profiles
-    title: Profiles
+    action_name: null
+    title: profiles
     weight: +480
 - view_layouts|Tab_item
     id: view_layouts

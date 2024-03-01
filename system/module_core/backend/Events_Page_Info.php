@@ -19,7 +19,7 @@ use effcore\Storage;
 use effcore\Text;
 use effcore\Token;
 use effcore\Update;
-use effcore\Url;
+use effcore\URL;
 use effcore\User;
 
 abstract class Events_Page_Info {
@@ -51,7 +51,7 @@ abstract class Events_Page_Info {
         $decorator = new Decorator('table-dl');
         $decorator->id = 'service_info';
         $decorator->data = [[
-            'cron_url'      => ['title' => 'Cron URL'               , 'value' => Url::url_to_markup($cron_url)     , 'is_apply_translation' => false],
+            'cron_url'      => ['title' => 'Cron URL'               , 'value' => URL::url_to_markup($cron_url)     , 'is_apply_translation' => false],
             'cron_auto_run' => ['title' => 'Cron autorun frequency' , 'value' => Cron::get_auto_run_frequency(true), 'is_apply_translation' => false],
             'cron_last_run' => ['title' => 'Cron last run (UTC)'    , 'value' => $sticker_for_cron_last_run        , 'is_apply_translation' => false],
             'update_is_req' => ['title' => 'Data update is required', 'value' => $sticker_for_is_required_update   , 'is_apply_translation' => false] ]];

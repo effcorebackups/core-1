@@ -13,7 +13,7 @@ use effcore\Text;
 
 abstract class Events_Test__Class_Color {
 
-    static function test_step_code__RGB_to_HSV(&$test, $dpath, &$c_results) {
+    static function test_step_code__RGB_to_HSV(&$test, $dpath) {
         $data = [
             '[    0|    0|    0]' => ['value' => ['r' =>     0, 'g' =>     0, 'b' =>     0], 'expected' => ['h' =>   0, 's' =>   0, 'v' =>   0]],
             '[    0|    0|  255]' => ['value' => ['r' =>     0, 'g' =>     0, 'b' =>   255], 'expected' => ['h' => 240, 's' => 100, 'v' => 100]],
@@ -40,15 +40,14 @@ abstract class Events_Test__Class_Color {
         foreach ($data as $c_row_id => $c_info) {
             $c_value = $c_info['value'];
             $c_expected = $c_info['expected'];
-            $c_gotten = Color::RGB_to_HSV($c_value['r'], $c_value['g'], $c_value['b']);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Color::RGB_to_HSV($c_value['r'], $c_value['g'], $c_value['b']);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -60,65 +59,59 @@ abstract class Events_Test__Class_Color {
                 for ($b = -10; $b <= 260; $b++) {
                     $c_hsv = Color::RGB_to_HSV($r, $g, $b);
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                    $c_gotten = $c_hsv['h'];
+                    $с_received = $c_hsv['h'];
                     $c_expected = 0;
-                    if ($c_gotten < 0) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received < 0) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     $c_expected = 360;
-                    if ($c_gotten > $c_expected) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received > $c_expected) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                    $c_gotten = $c_hsv['s'];
+                    $с_received = $c_hsv['s'];
                     $c_expected = 0;
-                    if ($c_gotten < 0) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received < 0) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     $c_expected = 100;
-                    if ($c_gotten > $c_expected) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received > $c_expected) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                    $c_gotten = $c_hsv['v'];
+                    $с_received = $c_hsv['v'];
                     $c_expected = 0;
-                    if ($c_gotten < 0) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received < 0) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     $c_expected = 100;
-                    if ($c_gotten > $c_expected) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received > $c_expected) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsv['h'].';s='.$c_hsv['s'].';v='.$c_hsv['v'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                 }
             }
         }
     }
 
-    static function test_step_code__RGB_to_HSL(&$test, $dpath, &$c_results) {
+    static function test_step_code__RGB_to_HSL(&$test, $dpath) {
         $data = [
             '[    0|    0|    0]' => ['value' => ['r' =>     0, 'g' =>     0, 'b' =>     0], 'expected' => ['h' =>   0, 's' =>   0, 'l' =>   0]],
             '[    0|    0|  255]' => ['value' => ['r' =>     0, 'g' =>     0, 'b' =>   255], 'expected' => ['h' => 240, 's' => 100, 'l' =>  50]],
@@ -145,15 +138,14 @@ abstract class Events_Test__Class_Color {
         foreach ($data as $c_row_id => $c_info) {
             $c_value = $c_info['value'];
             $c_expected = $c_info['expected'];
-            $c_gotten = Color::RGB_to_HSL($c_value['r'], $c_value['g'], $c_value['b']);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Color::RGB_to_HSL($c_value['r'], $c_value['g'], $c_value['b']);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -165,58 +157,52 @@ abstract class Events_Test__Class_Color {
                 for ($b = -10; $b <= 260; $b++) {
                     $c_hsl = Color::RGB_to_HSL($r, $g, $b);
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                    $c_gotten = $c_hsl['h'];
+                    $с_received = $c_hsl['h'];
                     $c_expected = 0;
-                    if ($c_gotten < 0) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received < 0) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     $c_expected = 360;
-                    if ($c_gotten > $c_expected) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received > $c_expected) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                    $c_gotten = $c_hsl['s'];
+                    $с_received = $c_hsl['s'];
                     $c_expected = 0;
-                    if ($c_gotten < 0) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received < 0) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     $c_expected = 100;
-                    if ($c_gotten > $c_expected) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received > $c_expected) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-                    $c_gotten = $c_hsl['l'];
+                    $с_received = $c_hsl['l'];
                     $c_expected = 0;
-                    if ($c_gotten < 0) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received < 0) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                     $c_expected = 100;
-                    if ($c_gotten > $c_expected) {
-                        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
-                        $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                        $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                        $c_results['return'] = 0;
-                        return;
+                    if ($с_received > $c_expected) {
+                        yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'r='.$r.';g='.$g.';b='.$b.'|h='.$c_hsl['h'].';s='.$c_hsl['s'].';l='.$c_hsl['l'], 'result' => (new Text('failure'))->render()]);
+                        yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                        yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                        yield Test::FAILED;
                     }
                 }
             }

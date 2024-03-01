@@ -62,7 +62,7 @@ class Tabs extends Node {
         $rendered = '';
         foreach ($this->children_select(true) as $c_item) {
             $c_url = rtrim(Page::get_current()->args_get('base').'/'.$c_item->action_name, '/');
-            if (Url::is_active_trail($c_url)) {
+            if (URL::is_active_trail($c_url)) {
                 foreach ($c_item->children_select(true) as $c_child) {
                     $rendered.= $c_child->render();
                 }

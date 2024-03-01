@@ -16,7 +16,7 @@ use effcore\Request;
 use effcore\Security;
 use effcore\Text;
 use effcore\Tree;
-use effcore\Url;
+use effcore\URL;
 use stdClass;
 
 abstract class Events_Form_Instance_select_multiple {
@@ -104,7 +104,7 @@ abstract class Events_Form_Instance_select_multiple {
                 break;
             case 'insert':
                 if ($entity->name === 'tree_item' && $form->category_id) {
-                    Url::go($entity->make_url_for_insert().'/'.$form->category_id.'?'.Url::back_part_make());
+                    URL::go($entity->make_url_for_insert().'/'.$form->category_id.'?'.URL::back_part_make());
                 }
                 break;
         }

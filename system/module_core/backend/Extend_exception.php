@@ -6,8 +6,6 @@
 
 namespace effcore;
 
-use effcore\Text_multiline;
-use effcore\Text;
 use Exception;
 
 class Extend_exception extends Exception {

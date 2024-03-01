@@ -13,42 +13,42 @@ Be sure that your editor/IDE has a right settings for editing.
 File `.editorconfig` is describe right settings for any editor/IDE
 but only professional editors/IDE can work with this feature.
 
-The next editors/IDE need some improvements:
-- **Atom**:
-  Removes trailing spaces and adds a trailing newline when saving files.
-  Install the "EditorConfig" package with this command: `apm install editorconfig`.
-  Or go to _Settings → Packages → Core Packages_ and disable the "whitespace" package.
-- **BBEdit**:
-  Adapts to `.editorconfig` if it is in the parent directory.
-- **Coda2**:
-  Install plugin "EditorConfig" or set "Tab width|size" to "4" and
-  enable "Soft tabs" (spaces instead Tab).
-- **Eclipse**:
-  Install plugin "EditorConfig" or set "Tab width|size" to "4" and
-  enable "Soft tabs" (spaces instead Tab).
-- **Espresso**:
-  Set "Tab width|size" to "4" and enable "Soft tabs" (spaces instead Tab).
-- **Notepad++**:
-  Install plugin "EditorConfig" or set "Tab width|size" to "4" and
-  enable "Soft tabs" (spaces instead Tab).
+The next IDE need some improvements:
+- **Visual Studio Code**:
+  The size of the Tab will be automatically determined based on the content
+  of the file. Go to _Preferences → Text Editor → Detect Indentation_ and disable it
+  or download the extension "EditorConfig for VS Code".
 - **Nova**:
   Adapts to `.editorconfig`.
 - **PHPStorm**:
   Removes trailing spaces when saving the file.
   Install the "EditorConfig" package.
   Or go to _Preferences → Editor → General_ and disable "Strip trailing spaces on Save".
+- **Eclipse**:
+  Install plugin "EditorConfig" or set "Tab width|size" to "4" and
+  enable "Soft tabs" (spaces instead Tab).
+
+The next editors need some improvements:
+- **Atom**:
+  Removes trailing spaces and adds a trailing newline when saving files.
+  Install the "EditorConfig" package with this command: `apm install editorconfig`.
+  Or go to _Settings → Packages → Core Packages_ and disable the "whitespace" package.
+- **BBEdit**:
+  Adapts to `.editorconfig` if it is in the parent directory.
+- **Espresso**:
+  Set "Tab width|size" to "4" and enable "Soft tabs" (spaces instead Tab).
+- **Notepad++**:
+  Install plugin "EditorConfig" or set "Tab width|size" to "4" and
+  enable "Soft tabs" (spaces instead Tab).
 - **Textastic**:
   Set "Tab width|size" to "4" and enable "Soft tabs" (spaces instead Tab).
 - **TextWrangler**:
   Adapts to `.editorconfig`.
 - **TextMate**:
   Install plugin "EditorConfig".
-- **Sublime**:
+- **Sublime Text**:
   Install plugin "EditorConfig" or set "Tab width|size" to "4" and
   enable "Soft tabs" (spaces instead Tab) (p.s. `translate_tabs_to_spaces` : true).
-- **Visual Studio Code**:
-  The size of the Tab will be automatically determined based on the content
-  of the file. Go to _Preferences → Text Editor → Detect Indentation_ and disable it.
 
 
 How to activate Neor Profile SQL

@@ -44,7 +44,7 @@ abstract class Events_Form_Modules_Update_files {
                 $c_button_repo_restore->value_set('repo_restore_'.$c_bundle->id);
                 $c_button_repo_restore->_type = 'repo_restore';
                 $c_button_repo_restore->_id = $c_bundle->id;
-                $c_report = new Markup('x-document', ['data-style' => 'report'], new Text('The report will be created after submitting the form.'));
+                $c_report = new Markup('x-document', ['data-style' => 'report-update'], new Text('The report will be created after submitting the form.'));
                 $c_fieldset = new Fieldset($c_bundle->title);
                 $c_fieldset->child_insert($c_report, 'report');
                 $c_fieldset->child_insert($c_button_update, 'button_update');

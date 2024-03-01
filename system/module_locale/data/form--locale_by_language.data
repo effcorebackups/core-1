@@ -53,6 +53,27 @@ forms
             - size: 1
             - minlength: null
             - maxlength: 1
+    - translations|Fieldset
+        title: Translations
+        children
+        - content|Field_Textarea_data
+            title: Text
+            description_state: opened
+            description|Text_multiline
+              text
+              - 0: Example
+              - 1:   data
+              - 2: - string in English #1: translated string #1
+              - 3: - string in English #2: translated string #2
+              - 4: - string in English #3: translated string #3
+            element_attributes
+            - data-style: code-editor
+            - name: translations
+            - required: false
+            - minlength: null
+            - maxlength: 16777215
+            - rows: 20
+            data_validator_id: data_list
     - button_save|Button
         title: save
         attributes

@@ -18,22 +18,23 @@ use effcore\Security;
 use effcore\Storage_Data;
 use effcore\Tab_item;
 use effcore\Text_multiline;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page_View {
 
     static function on_redirect($event, $page) {
         $type = $page->args_get('type');
-        if ($type === null    ) Url::go($page->args_get('base').'/colors/manage');
-        if ($type === 'colors') Url::go($page->args_get('base').'/colors/manage');
+        if ($type === null    ) URL::go($page->args_get('base').'/colors/manage');
+        if ($type === 'colors') URL::go($page->args_get('base').'/colors/manage');
         if ($type === 'colors/profiles' || str_starts_with($type, 'colors/profiles/')) {
             $profiles = Color_profile::get_all();
             Core::array_sort_by_number($profiles);
+            $profile_id = null;
             if (preg_match('%^colors/profiles/[a-z0-9_]+/export/colors$%', $type)) $profile_id = $page->args_get('profile_color_export_id');
             if (preg_match('%^colors/profiles/[a-z0-9_]+/export$%',        $type)) $profile_id = $page->args_get('profile_export_id');
             if (preg_match('%^colors/profiles/[a-z0-9_]+$%',               $type)) $profile_id = $page->args_get('profile_id');
             if (!$profile_id || empty($profiles[$profile_id])) {
-                Url::go($page->args_get('base').'/colors/profiles/'.reset($profiles)->id);
+                URL::go($page->args_get('base').'/colors/profiles/'.reset($profiles)->id);
             }
         }
         if ($type === 'layouts' || str_starts_with($type, 'layouts/')) {
@@ -41,7 +42,7 @@ abstract class Events_Page_View {
             $layouts   = Layout::select_all();
             Core::array_sort_by_string($layouts);
             if (empty($layouts[$layout_id])) {
-                Url::go($page->args_get('base').'/layouts/'.reset($layouts)->id);
+                URL::go($page->args_get('base').'/layouts/'.reset($layouts)->id);
             }
         }
     }

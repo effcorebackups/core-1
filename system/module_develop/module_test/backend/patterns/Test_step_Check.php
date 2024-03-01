@@ -16,18 +16,19 @@ class Test_step_Check {
     public $on_success;
     public $on_failure;
 
-    function run(&$test, $dpath, &$c_results) {
+    function run(&$test, $dpath) {
+        yield new Text_simple('');
+        yield Test_message::send_dpath($dpath);
         if ($this->check === 'token') {
-            $c_results['reports'][$dpath]['dpath'] = '### dpath: '.$dpath;
             $is_regexp = is_string($this->match) && strlen($this->match) && $this->match[0] === '%';
             $where = Token::apply((string)$this->where);
             $match = Token::apply((string)$this->match);
             if ($is_regexp) $result = (bool)preg_match($match,    $where);
             else            $result =                  $match === $where;
-            if ($result === true) $c_results['reports'][$dpath]['on_success_title'] = new Text_multiline(['checking on "%%_operand_1" %%_operator "%%_operand_2"', 'real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2"', 'result of checking is = "%%_result"'], ['operand_1' => $this->where, 'operand_2' => $this->match, 'operand_real_1' => $where, 'operand_real_2' => $match, 'operator' => $is_regexp ? '≈' : '=', 'result' => (new Text('success'))->render() ]);
-            if ($result !== true) $c_results['reports'][$dpath]['on_failure_title'] = new Text_multiline(['checking on "%%_operand_1" %%_operator "%%_operand_2"', 'real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2"', 'result of checking is = "%%_result"'], ['operand_1' => $this->where, 'operand_2' => $this->match, 'operand_real_1' => $where, 'operand_real_2' => $match, 'operator' => $is_regexp ? '≈' : '=', 'result' => (new Text('failure'))->render() ]);
-            if ($result === true && isset($this->on_success)) foreach ($this->on_success as $c_dpath_in_cycle => $c_step) { $c_step->run($test, $dpath.':on_success/'.$c_dpath_in_cycle, $c_results); if (array_key_exists('return', $c_results)) return; }
-            if ($result !== true && isset($this->on_failure)) foreach ($this->on_failure as $c_dpath_in_cycle => $c_step) { $c_step->run($test, $dpath.':on_failure/'.$c_dpath_in_cycle, $c_results); if (array_key_exists('return', $c_results)) return; }
+            if ($result === true) { yield new Text('checking on "%%_operand_1" %%_operator "%%_operand_2"', ['operand_1' => $this->where, 'operand_2' => $this->match, 'operator' => $is_regexp ? '≈' : '=']); yield new Text('real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2"', ['operand_real_1' => $where, 'operand_real_2' => $match, 'operator' => $is_regexp ? '≈' : '=']); yield new Text('result of checking is = "%%_result"', ['result' => (new Text('success'))->render()]); }
+            if ($result !== true) { yield new Text('checking on "%%_operand_1" %%_operator "%%_operand_2"', ['operand_1' => $this->where, 'operand_2' => $this->match, 'operator' => $is_regexp ? '≈' : '=']); yield new Text('real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2"', ['operand_real_1' => $where, 'operand_real_2' => $match, 'operator' => $is_regexp ? '≈' : '=']); yield new Text('result of checking is = "%%_result"', ['result' => (new Text('failure'))->render()]); }
+            if ($result === true && isset($this->on_success)) foreach ($this->on_success as $c_row_id => $c_action) { yield new Text_simple(''); yield Test_message::send_dpath($dpath.'/on_success'); foreach ($c_action->run($test, $dpath.'/on_success/'.$c_row_id) as $c_tick) yield $c_tick; }
+            if ($result !== true && isset($this->on_failure)) foreach ($this->on_failure as $c_row_id => $c_action) { yield new Text_simple(''); yield Test_message::send_dpath($dpath.'/on_failure'); foreach ($c_action->run($test, $dpath.'/on_failure/'.$c_row_id) as $c_tick) yield $c_tick; }
         }
     }
 

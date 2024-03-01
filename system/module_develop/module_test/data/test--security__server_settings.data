@@ -59,7 +59,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//page"
         - request_url-0dc172e1|Test_step_Request
             url: //page
@@ -73,7 +73,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/"
         - request_url-accb0053|Test_step_Request
             url: /section/
@@ -87,21 +87,21 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-accb0053-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-accb0053-content_length|Test_step_Check
             check: token
             where: %%_test_response(content_length)
             match: 0
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.type"
         - request_url-a4a35be0|Test_step_Request
             url: /.type
@@ -115,14 +115,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-a4a35be0-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file."
         - request_url-7cd28f8a|Test_step_Request
             url: /file.
@@ -136,7 +136,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//file.type"
         - request_url-c97a7191|Test_step_Request
             url: //file.type
@@ -150,7 +150,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/.type"
         - request_url-6c70764b|Test_step_Request
             url: /directory/.type
@@ -164,14 +164,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-6c70764b-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file."
         - request_url-b401a221|Test_step_Request
             url: /directory/file.
@@ -185,7 +185,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # ─────────────────────────────────────────────────────────────────────
         # TRANSPOSITION OF THE "/" CHARACTER
         # ═════════════════════════════════════════════════════════════════════
@@ -230,7 +230,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//"
         - request_url-d19b00c2|Test_step_Request
             url: //
@@ -244,14 +244,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-d19b00c2-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/|/)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/page/"
         - request_url-e584344a|Test_step_Request
             url: /page/
@@ -265,14 +265,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-e584344a-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/page|/page)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//section/page"
         - request_url-1ad9b473|Test_step_Request
             url: //section/page
@@ -286,7 +286,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "///page"
         - request_url-30387409|Test_step_Request
             url: ///page
@@ -300,7 +300,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section//page"
         - request_url-e3dc5fc9|Test_step_Request
             url: /section//page
@@ -314,7 +314,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section//"
         - request_url-c86a8464|Test_step_Request
             url: /section//
@@ -328,14 +328,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-c86a8464-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/section|/section)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/page/"
         - request_url-0b991962|Test_step_Request
             url: /section/page/
@@ -349,14 +349,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0b991962-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/section/page|/section/page)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//file.type"
         - request_url-c97a7191|Test_step_Request
             url: //file.type
@@ -370,7 +370,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//.type"
         - request_url-995a5d08|Test_step_Request
             url: //.type
@@ -384,14 +384,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-995a5d08-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file/.type"
         - request_url-23acb4d1|Test_step_Request
             url: /file/.type
@@ -405,14 +405,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-23acb4d1-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file./type"
         - request_url-d6c69183|Test_step_Request
             url: /file./type
@@ -426,7 +426,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file./"
         - request_url-2e01cfd8|Test_step_Request
             url: /file./
@@ -440,14 +440,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-2e01cfd8-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/file\.|/file\.)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.type/"
         - request_url-d53f7856|Test_step_Request
             url: /file.type/
@@ -461,14 +461,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-d53f7856-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/file\.type|/file\.type)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "//directory/file.type"
         - request_url-d84e7558|Test_step_Request
             url: //directory/file.type
@@ -482,7 +482,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "///file.type"
         - request_url-23e13486|Test_step_Request
             url: ///file.type
@@ -496,7 +496,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory//file.type"
         - request_url-3d72f97a|Test_step_Request
             url: /directory//file.type
@@ -510,7 +510,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory//.type"
         - request_url-f60feaff|Test_step_Request
             url: /directory//.type
@@ -524,14 +524,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-f60feaff-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file/.type"
         - request_url-d7a43c3a|Test_step_Request
             url: /directory/file/.type
@@ -545,14 +545,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-d7a43c3a-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file./type"
         - request_url-22ce1968|Test_step_Request
             url: /directory/file./type
@@ -566,7 +566,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file./"
         - request_url-4154782f|Test_step_Request
             url: /directory/file./
@@ -580,14 +580,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-4154782f-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/directory/file\.|/directory/file\.)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.type/"
         - request_url-2137f0bd|Test_step_Request
             url: /directory/file.type/
@@ -601,14 +601,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-2137f0bd-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/directory/file\.type|/directory/file\.type)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # ─────────────────────────────────────────────────────────────────────
         # TRANSPOSITION OF THE "~" CHARACTER
         # ═════════════════════════════════════════════════════════════════════
@@ -656,14 +656,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-d2ab672d-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~"
         - request_url-612d56be|Test_step_Request
             url: /~
@@ -677,14 +677,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-612d56be-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/page~"
         - request_url-55326236|Test_step_Request
             url: /page~
@@ -698,7 +698,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~section/page"
         - request_url-437576ff|Test_step_Request
             url: /~section/page
@@ -712,14 +712,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-437576ff-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~/page"
         - request_url-cdec9874|Test_step_Request
             url: /~/page
@@ -733,14 +733,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-cdec9874-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section~/page"
         - request_url-1e08b3b4|Test_step_Request
             url: /section~/page
@@ -754,7 +754,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/~page"
         - request_url-3cb64a05|Test_step_Request
             url: /section/~page
@@ -768,14 +768,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-3cb64a05-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/~"
         - request_url-78dcd218|Test_step_Request
             url: /section/~
@@ -789,14 +789,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-78dcd218-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/page~"
         - request_url-bb2f4f1e|Test_step_Request
             url: /section/page~
@@ -810,7 +810,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~file.type"
         - request_url-469ee882|Test_step_Request
             url: /~file.type
@@ -824,14 +824,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-469ee882-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~.type"
         - request_url-648eb175|Test_step_Request
             url: /~.type
@@ -845,14 +845,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-648eb175-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file~.type"
         - request_url-de7858ac|Test_step_Request
             url: /file~.type
@@ -866,7 +866,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.~type"
         - request_url-09ac844f|Test_step_Request
             url: /file.~type
@@ -880,7 +880,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.~"
         - request_url-9eb799a4|Test_step_Request
             url: /file.~
@@ -894,7 +894,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.type~"
         - request_url-65892e2a|Test_step_Request
             url: /file.type~
@@ -908,7 +908,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~directory/file.type"
         - request_url-e4697210|Test_step_Request
             url: /~directory/file.type
@@ -922,14 +922,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-e4697210-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~/file.type"
         - request_url-8a93825e|Test_step_Request
             url: /~/file.type
@@ -943,14 +943,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-8a93825e-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory~/file.type"
         - request_url-94004fa2|Test_step_Request
             url: /directory~/file.type
@@ -964,7 +964,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/~file.type"
         - request_url-b2966069|Test_step_Request
             url: /directory/~file.type
@@ -978,14 +978,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-b2966069-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/~.type"
         - request_url-0bdb0682|Test_step_Request
             url: /directory/~.type
@@ -999,14 +999,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0bdb0682-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file~.type"
         - request_url-2a70d047|Test_step_Request
             url: /directory/file~.type
@@ -1020,7 +1020,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.~type"
         - request_url-fda40ca4|Test_step_Request
             url: /directory/file.~type
@@ -1034,7 +1034,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.~"
         - request_url-f1e22e53|Test_step_Request
             url: /directory/file.~
@@ -1048,7 +1048,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.type~"
         - request_url-9181a6c1|Test_step_Request
             url: /directory/file.type~
@@ -1062,7 +1062,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # ─────────────────────────────────────────────────────────────────────
         # TRANSPOSITION OF THE "." CHARACTER
         # ═════════════════════════════════════════════════════════════════════
@@ -1108,14 +1108,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-80a67fa8-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/."
         - request_url-6686c1c6|Test_step_Request
             url: /.
@@ -1129,7 +1129,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/page."
         - request_url-5299f54e|Test_step_Request
             url: /page.
@@ -1143,7 +1143,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.section/page"
         - request_url-1f8f109b|Test_step_Request
             url: /.section/page
@@ -1157,14 +1157,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-1f8f109b-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/./page"
         - request_url-48355c12|Test_step_Request
             url: /./page
@@ -1178,7 +1178,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section./page"
         - request_url-9bd177d2|Test_step_Request
             url: /section./page
@@ -1192,7 +1192,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/.page"
         - request_url-6ebb5280|Test_step_Request
             url: /section/.page
@@ -1206,14 +1206,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-6ebb5280-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/."
         - request_url-7f774560|Test_step_Request
             url: /section/.
@@ -1227,7 +1227,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/page."
         - request_url-bc84d866|Test_step_Request
             url: /section/page.
@@ -1241,7 +1241,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.file.type"
         - request_url-aedae111|Test_step_Request
             url: /.file.type
@@ -1255,14 +1255,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-aedae111-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/..type"
         - request_url-e1577513|Test_step_Request
             url: /..type
@@ -1276,14 +1276,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-e1577513-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file..type"
         - request_url-5ba19cca|Test_step_Request
             url: /file..type
@@ -1297,7 +1297,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.."
         - request_url-991c0edc|Test_step_Request
             url: /file..
@@ -1311,7 +1311,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.type."
         - request_url-6222b952|Test_step_Request
             url: /file.type.
@@ -1325,7 +1325,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.directory/file.type"
         - request_url-0ec1776c|Test_step_Request
             url: /.directory/file.type
@@ -1339,14 +1339,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0ec1776c-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/./file.type"
         - request_url-cd66987f|Test_step_Request
             url: /./file.type
@@ -1360,7 +1360,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory./file.type"
         - request_url-d3f55583|Test_step_Request
             url: /directory./file.type
@@ -1374,7 +1374,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/.file.type"
         - request_url-5ad269fa|Test_step_Request
             url: /directory/.file.type
@@ -1388,14 +1388,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-5ad269fa-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/..type"
         - request_url-8e02c2e4|Test_step_Request
             url: /directory/..type
@@ -1409,14 +1409,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-8e02c2e4-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file..type"
         - request_url-afa91421|Test_step_Request
             url: /directory/file..type
@@ -1430,7 +1430,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.."
         - request_url-f649b92b|Test_step_Request
             url: /directory/file..
@@ -1444,7 +1444,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.type."
         - request_url-962a31b9|Test_step_Request
             url: /directory/file.type.
@@ -1458,7 +1458,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # ─────────────────────────────────────────────────────────────────────
         # TRANSPOSITION OF THE ".." CHARACTERS
         # ═════════════════════════════════════════════════════════════════════
@@ -1503,14 +1503,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-c552515b-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.."
         - request_url-8aedd093|Test_step_Request
             url: /..
@@ -1534,10 +1534,10 @@ tests
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
-                        value: 0
+                        value: false
                 on_failure
                 - return_result|Test_step_Return
-                    value: 0
+                    value: false
         # url "/page.."
         - request_url-dcd4cbe8|Test_step_Request
             url: /page..
@@ -1551,7 +1551,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/..section/page"
         - request_url-fdb24bf6|Test_step_Request
             url: /..section/page
@@ -1565,14 +1565,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-fdb24bf6-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/../page"
         - request_url-98ab53b8|Test_step_Request
             url: /../page
@@ -1596,10 +1596,10 @@ tests
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
-                        value: 0
+                        value: false
                 on_failure
                 - return_result|Test_step_Return
-                    value: 0
+                    value: false
         # url "/section../page"
         - request_url-01e83dce|Test_step_Request
             url: /section../page
@@ -1613,7 +1613,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/..page"
         - request_url-9de767c8|Test_step_Request
             url: /section/..page
@@ -1627,14 +1627,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-9de767c8-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/.."
         - request_url-36ef88fc|Test_step_Request
             url: /section/..
@@ -1648,7 +1648,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/section/page.."
         - request_url-8461fd7b|Test_step_Request
             url: /section/page..
@@ -1662,7 +1662,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/..file.type"
         - request_url-aac608ff|Test_step_Request
             url: /..file.type
@@ -1676,14 +1676,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-aac608ff-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/...type"
         - request_url-31c97ab9|Test_step_Request
             url: /...type
@@ -1697,14 +1697,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-31c97ab9-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file...type"
         - request_url-d7c8de63|Test_step_Request
             url: /file...type
@@ -1718,7 +1718,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file..."
         - request_url-2c1fd13f|Test_step_Request
             url: /file...
@@ -1732,7 +1732,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/file.type.."
         - request_url-c8a46ddd|Test_step_Request
             url: /file.type..
@@ -1746,7 +1746,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/..directory/file.type"
         - request_url-caee742e|Test_step_Request
             url: /..directory/file.type
@@ -1760,14 +1760,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-caee742e-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/../file.type"
         - request_url-bee4a36f|Test_step_Request
             url: /../file.type
@@ -1791,10 +1791,10 @@ tests
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
-                        value: 0
+                        value: false
                 on_failure
                 - return_result|Test_step_Return
-                    value: 0
+                    value: false
         # url "/directory../file.type"
         - request_url-d39c841e|Test_step_Request
             url: /directory../file.type
@@ -1808,7 +1808,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/..file.type"
         - request_url-b2dfe299|Test_step_Request
             url: /directory/..file.type
@@ -1822,14 +1822,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-b2dfe299-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/...type"
         - request_url-3d0bd099|Test_step_Request
             url: /directory/...type
@@ -1843,14 +1843,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-3d0bd099-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file...type"
         - request_url-cfd13405|Test_step_Request
             url: /directory/file...type
@@ -1864,7 +1864,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file..."
         - request_url-20dd7b1f|Test_step_Request
             url: /directory/file...
@@ -1878,7 +1878,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/directory/file.type.."
         - request_url-d0bd87bb|Test_step_Request
             url: /directory/file.type..
@@ -1892,7 +1892,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # ─────────────────────────────────────────────────────────────────────
         # FILTRATION OF PARAMETERS
         # ═════════════════════════════════════════════════════════════════════
@@ -1916,7 +1916,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/?page=1&unknown=true"
         - request_url-bb480ca7|Test_step_Request
             url: /?page=1&unknown=true
@@ -1930,14 +1930,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-bb480ca7-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/\?page=1|/\?page=1)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/login?page=1"
         - request_url-c1090ffd|Test_step_Request
             url: /login?page=1
@@ -1951,7 +1951,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/login?page=1&unknown=true"
         - request_url-0b381b8b|Test_step_Request
             url: /login?page=1&unknown=true
@@ -1965,14 +1965,14 @@ tests
             match: 302
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0b381b8b-location|Test_step_Check
             check: token
             where: %%_test_response(location)
             match: %^(http[s]{0,1}://%%_request(server_name|with_specific_port=yes|preg_quote=yes)/login\?page=1|/login\?page=1)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # ─────────────────────────────────────────────────────────────────────
         # FILES AND DIRECTORIES
         # ═════════════════════════════════════════════════════════════════════
@@ -2029,7 +2029,7 @@ tests
         # /system/module_page/frontend/pictures/icons-element.svgd
         # /system/module_page/frontend/pictures/icons-file.svg
         # /system/module_page/frontend/template--canvas_svg.tpl
-        # /system/module_core/frontend/Effcore.jsd
+        # /system/module_core/frontend/components/Core.jsd
         # /system/module_captcha/frontend/captcha.css
         # /modules
         # /modules/readme.md
@@ -2089,10 +2089,10 @@ tests
                     match: 403
                     on_failure
                     - return_result|Test_step_Return
-                        value: 0
+                        value: false
                 on_failure
                 - return_result|Test_step_Return
-                    value: 0
+                    value: false
         # url "/~/.ssh/id_rsa"
         - request_url-c93cd2bb|Test_step_Request
             url: /~/.ssh/id_rsa
@@ -2106,14 +2106,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-c93cd2bb-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/~/any_file"
         - request_url-f89ef490|Test_step_Request
             url: /~/any_file
@@ -2127,14 +2127,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-f89ef490-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.git"
         - request_url-93965d50|Test_step_Request
             url: /.git
@@ -2148,14 +2148,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-93965d50-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.git/config"
         - request_url-87450670|Test_step_Request
             url: /.git/config
@@ -2169,14 +2169,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-87450670-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.git/hooks/update.sample"
         - request_url-c94505d1|Test_step_Request
             url: /.git/hooks/update.sample
@@ -2190,14 +2190,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-c94505d1-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/.git"
         - request_url-c8ba8ef2|Test_step_Request
             url: /dynamic/.git
@@ -2211,14 +2211,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-c8ba8ef2-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/.git/config"
         - request_url-896fc938|Test_step_Request
             url: /dynamic/.git/config
@@ -2232,14 +2232,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-896fc938-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/.git/hooks/update.sample"
         - request_url-52232503|Test_step_Request
             url: /dynamic/.git/hooks/update.sample
@@ -2253,14 +2253,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-52232503-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.editorconfig"
         - request_url-a7d50424|Test_step_Request
             url: /.editorconfig
@@ -2274,14 +2274,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-a7d50424-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.gitattributes"
         - request_url-8792240f|Test_step_Request
             url: /.gitattributes
@@ -2295,14 +2295,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-8792240f-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.gitignore"
         - request_url-0ae12bc6|Test_step_Request
             url: /.gitignore
@@ -2316,14 +2316,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0ae12bc6-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.htaccess"
         - request_url-de7fc307|Test_step_Request
             url: /.htaccess
@@ -2337,14 +2337,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-de7fc307-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/.nginx"
         - request_url-4639459d|Test_step_Request
             url: /.nginx
@@ -2358,14 +2358,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-4639459d-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/web.config"
         - request_url-ee2664c5|Test_step_Request
             url: /web.config
@@ -2379,14 +2379,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-ee2664c5-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/composer.json"
         - request_url-e044ca93|Test_step_Request
             url: /composer.json
@@ -2400,14 +2400,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-e044ca93-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/composer.lock"
         - request_url-f837a19f|Test_step_Request
             url: /composer.lock
@@ -2421,14 +2421,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-f837a19f-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/index.php"
         - request_url-01614d89|Test_step_Request
             url: /index.php
@@ -2442,14 +2442,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-01614d89-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: %^(system-exit|)$%
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/license.md"
         - request_url-639e6ebb|Test_step_Request
             url: /license.md
@@ -2463,14 +2463,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-639e6ebb-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/docs"
         - request_url-755f86fe|Test_step_Request
             url: /docs
@@ -2484,7 +2484,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/docs/security.md"
         - request_url-3c7ac230|Test_step_Request
             url: /docs/security.md
@@ -2498,14 +2498,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-3c7ac230-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/shell"
         - request_url-e1a381d6|Test_step_Request
             url: /shell
@@ -2519,7 +2519,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/shell/dynamic_reset.sh"
         - request_url-48c4fe72|Test_step_Request
             url: /shell/dynamic_reset.sh
@@ -2533,14 +2533,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-48c4fe72-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic"
         - request_url-fdb651fe|Test_step_Request
             url: /dynamic
@@ -2554,7 +2554,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/readme.md"
         - request_url-e8d646b4|Test_step_Request
             url: /dynamic/readme.md
@@ -2568,14 +2568,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-e8d646b4-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/cache"
         - request_url-84a36b38|Test_step_Request
             url: /dynamic/cache
@@ -2589,7 +2589,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/cache/data_original.php"
         - request_url-0bed921c|Test_step_Request
             url: /dynamic/cache/data_original.php
@@ -2603,14 +2603,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0bed921c-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/cache/readme.md"
         - request_url-fe417926|Test_step_Request
             url: /dynamic/cache/readme.md
@@ -2624,14 +2624,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-fe417926-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/cache/structures.php"
         - request_url-97ee0155|Test_step_Request
             url: /dynamic/cache/structures.php
@@ -2645,14 +2645,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-97ee0155-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/data"
         - request_url-73f94e34|Test_step_Request
             url: /dynamic/data
@@ -2666,7 +2666,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/data/boot.php"
         - request_url-ab22ac51|Test_step_Request
             url: /dynamic/data/boot.php
@@ -2680,14 +2680,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-ab22ac51-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/data/changes.php"
         - request_url-ec856453|Test_step_Request
             url: /dynamic/data/changes.php
@@ -2701,14 +2701,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-ec856453-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/data/data.sqlite"
         - request_url-1d25a671|Test_step_Request
             url: /dynamic/data/data.sqlite
@@ -2722,14 +2722,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-1d25a671-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/data/readme.md"
         - request_url-f9ec6f32|Test_step_Request
             url: /dynamic/data/readme.md
@@ -2743,14 +2743,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-f9ec6f32-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/files"
         - request_url-c8c954e8|Test_step_Request
             url: /dynamic/files
@@ -2764,7 +2764,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/files/readme.md"
         - request_url-daa8d8e4|Test_step_Request
             url: /dynamic/files/readme.md
@@ -2778,14 +2778,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-daa8d8e4-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/logs"
         - request_url-8dca9be0|Test_step_Request
             url: /dynamic/logs
@@ -2799,7 +2799,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/logs/readme.md"
         - request_url-9e4a0707|Test_step_Request
             url: /dynamic/logs/readme.md
@@ -2813,14 +2813,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-9e4a0707-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/tmp"
         - request_url-d8e3212a|Test_step_Request
             url: /dynamic/tmp
@@ -2834,7 +2834,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/dynamic/tmp/readme.md"
         - request_url-07beb285|Test_step_Request
             url: /dynamic/tmp/readme.md
@@ -2848,14 +2848,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-07beb285-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system"
         - request_url-6ce91b10|Test_step_Request
             url: /system
@@ -2869,7 +2869,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/boot_web.php"
         - request_url-999287c2|Test_step_Request
             url: /system/boot_web.php
@@ -2883,14 +2883,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-999287c2-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/boot_initialization.php"
         - request_url-7ebbe527|Test_step_Request
             url: /system/boot_initialization.php
@@ -2904,14 +2904,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-7ebbe527-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/bundle.data"
         - request_url-c5e3478f|Test_step_Request
             url: /system/bundle.data
@@ -2925,14 +2925,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-c5e3478f-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page"
         - request_url-846a1629|Test_step_Request
             url: /system/module_page
@@ -2946,7 +2946,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/module.data"
         - request_url-d893e680|Test_step_Request
             url: /system/module_page/module.data
@@ -2960,14 +2960,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-d893e680-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/backend/interfaces/markers.php"
         - request_url-690744f4|Test_step_Request
             url: /system/module_page/backend/interfaces/markers.php
@@ -2981,14 +2981,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-690744f4-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/data/entities.data"
         - request_url-fbd63b8e|Test_step_Request
             url: /system/module_page/data/entities.data
@@ -3002,14 +3002,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-fbd63b8e-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/frontend/form.cssd"
         - request_url-09f0bdd1|Test_step_Request
             url: /system/module_page/frontend/form.cssd
@@ -3023,7 +3023,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/frontend/form.js"
         - request_url-2604c783|Test_step_Request
             url: /system/module_page/frontend/form.js
@@ -3037,7 +3037,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/frontend/pictures/icons-element.svgd"
         - request_url-aea66a20|Test_step_Request
             url: /system/module_page/frontend/pictures/icons-element.svgd
@@ -3051,7 +3051,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/frontend/pictures/icons-file.svg"
         - request_url-df2345d1|Test_step_Request
             url: /system/module_page/frontend/pictures/icons-file.svg
@@ -3065,7 +3065,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_page/frontend/template--canvas_svg.tpl"
         - request_url-66912de1|Test_step_Request
             url: /system/module_page/frontend/template--canvas_svg.tpl
@@ -3079,17 +3079,17 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-66912de1-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
-        # url "/system/module_core/frontend/Effcore.jsd"
+                value: false
+        # url "/system/module_core/frontend/components/Core.jsd"
         - request_url-18d8bd8b|Test_step_Request
-            url: /system/module_core/frontend/Effcore.jsd
+            url: /system/module_core/frontend/components/Core.jsd
             is_https|Param_from_form
               name: is_https
             proxy|Param_from_form
@@ -3100,7 +3100,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/system/module_captcha/frontend/captcha.css"
         - request_url-223a800f|Test_step_Request
             url: /system/module_captcha/frontend/captcha.css
@@ -3114,7 +3114,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules"
         - request_url-9bfc39f4|Test_step_Request
             url: /modules
@@ -3128,7 +3128,7 @@ tests
             match: 404
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/readme.md"
         - request_url-71034a5f|Test_step_Request
             url: /modules/readme.md
@@ -3142,7 +3142,7 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/bundle.data"
         - request_url-409b17ab|Test_step_Request
             url: /modules/examples/bundle.data
@@ -3156,14 +3156,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-409b17ab-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/composer.json"
         - request_url-70bcf379|Test_step_Request
             url: /modules/examples/composer.json
@@ -3177,14 +3177,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-70bcf379-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/backend/Events_Module.php"
         - request_url-b8dea85e|Test_step_Request
             url: /modules/examples/profile_classic/backend/Events_Module.php
@@ -3198,14 +3198,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-b8dea85e-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/files/sitemap.xml"
         - request_url-49aa60f4|Test_step_Request
             url: /modules/examples/profile_classic/files/sitemap.xml
@@ -3219,7 +3219,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/data/settings.data"
         - request_url-f802fc0d|Test_step_Request
             url: /modules/examples/profile_classic/data/settings.data
@@ -3233,14 +3233,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-f802fc0d-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/frontend/page.cssd"
         - request_url-b3ea6dde|Test_step_Request
             url: /modules/examples/profile_classic/frontend/page.cssd
@@ -3254,7 +3254,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/frontend/template--page--not_found.tpl"
         - request_url-0608160e|Test_step_Request
             url: /modules/examples/profile_classic/frontend/template--page--not_found.tpl
@@ -3268,14 +3268,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-0608160e-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: system-exit
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/frontend/pictures/page-bg.svgd"
         - request_url-a3936075|Test_step_Request
             url: /modules/examples/profile_classic/frontend/pictures/page-bg.svgd
@@ -3289,7 +3289,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/frontend/pictures/icon-favourite-32.ico"
         - request_url-549e7731|Test_step_Request
             url: /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.ico
@@ -3303,7 +3303,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/frontend/pictures/icon-favourite-32.png"
         - request_url-04d09d18|Test_step_Request
             url: /modules/examples/profile_classic/frontend/pictures/icon-favourite-32.png
@@ -3317,7 +3317,7 @@ tests
             match: 200
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/examples/profile_classic/module.data"
         - request_url-997a889b|Test_step_Request
             url: /modules/examples/profile_classic/module.data
@@ -3331,14 +3331,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-997a889b-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/backend/Events_Module.php"
         - request_url-1b871a86|Test_step_Request
             url: /modules/vendors/backend/Events_Module.php
@@ -3352,14 +3352,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-1b871a86-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/data/events.data"
         - request_url-55ac1826|Test_step_Request
             url: /modules/vendors/data/events.data
@@ -3373,14 +3373,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-55ac1826-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/module.data"
         - request_url-1dd9a50a|Test_step_Request
             url: /modules/vendors/module.data
@@ -3394,14 +3394,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-1dd9a50a-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/readme.md"
         - request_url-592a9e29|Test_step_Request
             url: /modules/vendors/packages/readme.md
@@ -3415,14 +3415,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-592a9e29-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/autoload.php"
         - request_url-3dd2dabb|Test_step_Request
             url: /modules/vendors/packages/autoload.php
@@ -3436,14 +3436,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-3dd2dabb-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installed.json"
         - request_url-733c5229|Test_step_Request
             url: /modules/vendors/packages/composer/installed.json
@@ -3457,14 +3457,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-733c5229-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installed.php"
         - request_url-53378c68|Test_step_Request
             url: /modules/vendors/packages/composer/installed.php
@@ -3478,14 +3478,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-53378c68-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installers/.github/workflows/phpstan.yml"
         - request_url-23abc2e4|Test_step_Request
             url: /modules/vendors/packages/composer/installers/.github/workflows/phpstan.yml
@@ -3499,14 +3499,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-23abc2e4-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installers/composer.json"
         - request_url-4bbc2982|Test_step_Request
             url: /modules/vendors/packages/composer/installers/composer.json
@@ -3520,14 +3520,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-4bbc2982-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installers/LICENSE"
         - request_url-5f0e5f42|Test_step_Request
             url: /modules/vendors/packages/composer/installers/LICENSE
@@ -3541,14 +3541,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-5f0e5f42-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installers/phpstan.neon.dist"
         - request_url-feb36501|Test_step_Request
             url: /modules/vendors/packages/composer/installers/phpstan.neon.dist
@@ -3562,14 +3562,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-feb36501-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installers/src/bootstrap.php"
         - request_url-79ed0e27|Test_step_Request
             url: /modules/vendors/packages/composer/installers/src/bootstrap.php
@@ -3583,14 +3583,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-79ed0e27-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/installers/src/Composer/Installers/ZendInstaller.php"
         - request_url-6cdf2c2e|Test_step_Request
             url: /modules/vendors/packages/composer/installers/src/Composer/Installers/ZendInstaller.php
@@ -3604,14 +3604,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-6cdf2c2e-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/LICENSE"
         - request_url-dff52a28|Test_step_Request
             url: /modules/vendors/packages/composer/LICENSE
@@ -3625,14 +3625,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-dff52a28-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/composer/platform_check.php"
         - request_url-dd53a952|Test_step_Request
             url: /modules/vendors/packages/composer/platform_check.php
@@ -3646,14 +3646,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-dd53a952-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/effcore/installer/composer.json"
         - request_url-745e60d4|Test_step_Request
             url: /modules/vendors/packages/effcore/installer/composer.json
@@ -3667,14 +3667,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-745e60d4-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/effcore/installer/Custom_installer.php"
         - request_url-3c8d8acb|Test_step_Request
             url: /modules/vendors/packages/effcore/installer/Custom_installer.php
@@ -3688,14 +3688,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-3c8d8acb-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/effcore/installer/Installer.php"
         - request_url-aca63fc1|Test_step_Request
             url: /modules/vendors/packages/effcore/installer/Installer.php
@@ -3709,14 +3709,14 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-aca63fc1-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         # url "/modules/vendors/packages/effcore/installer/Plugin.php"
         - request_url-80f3a769|Test_step_Request
             url: /modules/vendors/packages/effcore/installer/Plugin.php
@@ -3730,16 +3730,16 @@ tests
             match: 403
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
         - response_check-80f3a769-return_level|Test_step_Check
             check: token
             where: %%_test_response(return_level)
             match: 
             on_failure
             - return_result|Test_step_Return
-                value: 0
+                value: false
     # ─────────────────────────────────────────────────────────────────────
     # return
     # ─────────────────────────────────────────────────────────────────────
     - return_result|Test_step_Return
-        value: 1
+        value: true

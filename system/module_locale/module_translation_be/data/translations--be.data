@@ -16,13 +16,16 @@ translations
     - - no -: - няма -
     - - root -: - корань -
     - - select -: - абраць -
+    - - string in English #1\: translated string #1: - string in English #1: перакладзены радок №1
+    - - string in English #2\: translated string #2: - string in English #2: перакладзены радок №2
+    - - string in English #3\: translated string #3: - string in English #3: перакладзены радок №3
     - - system value -: - сістэмнае значэнне -
     - %%_entity_title_context \| append: %%_entity_title_context | дадаць
     - %%_entity_title_context \| change: %%_entity_title_context | змяніць
     - %%_entity_title_context \| delete: %%_entity_title_context | выдаліць
-    - %%_number sec.: %%_number сек.
     - %%_number file%%_plural(number\|s): %%_number файл%%_plural(number|au-a)
     - %%_number piece%%_plural(number\|s): %%_number штук%%_plural(number|a-i)
+    - %%_number sec.: %%_number сек.
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-ji)
     - A new password was sent to the selected EMail address.: Новы пароль быў адпраўлены на абраны адрас электроннай пошты.
     - Absolute URL as link: Абсалютны URL як спасылка
@@ -243,6 +246,7 @@ translations
     - Event: Падзея
     - events: падзеі
     - Events: Падзеі
+    - Example: Прыклад
     - Examples: Прыклады
     - Examples\: %%_examples: Прыклады: %%_examples
     - Execution: Выкананне
@@ -731,7 +735,9 @@ translations
     - press to show or hide nested content: націсніце, каб паказаць альбо схаваць укладзенае змесціва
     - Preview: Папярэдні прагляд
     - profile export: экспарт профілю
+    - profile: профіль
     - Profile: Профіль
+    - profiles: профілі
     - Profiles: Профілі
     - Project: Праект
     - Projects: Праекты
@@ -942,6 +948,7 @@ translations
     - Uninstall: Выдаліць
     - universal handlers: універсальныя апрацоўшчыкі
     - Unknown error!: Невядомая памылка!
+    - Unknown user!: Невядомы карыстальнік!
     - Unordered list: Неўпарадкаваны спіс
     - update: абнавіць
     - Update: Абнавіць

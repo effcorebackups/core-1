@@ -16,7 +16,7 @@ use effcore\Security;
 use effcore\Text_multiline;
 use effcore\Text_simple;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use ReflectionClass;
 use stdClass;
 use Throwable;
@@ -26,8 +26,8 @@ abstract class Events_Page_Structures {
     static function on_redirect($event, $page) {
         $type = $page->args_get('type');
         $view = $page->args_get('view');
-        if ($type === null) Url::go($page->args_get('base'). '/class'.'/list');
-        if ($view === null) Url::go($page->args_get('base').'/'.$type.'/list');
+        if ($type === null) URL::go($page->args_get('base'). '/class'.'/list');
+        if ($view === null) URL::go($page->args_get('base').'/'.$type.'/list');
     }
 
     ########################

@@ -23,7 +23,7 @@ use effcore\Response;
 use effcore\Storage;
 use effcore\Text_multiline;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use effcore\User;
 use Exception;
 use stdClass;
@@ -256,7 +256,7 @@ abstract class Events_Form_Install {
                             'email'    => $items['#email'   ]->value_get(),
                             'password' => $items['#password']->value_get(false)]), 'credentials');
                         Cache::update_global();
-                        Url::go('/login');
+                        URL::go('/login');
                     } else {
                         Message::insert(new Text_multiline([
                             'An error occurred during installation!',

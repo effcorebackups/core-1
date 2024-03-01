@@ -12,7 +12,7 @@ use effcore\Text_multiline;
 use effcore\Text;
 use effcore\Tree_item;
 use effcore\Tree;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Instance_insert {
 
@@ -82,8 +82,8 @@ abstract class Events_Form_Instance_insert {
             case 'insert_and_update':
             case 'cancel':
                 if ($entity->name === 'tree_item') {
-                    if (!Url::back_url_get())
-                         Url::back_url_set('back', $entity->make_url_for_select_multiple().'///'.$items['#id_tree']->value_get());
+                    if (!URL::back_url_get())
+                         URL::back_url_set('back', $entity->make_url_for_select_multiple().'///'.$items['#id_tree']->value_get());
                 }
                 break;
         }

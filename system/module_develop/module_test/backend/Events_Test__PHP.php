@@ -10,13 +10,15 @@ use const effcore\DIR_ROOT;
 use effcore\Core;
 use effcore\Locale;
 use effcore\Test;
+use effcore\Text_simple;
 use effcore\Text;
 use stdCLass;
 use Throwable;
 
 abstract class Events_Test__PHP {
 
-    static function test_step_code__hash(&$test, $dpath, &$c_results) {
+    static function test_step_code__hash(&$test, $dpath) {
+        $report = [];
 
         # crc32()
         $t0 = microtime(true);  for($i = 0; $i < 10000; $i++) crc32($i);  $t1 = microtime(true);
@@ -27,7 +29,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'01';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('crc32()', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('crc32()', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -40,7 +42,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'02';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('md5()', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('md5()', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -53,7 +55,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'03';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('sha1()', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('sha1()', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -66,7 +68,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'04';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'md2\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'md2\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -79,7 +81,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'05';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'md4\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'md4\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -92,7 +94,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'06';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'md5\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'md5\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -105,7 +107,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'07';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha1\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha1\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -118,7 +120,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'08';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha256\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha256\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -131,7 +133,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'09';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha512/256\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha512/256\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -144,7 +146,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'10';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha512\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha512\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -157,7 +159,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'11';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'crc32\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'crc32\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -170,7 +172,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'12';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'crc32b\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'crc32b\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -183,7 +185,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'13';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha3-224\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha3-224\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -196,7 +198,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'14';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha3-256\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha3-256\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -209,7 +211,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'15';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha3-512\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'sha3-512\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -222,7 +224,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'16';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'ripemd128\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'ripemd128\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -235,7 +237,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'17';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'ripemd320\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'ripemd320\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -248,7 +250,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'18';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'whirlpool\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'whirlpool\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -261,7 +263,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'19';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'tiger128,3\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'tiger128,3\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -274,7 +276,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'20';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'tiger192,4\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'tiger192,4\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -287,7 +289,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'21';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'snefru\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'snefru\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -300,7 +302,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'22';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'snefru256\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'snefru256\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -313,7 +315,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'23';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'gost\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'gost\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -326,7 +328,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'24';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'gost-crypto\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'gost-crypto\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -339,7 +341,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'25';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'adler32\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'adler32\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -352,7 +354,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'26';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv132\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv132\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -365,7 +367,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'27';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv1a32\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv1a32\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -378,7 +380,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'28';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv164\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv164\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -391,7 +393,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'29';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv1a64\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'fnv1a64\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -404,7 +406,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'30';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'joaat\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'joaat\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -417,7 +419,7 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'31';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'haval128,3\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'haval128,3\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
@@ -430,14 +432,17 @@ abstract class Events_Test__PHP {
 
         $speed = (($t1-$t0) + ($t3-$t2) + ($t5-$t4) + ($t7-$t6) + ($t9-$t8)) / 5;
         $unique_key = Core::format_number($speed, 5, '.', '', false).'32';
-        $c_results['reports'][$dpath.':hash'][$unique_key] = new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'haval256,5\')', 19, '.'),
+        $report[$unique_key]= new Text('speed of "%%_name": %%_value', ['name' => str_pad('hash(\'haval256,5\')', 19, '.'),
             'value' => Locale::format_msecond($speed)
         ]);
 
-        ksort($c_results['reports'][$dpath.':hash'], SORT_NUMERIC);
+        ksort($report, SORT_NUMERIC);
+        foreach ($report as $c_text) {
+            yield $c_text;
+        }
     }
 
-    static function test_step_code__isset(&$test, $dpath, &$c_results) {
+    static function test_step_code__isset(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -494,20 +499,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = isset($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = isset($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__empty(&$test, $dpath, &$c_results) {
+    static function test_step_code__empty(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -564,20 +568,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = empty($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = empty($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__is_float(&$test, $dpath, &$c_results) {
+    static function test_step_code__is_float(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -651,20 +654,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = is_float($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = is_float($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__is_int(&$test, $dpath, &$c_results) {
+    static function test_step_code__is_int(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -738,20 +740,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = is_int($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = is_int($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__is_numeric(&$test, $dpath, &$c_results) {
+    static function test_step_code__is_numeric(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -825,20 +826,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = is_numeric($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = is_numeric($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__intval(&$test, $dpath, &$c_results) {
+    static function test_step_code__intval(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -912,20 +912,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = intval($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = intval($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__floatval(&$test, $dpath, &$c_results) {
+    static function test_step_code__floatval(&$test, $dpath) {
         $data = [
             'value_null' => null,
             'value_bool_true' => true,
@@ -999,20 +998,19 @@ abstract class Events_Test__PHP {
         ];
 
         foreach ($expected as $c_row_id => $c_expected) {
-            $c_gotten = floatval($data[$c_row_id]);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = floatval($data[$c_row_id]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__in_array(&$test, $dpath, &$c_results) {
+    static function test_step_code__in_array(&$test, $dpath) {
         $data = [
             'value_string_empty'           => in_array(''  , ['']      ),
             'value_null'                   => in_array(null, ['']      ),
@@ -1035,21 +1033,20 @@ abstract class Events_Test__PHP {
             'value_string_0_is_strict' => false
         ];
 
-        foreach ($data as $c_row_id => $c_gotten) {
+        foreach ($data as $c_row_id => $с_received) {
             $c_expected = $expected[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__str_starts_with(&$test, $dpath, &$c_results) {
+    static function test_step_code__str_starts_with(&$test, $dpath) {
 
         # case for console tests - each warning is an error
         set_error_handler(
@@ -1067,9 +1064,8 @@ abstract class Events_Test__PHP {
 
         $haystack = '100';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'haystack', 'state' => $haystack]);
 
         $needle = [
             'string_empty' => ''   ,
@@ -1113,21 +1109,20 @@ abstract class Events_Test__PHP {
 
         foreach ($needle as $c_row_id => $c_needle) {
             try {
-                $c_gotten = @str_starts_with($haystack, $c_needle);
+                $с_received = @str_starts_with($haystack, $c_needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1135,9 +1130,8 @@ abstract class Events_Test__PHP {
 
         $haystack = '010';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'haystack', 'state' => $haystack]);
 
         $needle = [
             'string_empty' => ''   ,
@@ -1181,21 +1175,20 @@ abstract class Events_Test__PHP {
 
         foreach ($needle as $c_row_id => $c_needle) {
             try {
-                $c_gotten = @str_starts_with($haystack, $c_needle);
+                $с_received = @str_starts_with($haystack, $c_needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1203,9 +1196,8 @@ abstract class Events_Test__PHP {
 
         $haystack = '001';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'haystack', 'state' => $haystack]);
 
         $needle = [
             'string_empty' => ''   ,
@@ -1249,21 +1241,20 @@ abstract class Events_Test__PHP {
 
         foreach ($needle as $c_row_id => $c_needle) {
             try {
-                $c_gotten = @str_starts_with($haystack, $c_needle);
+                $с_received = @str_starts_with($haystack, $c_needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received  = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1271,9 +1262,8 @@ abstract class Events_Test__PHP {
 
         $needle = '0';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'needle', 'state' => $needle]);
 
         $haystack = [
             'string_empty' => ''   ,
@@ -1319,21 +1309,20 @@ abstract class Events_Test__PHP {
 
         foreach ($haystack as $c_row_id => $c_haystack) {
             try {
-                $c_gotten = @str_starts_with($c_haystack, $needle);
+                $с_received = @str_starts_with($c_haystack, $needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1341,9 +1330,8 @@ abstract class Events_Test__PHP {
 
         $needle = '1';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'needle', 'state' => $needle]);
 
         $haystack = [
             'string_empty' => ''   ,
@@ -1389,26 +1377,25 @@ abstract class Events_Test__PHP {
 
         foreach ($haystack as $c_row_id => $c_haystack) {
             try {
-                $c_gotten = @str_starts_with($c_haystack, $needle);
+                $с_received = @str_starts_with($c_haystack, $needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__str_contains(&$test, $dpath, &$c_results) {
+    static function test_step_code__str_contains(&$test, $dpath) {
 
         # case for console tests - each warning is an error
         set_error_handler(
@@ -1426,9 +1413,8 @@ abstract class Events_Test__PHP {
 
         $haystack = '100';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'haystack', 'state' => $haystack]);
 
         $needle = [
             'string_empty' => ''   ,
@@ -1472,21 +1458,20 @@ abstract class Events_Test__PHP {
 
         foreach ($needle as $c_row_id => $c_needle) {
             try {
-                $c_gotten = @str_contains($haystack, $c_needle);
+                $с_received = @str_contains($haystack, $c_needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result  = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1494,9 +1479,8 @@ abstract class Events_Test__PHP {
 
         $haystack = '010';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'haystack', 'state' => $haystack]);
 
         $needle = [
             'string_empty' => ''   ,
@@ -1540,21 +1524,20 @@ abstract class Events_Test__PHP {
 
         foreach ($needle as $c_row_id => $c_needle) {
             try {
-                $c_gotten = @str_contains($haystack, $c_needle);
+                $с_received = @str_contains($haystack, $c_needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1562,9 +1545,8 @@ abstract class Events_Test__PHP {
 
         $haystack = '001';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'haystack: '.$haystack, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'haystack', 'state' => $haystack]);
 
         $needle = [
             'string_empty' => ''   ,
@@ -1608,21 +1590,20 @@ abstract class Events_Test__PHP {
 
         foreach ($needle as $c_row_id => $c_needle) {
             try {
-                $c_gotten = @str_contains($haystack, $c_needle);
+                $с_received = @str_contains($haystack, $c_needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1630,9 +1611,8 @@ abstract class Events_Test__PHP {
 
         $needle = '0';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'needle', 'state' => $needle]);
 
         $haystack = [
             'string_empty' => ''   ,
@@ -1678,21 +1658,20 @@ abstract class Events_Test__PHP {
 
         foreach ($haystack as $c_row_id => $c_haystack) {
             try {
-                $c_gotten = @str_contains($c_haystack, $needle);
+                $с_received = @str_contains($c_haystack, $needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1700,9 +1679,8 @@ abstract class Events_Test__PHP {
 
         $needle = '1';
 
-        $c_results['reports'][$dpath][] = '';
-        $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'needle: '.$needle, 'result' => (new Text('success'))->render()]);
-        $c_results['reports'][$dpath][] = '';
+        yield new Text_simple('');
+        yield new Text('state of "%%_of" is: "%%_state"', ['of' => 'needle', 'state' => $needle]);
 
         $haystack = [
             'string_empty' => ''   ,
@@ -1748,21 +1726,20 @@ abstract class Events_Test__PHP {
 
         foreach ($haystack as $c_row_id => $c_haystack) {
             try {
-                $c_gotten = @str_contains($c_haystack, $needle);
+                $с_received = @str_contains($c_haystack, $needle);
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             } catch (Throwable $e) {
-                $c_gotten = 'exception';
+                $с_received = 'exception';
                 $c_expected = $expected[$c_row_id];
-                $c_result = $c_gotten === $c_expected;
+                $c_result   = $с_received === $c_expected;
             }
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }

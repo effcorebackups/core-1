@@ -16,13 +16,16 @@ translations
     - - no -: - ні -
     - - root -: - корінь -
     - - select -: - вибрати -
+    - - string in English #1\: translated string #1: - string in English #1: перекладений рядок №1
+    - - string in English #2\: translated string #2: - string in English #2: перекладений рядок №2
+    - - string in English #3\: translated string #3: - string in English #3: перекладений рядок №3
     - - system value -: - системне значення -
     - %%_entity_title_context \| append: %%_entity_title_context | додати
     - %%_entity_title_context \| change: %%_entity_title_context | змінити
     - %%_entity_title_context \| delete: %%_entity_title_context | видалити
-    - %%_number sec.: %%_number сек.
     - %%_number file%%_plural(number\|s): %%_number файл%%_plural(number|iv-i)
     - %%_number piece%%_plural(number\|s): %%_number штук%%_plural(number|a-i)
+    - %%_number sec.: %%_number сек.
     - %%_number second%%_plural(number\|s): %%_number секунд%%_plural(number|a-i)
     - A new password was sent to the selected EMail address.: Новий пароль був надіслан на вибрану адресу електронної пошти.
     - Absolute URL as link: Абсолютний URL як посилання
@@ -243,6 +246,7 @@ translations
     - Event: Подія
     - events: події
     - Events: Події
+    - Example: Приклад
     - Examples: Приклади
     - Examples\: %%_examples: Приклади: %%_examples
     - Execution: Виконання
@@ -731,7 +735,9 @@ translations
     - press to show or hide nested content: натисніть, щоб показати або сховати вкладений вміст
     - Preview: Попередній перегляд
     - profile export: експорт профілю
+    - profile: профіль
     - Profile: Профіль
+    - profiles: профілі
     - Profiles: Профілі
     - Project: Проект
     - Projects: Проекти
@@ -942,6 +948,7 @@ translations
     - Uninstall: Видалити
     - universal handlers: універсальні обробники
     - Unknown error!: Невідома помилка!
+    - Unknown user!: Невідомий користувач!
     - Unordered list: Невпорядкований список
     - update: оновити
     - Update: Оновити

@@ -13,34 +13,33 @@ use effcore\Translation;
 
 abstract class Events_Test__Class_Translation {
 
-    static function test_step_code__apply(&$test, $dpath, &$c_results) {
+    static function test_step_code__apply(&$test, $dpath) {
         $data = [
-            'ok'             => ['gotten' => Translation::apply('%%_number sec.',                    ['number' => 1], 'ru'), 'expected' => '1 сек.'                              ],
-            'error'          => ['gotten' => Translation::apply('%%_number sec.',                    [             ], 'ru'), 'expected' => '%%_number сек.'                      ],
-            'plural-ok'      => ['gotten' => Translation::apply('%%_number file%%_plural(number|s)', ['number' => 1], 'ru'), 'expected' => '1 файл'                              ],
-            'plural-error-1' => ['gotten' => Translation::apply('%%_number file%%_plural(number)',   ['number' => 1], 'ru'), 'expected' => '1 file%%_plural(number)'             ],
-            'plural-error-2' => ['gotten' => Translation::apply('%%_number file%%_plural',           ['number' => 1], 'ru'), 'expected' => '1 file%%_plural'                     ],
-            'plural-error-3' => ['gotten' => Translation::apply('%%_number file%%_plural(number|s)', [             ], 'ru'), 'expected' => '%%_number файл%%_plural(number|ov-a)'],
-            'plural-error-4' => ['gotten' => Translation::apply('%%_number file%%_plural(number)',   [             ], 'ru'), 'expected' => '%%_number file%%_plural(number)'     ],
-            'plural-error-5' => ['gotten' => Translation::apply('%%_number file%%_plural',           [             ], 'ru'), 'expected' => '%%_number file%%_plural'             ],
+            'ok'             => ['received' => Translation::apply('%%_number sec.',                    ['number' => 1], 'ru'), 'expected' => '1 сек.'                              ],
+            'error'          => ['received' => Translation::apply('%%_number sec.',                    [             ], 'ru'), 'expected' => '%%_number сек.'                      ],
+            'plural-ok'      => ['received' => Translation::apply('%%_number file%%_plural(number|s)', ['number' => 1], 'ru'), 'expected' => '1 файл'                              ],
+            'plural-error-1' => ['received' => Translation::apply('%%_number file%%_plural(number)',   ['number' => 1], 'ru'), 'expected' => '1 file%%_plural(number)'             ],
+            'plural-error-2' => ['received' => Translation::apply('%%_number file%%_plural',           ['number' => 1], 'ru'), 'expected' => '1 file%%_plural'                     ],
+            'plural-error-3' => ['received' => Translation::apply('%%_number file%%_plural(number|s)', [             ], 'ru'), 'expected' => '%%_number файл%%_plural(number|ov-a)'],
+            'plural-error-4' => ['received' => Translation::apply('%%_number file%%_plural(number)',   [             ], 'ru'), 'expected' => '%%_number file%%_plural(number)'     ],
+            'plural-error-5' => ['received' => Translation::apply('%%_number file%%_plural',           [             ], 'ru'), 'expected' => '%%_number file%%_plural'             ],
         ];
 
         foreach ($data as $c_row_id => $c_info) {
             $c_expected = $c_info['expected'];
-            $c_gotten = $c_info['gotten'];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_info['received'];
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__apply__pieces(&$test, $dpath, &$c_results) {
+    static function test_step_code__apply__pieces(&$test, $dpath) {
 
         # ──────────────────────────────────────────────────────────
         # nominative, middle:
@@ -160,40 +159,38 @@ abstract class Events_Test__Class_Translation {
         ];
 
         foreach ($expected as $c_num => $c_expected) {
-            $c_gotten = $base_word;
+            $с_received = $base_word;
             $c_preg_result = [];
             preg_match($formula, (string)$c_num, $c_preg_result);
-            if (isset($c_preg_result['variant_1']) && strlen($c_preg_result['variant_1'])) $c_gotten.= $matches['variant_1'];
-            if (isset($c_preg_result['variant_2']) && strlen($c_preg_result['variant_2'])) $c_gotten.= $matches['variant_2'];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('failure'))->render()]);
+            if (isset($c_preg_result['variant_1']) && strlen($c_preg_result['variant_1'])) $с_received.= $matches['variant_1'];
+            if (isset($c_preg_result['variant_2']) && strlen($c_preg_result['variant_2'])) $с_received.= $matches['variant_2'];
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$с_received, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$с_received, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
         foreach ($expected as $c_num => $c_expected) {
-            $c_gotten = Translation::apply('%%_number piece%%_plural(number|s)', ['number' => $c_num], 'ru');
+            $с_received = Translation::apply('%%_number piece%%_plural(number|s)', ['number' => $c_num], 'ru');
             $c_expected = $c_num.' '.$c_expected;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__apply__seconds(&$test, $dpath, &$c_results) {
+    static function test_step_code__apply__seconds(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # nominative, feminine:
@@ -313,40 +310,38 @@ abstract class Events_Test__Class_Translation {
         ];
 
         foreach ($expected as $c_num => $c_expected) {
-            $c_gotten = $base_word;
+            $с_received = $base_word;
             $c_preg_result = [];
             preg_match($formula, (string)$c_num, $c_preg_result);
-            if (isset($c_preg_result['variant_1']) && strlen($c_preg_result['variant_1'])) $c_gotten.= $matches['variant_1'];
-            if (isset($c_preg_result['variant_2']) && strlen($c_preg_result['variant_2'])) $c_gotten.= $matches['variant_2'];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('failure'))->render()]);
+            if (isset($c_preg_result['variant_1']) && strlen($c_preg_result['variant_1'])) $с_received.= $matches['variant_1'];
+            if (isset($c_preg_result['variant_2']) && strlen($c_preg_result['variant_2'])) $с_received.= $matches['variant_2'];
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$с_received, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$с_received, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
         foreach ($expected as $c_num => $c_expected) {
-            $c_gotten = Translation::apply('%%_number second%%_plural(number|s)', ['number' => $c_num], 'ru');
+            $с_received = Translation::apply('%%_number second%%_plural(number|s)', ['number' => $c_num], 'ru');
             $c_expected = $c_num.' '.$c_expected;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__apply__files(&$test, $dpath, &$c_results) {
+    static function test_step_code__apply__files(&$test, $dpath) {
 
         # ─────────────────────────────────────────────────────────────────────
         # nominative, masculine:
@@ -427,80 +422,77 @@ abstract class Events_Test__Class_Translation {
         ];
 
         foreach ($expected as $c_num => $c_expected) {
-            $c_gotten = $base_word;
+            $с_received = $base_word;
             $c_preg_result = [];
             preg_match($formula, (string)$c_num, $c_preg_result);
-            if (isset($c_preg_result['variant_1']) && strlen($c_preg_result['variant_1'])) $c_gotten.= $matches['variant_1'];
-            if (isset($c_preg_result['variant_2']) && strlen($c_preg_result['variant_2'])) $c_gotten.= $matches['variant_2'];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$c_gotten, 'result' => (new Text('failure'))->render()]);
+            if (isset($c_preg_result['variant_1']) && strlen($c_preg_result['variant_1'])) $с_received.= $matches['variant_1'];
+            if (isset($c_preg_result['variant_2']) && strlen($c_preg_result['variant_2'])) $с_received.= $matches['variant_2'];
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$с_received, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_num.' '.$с_received, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
         # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
         foreach ($expected as $c_num => $c_expected) {
-            $c_gotten = Translation::apply('%%_number file%%_plural(number|s)', ['number' => $c_num], 'ru');
+            $с_received = Translation::apply('%%_number file%%_plural(number|s)', ['number' => $c_num], 'ru');
             $c_expected = $c_num.' '.$c_expected;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_expected, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__plural(&$test, $dpath, &$c_results) {
+    static function test_step_code__plural(&$test, $dpath) {
         $data = [
-            'en-0' => ['gotten' => Translation::plural(['number', 's'   ], ['number' => 0], 'en'), 'expected' => 's' ],
-            'en-1' => ['gotten' => Translation::plural(['number', 's'   ], ['number' => 1], 'en'), 'expected' => ''  ],
-            'en-2' => ['gotten' => Translation::plural(['number', 's'   ], ['number' => 2], 'en'), 'expected' => 's' ],
-            'ru-0' => ['gotten' => Translation::plural(['number', 'ov-a'], ['number' => 0], 'ru'), 'expected' => 'ов'],
-            'ru-1' => ['gotten' => Translation::plural(['number', 'ov-a'], ['number' => 1], 'ru'), 'expected' => ''  ],
-            'ru-2' => ['gotten' => Translation::plural(['number', 'ov-a'], ['number' => 2], 'ru'), 'expected' => 'а' ],
-            'ru-3' => ['gotten' => Translation::plural(['number', 'ov-a'], ['number' => 3], 'ru'), 'expected' => 'а' ],
-            'ru-4' => ['gotten' => Translation::plural(['number', 'ov-a'], ['number' => 4], 'ru'), 'expected' => 'а' ],
-            'ru-5' => ['gotten' => Translation::plural(['number', 'ov-a'], ['number' => 5], 'ru'), 'expected' => 'ов'],
-            'be-0' => ['gotten' => Translation::plural(['number', 'au-a'], ['number' => 0], 'be'), 'expected' => 'аў'],
-            'be-1' => ['gotten' => Translation::plural(['number', 'au-a'], ['number' => 1], 'be'), 'expected' => ''  ],
-            'be-2' => ['gotten' => Translation::plural(['number', 'au-a'], ['number' => 2], 'be'), 'expected' => 'а' ],
-            'be-3' => ['gotten' => Translation::plural(['number', 'au-a'], ['number' => 3], 'be'), 'expected' => 'а' ],
-            'be-4' => ['gotten' => Translation::plural(['number', 'au-a'], ['number' => 4], 'be'), 'expected' => 'а' ],
-            'be-5' => ['gotten' => Translation::plural(['number', 'au-a'], ['number' => 5], 'be'), 'expected' => 'аў'],
-            'uk-0' => ['gotten' => Translation::plural(['number', 'iv-i'], ['number' => 0], 'uk'), 'expected' => 'ів'],
-            'uk-1' => ['gotten' => Translation::plural(['number', 'iv-i'], ['number' => 1], 'uk'), 'expected' => ''  ],
-            'uk-2' => ['gotten' => Translation::plural(['number', 'iv-i'], ['number' => 2], 'uk'), 'expected' => 'и' ],
-            'uk-3' => ['gotten' => Translation::plural(['number', 'iv-i'], ['number' => 3], 'uk'), 'expected' => 'и' ],
-            'uk-4' => ['gotten' => Translation::plural(['number', 'iv-i'], ['number' => 4], 'uk'), 'expected' => 'и' ],
-            'uk-5' => ['gotten' => Translation::plural(['number', 'iv-i'], ['number' => 5], 'uk'), 'expected' => 'ів'],
+            'en-0' => ['received' => Translation::plural(['number', 's'   ], ['number' => 0], 'en'), 'expected' => 's' ],
+            'en-1' => ['received' => Translation::plural(['number', 's'   ], ['number' => 1], 'en'), 'expected' => ''  ],
+            'en-2' => ['received' => Translation::plural(['number', 's'   ], ['number' => 2], 'en'), 'expected' => 's' ],
+            'ru-0' => ['received' => Translation::plural(['number', 'ov-a'], ['number' => 0], 'ru'), 'expected' => 'ов'],
+            'ru-1' => ['received' => Translation::plural(['number', 'ov-a'], ['number' => 1], 'ru'), 'expected' => ''  ],
+            'ru-2' => ['received' => Translation::plural(['number', 'ov-a'], ['number' => 2], 'ru'), 'expected' => 'а' ],
+            'ru-3' => ['received' => Translation::plural(['number', 'ov-a'], ['number' => 3], 'ru'), 'expected' => 'а' ],
+            'ru-4' => ['received' => Translation::plural(['number', 'ov-a'], ['number' => 4], 'ru'), 'expected' => 'а' ],
+            'ru-5' => ['received' => Translation::plural(['number', 'ov-a'], ['number' => 5], 'ru'), 'expected' => 'ов'],
+            'be-0' => ['received' => Translation::plural(['number', 'au-a'], ['number' => 0], 'be'), 'expected' => 'аў'],
+            'be-1' => ['received' => Translation::plural(['number', 'au-a'], ['number' => 1], 'be'), 'expected' => ''  ],
+            'be-2' => ['received' => Translation::plural(['number', 'au-a'], ['number' => 2], 'be'), 'expected' => 'а' ],
+            'be-3' => ['received' => Translation::plural(['number', 'au-a'], ['number' => 3], 'be'), 'expected' => 'а' ],
+            'be-4' => ['received' => Translation::plural(['number', 'au-a'], ['number' => 4], 'be'), 'expected' => 'а' ],
+            'be-5' => ['received' => Translation::plural(['number', 'au-a'], ['number' => 5], 'be'), 'expected' => 'аў'],
+            'uk-0' => ['received' => Translation::plural(['number', 'iv-i'], ['number' => 0], 'uk'), 'expected' => 'ів'],
+            'uk-1' => ['received' => Translation::plural(['number', 'iv-i'], ['number' => 1], 'uk'), 'expected' => ''  ],
+            'uk-2' => ['received' => Translation::plural(['number', 'iv-i'], ['number' => 2], 'uk'), 'expected' => 'и' ],
+            'uk-3' => ['received' => Translation::plural(['number', 'iv-i'], ['number' => 3], 'uk'), 'expected' => 'и' ],
+            'uk-4' => ['received' => Translation::plural(['number', 'iv-i'], ['number' => 4], 'uk'), 'expected' => 'и' ],
+            'uk-5' => ['received' => Translation::plural(['number', 'iv-i'], ['number' => 5], 'uk'), 'expected' => 'ів'],
         ];
 
         foreach ($data as $c_row_id => $c_info) {
             $c_expected = $c_info['expected'];
-            $c_gotten = $c_info['gotten'];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_info['received'];
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__filter(&$test, $dpath, &$c_results) {
+    static function test_step_code__filter(&$test, $dpath) {
         $data = [
             'empty' => '',
             '**' =>
@@ -598,15 +590,14 @@ abstract class Events_Test__Class_Translation {
 
         foreach ($data as $c_row_id => $c_value) {
             $c_expected = $expected_en[$c_row_id];
-            $c_gotten = Translation::filter($c_value, 'en');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en: '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Translation::filter($c_value, 'en');
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'en: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'en: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -633,15 +624,14 @@ abstract class Events_Test__Class_Translation {
 
         foreach ($data as $c_row_id => $c_value) {
             $c_expected = $expected_en_strict[$c_row_id];
-            $c_gotten = Translation::filter($c_value, 'en', true);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en + trict: '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'en + trict: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Translation::filter($c_value, 'en', true);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'en + trict: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'en + trict: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -687,15 +677,14 @@ abstract class Events_Test__Class_Translation {
 
         foreach ($data as $c_row_id => $c_value) {
             $c_expected = $expected_ru[$c_row_id];
-            $c_gotten = Translation::filter($c_value, 'ru');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru: '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Translation::filter($c_value, 'ru');
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -723,15 +712,14 @@ abstract class Events_Test__Class_Translation {
 
         foreach ($data as $c_row_id => $c_value) {
             $c_expected = $expected_ru_strict[$c_row_id];
-            $c_gotten = Translation::filter($c_value, 'ru', true);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru + strict: '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru + strict: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Translation::filter($c_value, 'ru', true);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru + strict: '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'ru + strict: '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }

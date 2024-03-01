@@ -115,7 +115,7 @@ class Selection extends Markup implements has_Data_cache {
                         $page_max_number = 1;
                     $pager = new Pager(1, $page_max_number, $this->pager_name, $this->pager_id, [], -200);
                     $pager_error_code = $pager->error_code_get();
-                    if ($pager_error_code === Pager::ERR_CODE_CUR_GT_MAX) Url::go($pager::url_get($pager->name, $pager->id, $page_max_number));
+                    if ($pager_error_code === Pager::ERR_CODE_CUR_GT_MAX) URL::go($pager::url_get($pager->name, $pager->id, $page_max_number));
                     if ($pager_error_code !== Pager::ERR_CODE_OK) Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong pager value', 'go to <a href="/">front page</a>'], [], BR.BR));
                     if ($page_max_number > 1) {
                         $this->query_settings['offset'] = ($pager->cur - 1) * $this->query_settings['limit'];

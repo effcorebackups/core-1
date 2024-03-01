@@ -7,7 +7,7 @@ Supported Software
 Clients Software
 ---------------------------------------------------------------------
 
-All modern browsers with ES6 support.
+All modern browsers with ES6 support (from 2016).
 
 
 Server Software
@@ -142,12 +142,14 @@ Recommended Development Software
 Only high quality licensed expensive software was used for create the project.
 It is recommended to use the next software:
 - **macOS** for using quality software and make development environment;
+- **Visual Studio Code + Intelephense** (mac|win|linux) for working with code|markup|styles and searching in the code;
 - **Nova + Intelephense** (mac) for working with code|markup|styles and searching in the code;
 - **Textastic** (mac) for working with huge text files;
 - **Hex Fiend** (mac) for working with hex files;
 - **Find Any Files** (mac) for searching in the code;
 - **VisualGrep** (mac) for searching in the code;
 - **RegExRX** (mac|win) for improve your regular expressions;
+- **Fork** (mac|win) for working with Git;
 - **Tower** (mac|win) for working with Git;
 - **Araxis Merge** (mac|win) for search differences in code;
 - **Kaleidoscope** (mac) for search differences in code;
@@ -195,13 +197,14 @@ Trademarks
 - DataGrip is registered trademark of JetBrains s.r.o.
 - Find Any Files is registered trademark or trademarks of Thomas Tempelmann.
 - Firefox® is registered trademark of Mozilla Foundation.
+- Fork is registered trademark or trademarks of Danil Pristupov.
 - FreeBSD® is registered trademark of The FreeBSD Foundation.
 - Google™, Google Chrome™ are registered trademarks of Google Inc.
 - Hex Fiend is registered trademark of ridiculous_fish.
 - iOS is trademark or registered trademark of Cisco in the U.S. and other countries and is used by Apple under license.
 - Kaleidoscope is registered trademark or trademarks of Leitmotif GmbH.
 - Keyshape is registered trademark or trademarks of Pixofield Ltd.
-- Microsoft, Windows®, Edge®, Internet Information Services (IIS) are registered trademarks or trademarks of Microsoft Corporation in the U.S. and/or other countries.
+- Microsoft, Windows®, Edge®, Internet Information Services (IIS), Visual Studio Code are registered trademarks or trademarks of Microsoft Corporation in the U.S. and/or other countries.
 - Monodraw is registered trademark or trademarks of Helftone Ltd.
 - MySQL™ is registered trademark or trademarks of Oracle Corporation and/or its affiliates.
 - Neor Profile SQL is registered trademark or trademarks of Neor LLC.

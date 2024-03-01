@@ -16,7 +16,7 @@ use effcore\Request;
 use effcore\Text;
 use effcore\Tree_item;
 use effcore\Tree;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page {
 
@@ -53,7 +53,7 @@ abstract class Events_Page {
                         Access::check(Entity::get('tree_item')->access->on_select) &&
                         Access::check(Entity::get('tree_item')->access->on_update)) {
                         $block->header = new Markup('x-admin-actions', ['data-entity_name' => $entity_name],
-                            new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.Url::back_part_make()],
+                            new Markup('a', ['data-id' => 'update', 'title' => new Text('update'), 'href' => '/manage/data/menu/tree_item///'.$instance_id.'?'.URL::back_part_make()],
                                 new Markup('x-action-title', ['data-action-title' => true], 'update')
                             )
                         );
@@ -65,19 +65,19 @@ abstract class Events_Page {
 
     static function on_tree_build_after($event, $tree) {
         if (!Frontend::select('tree_all__menu'))
-             Frontend::insert('tree_all__menu', null, 'styles', [
+             Frontend::insert('tree_all__menu', 'tree_style', null, 'styles', [
                  'path' => 'frontend/tree.cssd',
                  'attributes' => [
                      'rel'   => 'stylesheet',
                      'media' => 'all'],
-                 'weight' => +400], 'tree_style', 'menu');
+                 'weight' => +400], 'menu');
         if ($tree->manage_mode === 'rearrange') {
             if (!Frontend::select('tree_manage__menu')) {
-                 Frontend::insert('tree_manage__menu', null, 'scripts', [
+                 Frontend::insert('tree_manage__menu', 'tree_script', null, 'scripts', [
                      'path' => 'frontend/tree-manage.js',
                      'attributes' => [
                          'defer' => true],
-                     'weight' => +300], 'tree_script', 'menu');
+                     'weight' => +300], 'menu');
             }
         }
     }

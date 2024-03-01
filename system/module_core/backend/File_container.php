@@ -6,7 +6,6 @@
 
 namespace effcore;
 
-use effcore\Extend_exception;
 use Exception;
 
 class File_container {

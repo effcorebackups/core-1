@@ -20,12 +20,12 @@ abstract class Events_Form_Security_settings_captcha {
 
     static function on_build($event, $form) {
         if (!Frontend::select('form_all__captcha'))
-             Frontend::insert('form_all__captcha', null, 'styles', [
+             Frontend::insert('form_all__captcha', 'form_style', null, 'styles', [
                  'path' => 'frontend/captcha.css',
                  'attributes' => [
                      'rel'   => 'stylesheet',
                      'media' => 'all'],
-                 'weight' => -300], 'form_style', 'captcha');
+                 'weight' => -300], 'captcha');
         $form->_glyphs = Glyph::get_all();
         Core::array_sort_by_string($form->_glyphs, 'character');
         $form->child_select('main')->child_select('glyphs')->children_delete();

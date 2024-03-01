@@ -18,7 +18,7 @@ use effcore\Selection;
 use effcore\Text_multiline;
 use effcore\Text;
 use effcore\Token;
-use effcore\Url;
+use effcore\URL;
 use stdClass;
 
 abstract class Events_Page_Instance_select {
@@ -38,8 +38,8 @@ abstract class Events_Page_Instance_select {
                         count($id_values)) {
                         $conditions = array_combine($id_keys, $id_values);
                         $instance = new Instance($entity_name, $conditions);
-                        if ($instance->select() === null && Url::back_url_get() !== '') Url::go(Url::back_url_get()); # after deletion
-                        if ($instance->select() === null && Url::back_url_get() === '')
+                        if ($instance->select() === null && URL::back_url_get() !== '') URL::go(URL::back_url_get()); # after deletion
+                        if ($instance->select() === null && URL::back_url_get() === '')
                            Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong instance key'                         , 'go to <a href="/">front page</a>'], [], BR.BR));
                     } else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['wrong number of instance keys'              , 'go to <a href="/">front page</a>'], [], BR.BR));
                 }     else Response::send_header_and_exit('page_not_found', null, new Text_multiline(['management for this entity is not available', 'go to <a href="/">front page</a>'], [], BR.BR));
@@ -82,8 +82,8 @@ abstract class Events_Page_Instance_select {
                             $selection->fields['code']['actions']->weight = -500;
                             $selection->fields['code']['actions']->closure = function ($c_cell_id, $c_row, $c_instance, $origin) use ($has_access_update, $has_access_delete) {
                                 $c_actions_list = new Actions_list;
-                                if ($has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert('delete', 'delete', $c_instance->make_url_for_delete().'?'.Url::back_part_make());
-                                if ($has_access_update                                   ) $c_actions_list->action_insert('update', 'change', $c_instance->make_url_for_update().'?'.Url::back_part_make());
+                                if ($has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert('delete', 'delete', $c_instance->make_url_for_delete().'?'.URL::back_part_make());
+                                if ($has_access_update                                   ) $c_actions_list->action_insert('update', 'change', $c_instance->make_url_for_update().'?'.URL::back_part_make());
                                 return $c_actions_list;
                             };
                         }

@@ -1,45 +1,57 @@
 
 /* demo tokens:
 ═════════════════════════════════════════════════════════════════════
-demo_text                          : %%_demo_text
+demo_text                           : %%_demo_text
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-user_id                            : %%_user_id
-nickname                           : %%_nickname
-email                              : %%_email
-avatar_path                        : %%_avatar_path
+user_id                             : %%_user_id
+nickname                            : %%_nickname
+email                               : %%_email
+avatar_path                         : %%_avatar_path
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-current_time_utc                   : %%_current_time_utc
-current_time_utc_formatted         : %%_current_time_utc_formatted
-current_time_local                 : %%_current_time_local
-current_time_local_formatted       : %%_current_time_local_formatted
+time                                : %%_time
+time(not_formatted=yes)             : %%_time(not_formatted=yes)
+time(utc=yes)                       : %%_time(utc=yes)
+time(utc=yes|not_formatted=yes)     : %%_time(utc=yes|not_formatted=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-current_date_utc                   : %%_current_date_utc
-current_date_utc_formatted         : %%_current_date_utc_formatted
-current_date_local                 : %%_current_date_local
-current_date_local_formatted       : %%_current_date_local_formatted
+date                                : %%_date
+date(not_formatted=yes)             : %%_date(not_formatted=yes)
+date(utc=yes)                       : %%_date(utc=yes)
+date(utc=yes|not_formatted=yes)     : %%_date(utc=yes|not_formatted=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-current_datetime_utc               : %%_current_datetime_utc
-current_datetime_utc_formatted     : %%_current_datetime_utc_formatted
-current_datetime_local             : %%_current_datetime_local
-current_datetime_local_formatted   : %%_current_datetime_local_formatted
+datetime                            : %%_datetime
+datetime(not_formatted=yes)         : %%_datetime(not_formatted=yes)
+datetime(utc=yes)                   : %%_datetime(utc=yes)
+datetime(utc=yes|not_formatted=yes) : %%_datetime(utc=yes|not_formatted=yes)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-page_arg_context                   : %%_page_arg_context
-page_arg_context(some_arg)         : %%_page_arg_context(some_arg)
-page_arg_context(some_arg|default) : %%_page_arg_context(some_arg|default)
-page_id_context                    : %%_page_id_context(front)
-thumbnail_width_small              : %%_thumbnail_width_small
-thumbnail_width_middle             : %%_thumbnail_width_middle
-thumbnail_width_big                : %%_thumbnail_width_big
-thumbnail_path_cover_default       : %%_thumbnail_path_cover_default
-thumbnail_path_poster_default      : %%_thumbnail_path_poster_default
-page_width_min                     : %%_page_width_min
-page_width_max                     : %%_page_width_max
-page_width_min(context)            : %%_page_width_min(context)
-page_width_max(context)            : %%_page_width_max(context)
+page_arg_context                    : %%_page_arg_context
+page_arg_context(some_arg)          : %%_page_arg_context(some_arg)
+page_arg_context(some_arg|default)  : %%_page_arg_context(some_arg|default)
+page_id_context                     : %%_page_id_context(front)
+thumbnail_width_small               : %%_thumbnail_width_small
+thumbnail_width_middle              : %%_thumbnail_width_middle
+thumbnail_width_big                 : %%_thumbnail_width_big
+thumbnail_path_cover_default        : %%_thumbnail_path_cover_default
+thumbnail_path_poster_default       : %%_thumbnail_path_poster_default
+page_width_min                      : %%_page_width_min
+page_width_max                      : %%_page_width_max
+page_width_min(context)             : %%_page_width_min(context)
+page_width_max(context)             : %%_page_width_max(context)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-entity_title_context               : %%_entity_title_context
-entity_title_plural_context        : %%_entity_title_plural_context
+entity_title_context                : %%_entity_title_context
+entity_title_plural_context         : %%_entity_title_plural_context
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+translation(string in English #1)                                                : %%_translation(string in English #1)
+translation(string in English #2)                                                : %%_translation(string in English #2)
+translation(string in English #3)                                                : %%_translation(string in English #3)
+translation(string in English #1|be)                                             : %%_translation(string in English #1|be)
+translation(string in English #2|be)                                             : %%_translation(string in English #2|be)
+translation(string in English #3|be)                                             : %%_translation(string in English #3|be)
+translation(string in English #1|arg1=1|arg2=2|be)                               : %%_translation(string in English #1|arg1=1|arg2=2|be)
+translation(string in English #2|arg1=1|arg2=2|be)                               : %%_translation(string in English #2|arg1=1|arg2=2|be)
+translation(string in English #3|arg1=1|arg2=2|be)                               : %%_translation(string in English #3|arg1=1|arg2=2|be)
+translation(string in English #1|xx)                                             : %%_translation(string in English #1|xx)
+translation(string in English #2|xx)                                             : %%_translation(string in English #2|xx)
+translation(string in English #3|xx)                                             : %%_translation(string in English #3|xx)
 translation(simple string)                                                       : %%_translation(simple string)
 translation(string with parameter = %_n|n=0)                                     : %%_translation(string with parameter = %%_n|n=0)
 translation(string with parameter = %_n|n=1)                                     : %%_translation(string with parameter = %%_n|n=1)
@@ -47,7 +59,6 @@ translation(string with parameter = %_n|n=2)                                    
 translation(string with plural value = number second%_plural(number|s)|number=0) : %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=0)
 translation(string with plural value = number second%_plural(number|s)|number=1) : %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=1)
 translation(string with plural value = number second%_plural(number|s)|number=2) : %%_translation(string with plural value = %%_number second%%_plural\(number\|s\)|number=2)
-translation(unknown string)                                                      : %%_translation(unknown string)
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 Priorities when determining the color profile:
      1) %%_color(profile=…)

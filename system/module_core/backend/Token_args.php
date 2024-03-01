@@ -35,6 +35,7 @@ class Token_args {
     }
 
     function get($num) {
+        if ($num < 0) $num = count($this->args) + $num;
         return $this->args[$num] ?? null;
     }
 

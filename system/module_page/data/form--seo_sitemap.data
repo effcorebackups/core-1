@@ -6,9 +6,10 @@ forms
     - novalidate: true
     children
     - settings|Fieldset
+        title: Content of the "sitemap.xml" file
         children
         - content|Field_Textarea
-            title: Content of the "sitemap.xml" file
+            title: 
             description_state: opened
             description|Text
               text: If filled, the file will be available at: %%_page

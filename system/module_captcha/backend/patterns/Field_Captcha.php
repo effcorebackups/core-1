@@ -51,12 +51,12 @@ class Field_Captcha extends Field_Text {
             $this->minlength_set($settings_length);
             $this->maxlength_set($settings_length);
             if (!Frontend::select('form_all__captcha'))
-                 Frontend::insert('form_all__captcha', null, 'styles', [
+                 Frontend::insert('form_all__captcha', 'form_style', null, 'styles', [
                      'path' => 'frontend/captcha.css',
                      'attributes' => [
                          'rel'   => 'stylesheet',
                          'media' => 'all'],
-                     'weight' => -300], 'form_style', 'captcha');
+                     'weight' => -300], 'captcha');
             $this->is_builded = true;
         }
     }

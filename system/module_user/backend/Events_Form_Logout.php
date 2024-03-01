@@ -11,7 +11,7 @@ use effcore\Message;
 use effcore\Selection;
 use effcore\Session;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use effcore\User;
 
 abstract class Events_Form_Logout {
@@ -53,7 +53,7 @@ abstract class Events_Form_Logout {
                                 Message::insert($c_message, $c_type);
                         $form->components_build();
                         $form->components_init();
-                    } else Url::go(Url::back_url_get() ?: '/');
+                    } else URL::go(URL::back_url_get() ?: '/');
                 } else {
                     Message::insert('No one item was selected!', 'warning');
                     foreach ($sessions as $c_session) {

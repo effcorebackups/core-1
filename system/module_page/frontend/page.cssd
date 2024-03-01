@@ -75,10 +75,6 @@ audio {
   margin: 10px 0
 }
 
-audio[data-player-audio-default-is-processed] {
-  display: none !important;
-}
-
 
 
 /* video */
@@ -385,14 +381,14 @@ x-no-items[data-style='table'] {
 
 
 
-/* x-document ('license agreement' and etc.) */
+/* x-document */
 
 x-document {
   display: block;
+  max-width: 100%;
+  max-height: 280px;
   margin: 5px 0;
   padding: 15px;
-  max-height: 280px;
-  max-width: 100%;
   box-sizing: border-box;
   overflow: auto;
   border: 1px solid %%_color(main|o=.5);
@@ -402,25 +398,36 @@ x-document {
 
 x-document h1 {margin: 0   0 1em 0; font-size: 1.5em; line-height: 1.2em}
 x-document h2 {margin: 2em 0 1em 0; font-size: 1.3em}
+x-document p:first-child {margin-top:    0}
+x-document p:last-child  {margin-bottom: 0}
 
+/* x-document: report-... */
 
+x-document[data-style^='report'] {
+  max-height: 400px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  font-size: 13px;
+}
+x-document[data-style^='report'] p {
+  margin-block-start: 0;
+  margin-block-end  : 0;
+}
 
-/* note: CSS4 margin-left: calc(20px * attr(data-depth number, 0)) */
+/* x-document: report-test */
 
-x-document[data-style~='report'] {max-height: 400px; font-family: monospace; white-space: pre-wrap; font-size: 13px}
-x-document[data-style~='report'] p:first-child {margin-top:    0}
-x-document[data-style~='report'] p:last-child  {margin-bottom: 0}
-x-document[data-style~='report'] p[data-depth='1'] {margin-left:  15px}
-x-document[data-style~='report'] p[data-depth='2'] {margin-left:  30px}
-x-document[data-style~='report'] p[data-depth='3'] {margin-left:  45px}
-x-document[data-style~='report'] p[data-depth='4'] {margin-left:  60px}
-x-document[data-style~='report'] p[data-depth='5'] {margin-left:  75px}
-x-document[data-style~='report'] p[data-depth='6'] {margin-left:  90px}
-x-document[data-style~='report'] p[data-depth='7'] {margin-left: 105px}
-x-document[data-style~='report'] p[data-depth='8'] {margin-left: 120px}
-x-document[data-style~='report'] p[data-depth='9'] {margin-left: 135px}
+x-document[data-style='report-test'] p[data-is-delimiter]:first-child {display: none}
+x-document[data-style='report-test'] p[data-is-delimiter] {font-size: .5em}
 
-x-document[data-style~='license'] {}
+/* x-document: report-update */
+
+x-document[data-style='report-update'] {
+}
+
+/* x-document: license */
+
+x-document[data-style~='license'] {
+}
 
 
 

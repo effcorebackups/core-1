@@ -14,18 +14,19 @@ class Test_step_Repeat {
     public $quantity = 1;
     public $actions = [];
 
-    function run(&$test, $dpath, &$c_results) {
+    function run(&$test, $dpath) {
+        yield new Text_simple('');
+        yield Test_message::send_dpath($dpath);
         $quantity = $this->quantity instanceof Param_from_form ?
                     $this->quantity->get() :
                     $this->quantity;
         for ($i = 1; $i <= $quantity; $i++) {
-            $c_results['reports'][$dpath.':'.$i]['dpath'] = '### dpath: '.$dpath.':'.$i;
-            $c_results['reports'][$dpath.':'.$i][] = new Text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
-            foreach ($this->actions as $c_dpath_in_cycle => $c_step) {
+            yield Test_message::send_dpath($dpath.'/i:'.$i);
+            yield new Text('repeat %%_cur from %%_max', ['cur' => $i, 'max' => $quantity]);
+            foreach ($this->actions as $c_row_id => $c_action) {
                 if ($this->id) Token::insert('test_step__repeat_i__'.$this->id, 'text', $i, null, 'test');
-                $c_step->run($test, $dpath.':'.$i.'/'.$c_dpath_in_cycle, $c_results);
-                if (array_key_exists('return', $c_results)) {
-                    return;
+                foreach ($c_action->run($test, $dpath.'/i:'.$i.'/'.$c_row_id) as $с_tick) {
+                    yield $с_tick;
                 }
             }
         }

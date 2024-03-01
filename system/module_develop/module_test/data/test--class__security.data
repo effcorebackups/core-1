@@ -72,4 +72,4 @@ tests
         handler: \effcore\modules\test\Events_Test__Class_Security::test_step_code__validate_str_int
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
-        value: 1
+        value: true

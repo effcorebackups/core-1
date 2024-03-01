@@ -23,27 +23,27 @@ use effcore\Token;
 use effcore\Translation;
 use effcore\Tree_item;
 use effcore\Tree;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page_Data_NoSQL {
 
     static function on_redirect($event, $page) {
         $type = Page::get_current()->args_get('type');
         $id   = Page::get_current()->args_get('id');
-        if ($type === null) Url::go($page->args_get('base').'/events');
+        if ($type === null) URL::go($page->args_get('base').'/events');
         if ($type === 'trees') {
             $trees = Tree::select_all('nosql');
             Core::array_sort_by_string($trees, 'description');
             if (empty($trees[$id])) {
-                Url::go($page->args_get('base').'/trees/'.reset($trees)->id);
+                URL::go($page->args_get('base').'/trees/'.reset($trees)->id);
             }
         }
         if ($type === 'translations') {
             $languages = Language::get_all();
             Core::array_sort_by_string($languages, 'title_en', Core::SORT_DSC, false);
             unset($languages['en']);
-            if (count($languages) === 0 && $id !== null          ) Url::go($page->args_get('base').'/translations/'                        );
-            if (count($languages) !== 0 && empty($languages[$id])) Url::go($page->args_get('base').'/translations/'.reset($languages)->code);
+            if (count($languages) === 0 && $id !== null          ) URL::go($page->args_get('base').'/translations/'                        );
+            if (count($languages) !== 0 && empty($languages[$id])) URL::go($page->args_get('base').'/translations/'.reset($languages)->code);
         }
     }
 

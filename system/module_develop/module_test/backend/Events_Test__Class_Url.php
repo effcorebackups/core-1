@@ -11,11 +11,11 @@ use effcore\Core;
 use effcore\Request;
 use effcore\Test;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 
-abstract class Events_Test__Class_Url {
+abstract class Events_Test__Class_URL {
 
-    static function test_step_code__construct(&$test, $dpath, &$c_results) {
+    static function test_step_code__construct(&$test, $dpath) {
         $protocol = Request::scheme_get();
         $domain = Request::host_get();
         $data = [
@@ -109,24 +109,23 @@ abstract class Events_Test__Class_Url {
         ];
 
         foreach ($data as $c_value => $c_expected) {
-            $c_url = new Url($c_value);
+            $c_url = new URL($c_value);
             $c_result = $c_url->protocol === $c_expected['protocol'] &&
                         $c_url->domain   === $c_expected['domain']   &&
                         $c_url->path     === $c_expected['path']     &&
                         $c_url->query    === $c_expected['query']    &&
                         $c_url->anchor   === $c_expected['anchor'];
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_url)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($c_url)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__has_error(&$test, $dpath, &$c_results) {
+    static function test_step_code__has_error(&$test, $dpath) {
         $data = [
             ':',
             ':/',
@@ -139,17 +138,16 @@ abstract class Events_Test__Class_Url {
         ];
 
         foreach ($data as $c_value) {
-            $c_url = new Url($c_value);
+            $c_url = new URL($c_value);
             $c_expected = true;
-            $c_gotten = $c_url->has_error;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_url->has_error;
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_url->has_error)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($c_url->has_error)]);
+                yield Test::FAILED;
             }
         }
 
@@ -306,17 +304,16 @@ abstract class Events_Test__Class_Url {
             if ($i & 0b0010000) $c_value.= $parts[5];
             if ($i & 0b0100000) $c_value.= $parts[6];
             if ($i & 0b1000000) $c_value.= $parts[7];
-            $c_url = new Url($c_value);
+            $c_url = new URL($c_value);
             $c_expected = $expected[$c_value];
-            $c_gotten = $c_url->has_error;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_url->has_error;
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -473,22 +470,21 @@ abstract class Events_Test__Class_Url {
             if ($i & 0b0010000) $c_value.= $parts[5];
             if ($i & 0b0100000) $c_value.= $parts[6];
             if ($i & 0b1000000) $c_value.= $parts[7];
-            $c_url = new Url($c_value);
+            $c_url = new URL($c_value);
             $c_expected = $expected[$c_value];
-            $c_gotten = $c_url->has_error;
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_url->has_error;
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__absolute_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__absolute_get(&$test, $dpath) {
         $protocol = Request::scheme_get();
         $domain = Request::host_get();
         $data = [
@@ -521,21 +517,20 @@ abstract class Events_Test__Class_Url {
         ];
 
         foreach ($data as $c_value => $c_expected) {
-            $c_url = new Url($c_value);
-            $c_gotten = $c_url->absolute_get();
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $c_url = new URL($c_value);
+            $с_received = $c_url->absolute_get();
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__relative_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__relative_get(&$test, $dpath) {
         $protocol = Request::scheme_get();
         $domain = Request::host_get();
         $data = [
@@ -568,44 +563,42 @@ abstract class Events_Test__Class_Url {
         ];
 
         foreach ($data as $c_value => $c_expected) {
-            $c_url = new Url($c_value);
-            $c_gotten = $c_url->relative_get();
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $c_url = new URL($c_value);
+            $с_received = $c_url->relative_get();
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__file_type_get(&$test, $dpath, &$c_results) {
-        $file_1 = new Url('http://example.com/path/Name.ext');
-        $file_2 = new Url('http://example.com/path/Name.Расширение');
-        $file_3 = new Url('http://example.com/path/Имя.ext');
-        $file_4 = new Url('http://example.com/path/Имя.Расширение');
+    static function test_step_code__file_type_get(&$test, $dpath) {
+        $file_1 = new URL('http://example.com/path/Name.ext');
+        $file_2 = new URL('http://example.com/path/Name.Расширение');
+        $file_3 = new URL('http://example.com/path/Имя.ext');
+        $file_4 = new URL('http://example.com/path/Имя.Расширение');
 
-        $gotten = $file_1->file_type_get() === 'ext' &&
-                  $file_2->file_type_get() === 'расширение' &&
-                  $file_3->file_type_get() === 'ext' &&
-                  $file_4->file_type_get() === 'расширение';
+        $received = $file_1->file_type_get() === 'ext' &&
+                    $file_2->file_type_get() === 'расширение' &&
+                    $file_3->file_type_get() === 'ext' &&
+                    $file_4->file_type_get() === 'расширение';
 
         $expected = true;
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'file_type_get', 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'file_type_get', 'result' => (new Text('failure'))->render()]);
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'file_type_get', 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'file_type_get', 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 
-    static function test_step_code__file_info_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__file_info_get(&$test, $dpath) {
         $data = [
 
             # ─────────────────────────────────────────────────────────────────────
@@ -938,23 +931,22 @@ abstract class Events_Test__Class_Url {
 
         foreach ($data as $c_value => $c_expected) {
             $c_real_url = rtrim($c_value, '/'); # redirect emulation
-            $c_gotten = (array)((new Url($c_real_url))->file_info_get());
-            $c_result = $c_gotten                                 &&
-                        $c_gotten['dirs'] === $c_expected['dirs'] &&
-                        $c_gotten['name'] === $c_expected['name'] &&
-                        $c_gotten['type'] === $c_expected['type'];
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
+            $с_received = (array)((new URL($c_real_url))->file_info_get());
+            $c_result = $с_received                                 &&
+                        $с_received['dirs'] === $c_expected['dirs'] &&
+                        $с_received['name'] === $c_expected['name'] &&
+                        $с_received['type'] === $c_expected['type'];
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_value, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__query_args(&$test, $dpath, &$c_results) {
+    static function test_step_code__query_args(&$test, $dpath) {
 
         ###################
         ### build_query ###
@@ -987,15 +979,14 @@ abstract class Events_Test__Class_Url {
                     '%D0%BA%D0%BB%D1%8E%D1%87%201=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201&'.
                     'no_value=';
 
-        $gotten = Url::build_query($data);
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($expected, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($expected, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = URL::build_query($data);
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($expected, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($expected, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         #################
@@ -1035,15 +1026,14 @@ abstract class Events_Test__Class_Url {
 
         foreach ($data as $c_value => $c_expected) {
             $c_parse_result = null;
-            $c_gotten = parse_str($c_value, $c_parse_result);
+            $с_received = parse_str($c_value, $c_parse_result);
             $c_result = Core::data_serialize($c_parse_result, false, true) === Core::data_serialize($c_expected, false, true);
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($c_value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($c_value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($c_value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($c_value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1052,41 +1042,38 @@ abstract class Events_Test__Class_Url {
         ########################
 
         $value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202&%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
-        $url = new Url($value);
+        $url = new URL($value);
         $expected = 'encode_[]=_value';
-        $gotten = $url->query_arg_select('scalar');
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->query_arg_select('scalar');
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $expected = [0 => 'value 1', 'string' => 'value 2'];
-        $gotten = $url->query_arg_select('array');
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->query_arg_select('array');
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $expected = 'значение 1';
-        $gotten = $url->query_arg_select('ключ_1');
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->query_arg_select('ключ_1');
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         ########################
@@ -1095,63 +1082,59 @@ abstract class Events_Test__Class_Url {
 
         $value = 'http://example.com/';
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('scalar', 'encode_[]=_value');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/';
         $expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('array', [0 => 'value 1', 'string' => 'value 2']);
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/';
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('scalar', 'encode_[]=_value');
         $url->query_arg_insert('array', [0 => 'value 1', 'string' => 'value 2']);
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/';
         $expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('ключ_1', 'значение 1');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         ##################################
@@ -1160,63 +1143,59 @@ abstract class Events_Test__Class_Url {
 
         $value = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_new_value';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('scalar', 'encode_[]=_new_value');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/?array[0]=value%201&array[string]=value%202';
         $expected = 'http://example.com/?array[0]=new%20value%201&array[string]=new%20value%202';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('array', [0 => 'new value 1', 'string' => 'new value 2']);
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_new_value&array[0]=new%20value%201&array[string]=new%20value%202';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('scalar', 'encode_[]=_new_value');
         $url->query_arg_insert('array', [0 => 'new value 1', 'string' => 'new value 2']);
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
         $expected = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%202';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_insert('ключ_1', 'значение 2');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         ########################
@@ -1225,63 +1204,59 @@ abstract class Events_Test__Class_Url {
 
         $value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         $expected = 'http://example.com/?array[0]=value%201&array[string]=value%202';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_delete('scalar');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         $expected = 'http://example.com/?scalar=encode_%5B%5D%3D_value';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_delete('array');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/?scalar=encode_%5B%5D%3D_value&array[0]=value%201&array[string]=value%202';
         $expected = 'http://example.com';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_delete('scalar');
         $url->query_arg_delete('array');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
 
         $value = 'http://example.com/?%D0%BA%D0%BB%D1%8E%D1%87_1=%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%201';
         $expected = 'http://example.com';
-        $url = new Url($value);
+        $url = new URL($value);
         $url->query_arg_delete('ключ_1');
-        $gotten = $url->absolute_get();
-        $result = $gotten === $expected;
-        if ($result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
-        if ($result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
+        $received = $url->absolute_get();
+        $result = $received === $expected;
+        if ($result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('success'))->render()]);
+        if ($result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => mb_strimwidth($value, 0, 80, '…', 'UTF-8'), 'result' => (new Text('failure'))->render()]);
         if ($result !== true) {
-            $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
-            $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($gotten)]);
-            $c_results['return'] = 0;
-            return;
+            yield new Text('expected value: %%_value', ['value' => Test::result_prepare($expected)]);
+            yield new Text('received value: %%_value', ['value' => Test::result_prepare($received)]);
+            yield Test::FAILED;
         }
     }
 

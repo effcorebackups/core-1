@@ -185,7 +185,7 @@ class Pager extends Markup {
     ###########################
 
     static function url_get($name, $id, $number = 1) {
-        $url = clone Url::get_current();
+        $url = clone URL::get_current();
         $url->query_arg_delete($name);
         $url_args = Request::values_get($name, '_GET', [], false);
         unset($url_args[$id]);

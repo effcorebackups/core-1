@@ -10,6 +10,9 @@ namespace effcore;
 
 class Test implements has_Data_cache {
 
+    const SUCCESSFUL = true;
+    const FAILED     = false;
+
     public $id;
     public $title;
     public $description;
@@ -17,15 +20,15 @@ class Test implements has_Data_cache {
     public $params;
     public $scenario;
 
+    function prepare() {
+    }
+
     function run() {
-        $c_results = [];
         foreach ($this->scenario as $c_dpath => $c_step) {
-            $c_step->run($this, $c_dpath, $c_results);
-            if (array_key_exists('return', $c_results)) {
-                break;
+            foreach ($c_step->run($this, $c_dpath) as $c_tick) {
+                yield $c_tick;
             }
         }
-        return $c_results;
     }
 
     ###########################
@@ -37,7 +40,8 @@ class Test implements has_Data_cache {
     static function not_external_properties_get() {
         return [
             'id'    => 'id',
-            'title' => 'title'
+            'title' => 'title',
+            'type'  => 'type'
         ];
     }
 

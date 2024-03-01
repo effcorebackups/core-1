@@ -14,7 +14,7 @@ use effcore\Text;
 
 abstract class Events_Test__Class_Request {
 
-    static function test_step_code__name_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__name_get(&$test, $dpath) {
         $data = [
             'name_00' => '',
             'name_01' => 'name_01',
@@ -71,15 +71,14 @@ abstract class Events_Test__Class_Request {
             $c_field->build();
             $c_field->name_set($c_value);
             $c_expected = $c_value === '' ? '' : $c_row_id;
-            $c_gotten = $c_field->name_get($trim);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_field->name_get($trim);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -92,15 +91,14 @@ abstract class Events_Test__Class_Request {
             $c_field->build();
             $c_field->name_set($c_value);
             $c_expected = $c_value;
-            $c_gotten = $c_field->name_get($trim);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_field->name_get($trim);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -112,15 +110,14 @@ abstract class Events_Test__Class_Request {
             $c_field = new Field_Hidden;
             $c_field->name_set($c_value);
             $c_expected = $c_value === '' ? '' : $c_row_id;
-            $c_gotten = $c_field->name_get($trim);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_field->name_get($trim);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -132,20 +129,19 @@ abstract class Events_Test__Class_Request {
             $c_field = new Field_Hidden;
             $c_field->name_set($c_value);
             $c_expected = $c_value;
-            $c_gotten = $c_field->name_get($trim);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $c_field->name_get($trim);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Field_Hidden->name_get(trim = '.($trim ? 'true' : 'false').'): '.$c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }
 
-    static function test_step_code__value_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__value_get(&$test, $dpath) {
         global $_GET;
         $ORIGINAL = $_GET;
 
@@ -255,15 +251,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -324,15 +319,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -393,15 +387,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -462,15 +455,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, $number, '_GET', '', $strict);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::value_get($c_row_id, $number, '_GET', '', $strict);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -525,15 +517,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, $number, '_GET');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::value_get($c_row_id, $number, '_GET');
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -556,22 +547,21 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::value_get($c_row_id, $number, '_GET');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::value_get($c_row_id, $number, '_GET');
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::value_get('.$c_row_id.', number = '.$number.')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
         $_GET = $ORIGINAL;
     }
 
-    static function test_step_code__values_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__values_get(&$test, $dpath) {
         global $_GET;
         $ORIGINAL = $_GET;
 
@@ -680,15 +670,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::values_get($c_row_id, '_GET', [], $strict);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::values_get($c_row_id, '_GET', [], $strict);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -748,15 +737,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::values_get($c_row_id, '_GET', [], $strict);
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::values_get($c_row_id, '_GET', [], $strict);
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.', strict = '.($strict ? 'true' : 'false').')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -807,15 +795,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_value) {
             $_GET = [$c_row_id => $c_value];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::values_get($c_row_id, '_GET');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.')', 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.')', 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::values_get($c_row_id, '_GET');
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.')', 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => 'Request::values_get('.$c_row_id.')', 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -826,7 +813,7 @@ abstract class Events_Test__Class_Request {
     ### $_GET: Request::sanitize_structure() ###
     ############################################
 
-    static function test_step_code__sanitize_structure(&$test, $dpath, &$c_results) {
+    static function test_step_code__sanitize_structure(&$test, $dpath) {
         global $_POST;
         $ORIGINAL = $_POST;
 
@@ -964,15 +951,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_field) {
             $_POST = [$c_row_id => $c_field];
             $c_expected = array_key_exists($c_row_id, $expected) === false ? [] : [$c_row_id => $expected[$c_row_id]];
-            $c_gotten = Request::sanitize_structure('_POST');
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::sanitize_structure('_POST');
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -983,7 +969,7 @@ abstract class Events_Test__Class_Request {
     ### $_FILES: Request::sanitize_structure_FILES(), Request::files_get() ###
     ##########################################################################
 
-    static function test_step_code__sanitize_structure_files(&$test, $dpath, &$c_results) {
+    static function test_step_code__sanitize_structure_files(&$test, $dpath) {
         global $_FILES;
         $_FILES_ORIGINAL = $_FILES;
 
@@ -1068,22 +1054,21 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_field) {
             $_FILES = [$c_row_id => $c_field];
             $c_expected = array_key_exists($c_row_id, $expected) === false ? [] : [$c_row_id => $expected[$c_row_id]];
-            $c_gotten = Request::sanitize_structure_FILES();
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::sanitize_structure_FILES();
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
         $_FILES = $_FILES_ORIGINAL;
     }
 
-    static function test_step_code__files_get(&$test, $dpath, &$c_results) {
+    static function test_step_code__files_get(&$test, $dpath) {
         global $_FILES;
         $_FILES_ORIGINAL = $_FILES;
 
@@ -1433,15 +1418,14 @@ abstract class Events_Test__Class_Request {
         foreach ($data as $c_row_id => $c_field) {
             $_FILES = [$c_row_id => $c_field];
             $c_expected = $expected[$c_row_id];
-            $c_gotten = Request::files_get($c_row_id, 'stdClass');
-            $c_result = $c_gotten == $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = Request::files_get($c_row_id, 'stdClass');
+            $c_result = $с_received == $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
 
@@ -1452,7 +1436,7 @@ abstract class Events_Test__Class_Request {
     ### Request::web_server_get_info() ###
     ######################################
 
-    static function test_step_code__web_server_get_info(&$test, $dpath, &$c_results) {
+    static function test_step_code__web_server_get_info(&$test, $dpath) {
         $data = [
             'nginx'       => (array)Request::web_server_get_info('nginx/1.1X.X'),
             'apache_nix'  => (array)Request::web_server_get_info('Apache/2.4.XX (Unix) LibreSSL/2.2.X PHP/5.6.XX'),
@@ -1477,15 +1461,14 @@ abstract class Events_Test__Class_Request {
 
         foreach ($data as $c_row_id => $c_field) {
             $c_expected = $expected[$c_row_id];
-            $c_gotten = $data[$c_row_id];
-            $c_result = $c_gotten === $c_expected;
-            if ($c_result === true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
-            if ($c_result !== true) $c_results['reports'][$dpath][] = new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
+            $с_received = $data[$c_row_id];
+            $c_result = $с_received === $c_expected;
+            if ($c_result === true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('success'))->render()]);
+            if ($c_result !== true) yield new Text('checking of item "%%_id": "%%_result"', ['id' => $c_row_id, 'result' => (new Text('failure'))->render()]);
             if ($c_result !== true) {
-                $c_results['reports'][$dpath][] = new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
-                $c_results['reports'][$dpath][] = new Text('gotten value: %%_value', ['value' => Test::result_prepare($c_gotten)]);
-                $c_results['return'] = 0;
-                return;
+                yield new Text('expected value: %%_value', ['value' => Test::result_prepare($c_expected)]);
+                yield new Text('received value: %%_value', ['value' => Test::result_prepare($с_received)]);
+                yield Test::FAILED;
             }
         }
     }

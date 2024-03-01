@@ -53,7 +53,7 @@ class Tree_item extends Node {
 
     function is_active() {
         $href = $this->href_get();
-        if ($href && Url::is_active($href, 'path')) {
+        if ($href && URL::is_active($href, 'path')) {
             return true;
         }
     }
@@ -61,8 +61,8 @@ class Tree_item extends Node {
     function is_active_trail() {
         $href        = $this->href_get       ();
         $href_hidden = $this->href_hidden_get();
-        if ($href        && Url::is_active_trail($href       )) return true;
-        if ($href_hidden && Url::is_active_trail($href_hidden)) return true;
+        if ($href        && URL::is_active_trail($href       )) return true;
+        if ($href_hidden && URL::is_active_trail($href_hidden)) return true;
     }
 
     function render() {
@@ -103,7 +103,7 @@ class Tree_item extends Node {
             new Markup('x-icon'),
             new Markup('x-info', [], [
                 new Markup('x-title', [], $this->title),
-                new Markup('x-extra', [], $this->extra), $this->url ? Url::url_to_markup($this->url) :
+                new Markup('x-extra', [], $this->extra), $this->url ? URL::url_to_markup($this->url) :
                 new Markup('x-url', [], 'No URL.')
             ])
         ]))->render();

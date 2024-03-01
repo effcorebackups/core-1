@@ -81,6 +81,7 @@ tab_items
     id: demo_embedded
     id_parent: null
     id_tab: demo
+    action_name: 
     title: Embedded elements
 - demo_form_elements|Tab_item
     id: demo_form_elements

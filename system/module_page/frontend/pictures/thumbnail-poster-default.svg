@@ -4,9 +4,9 @@
     xmlns:cc="http://creativecommons.org/ns#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    width="107"
-    height="60"
-    viewBox="0 0 107 60"
+    width="640"
+    height="360"
+    viewBox="0 0 640 360"
     style="shape-rendering: auto">
 
     <metadata>
@@ -20,7 +20,7 @@
         </rdf:RDF>
     </metadata>
 
-    <g id="icon_gallery_video">
+    <g id="icon_gallery_video" transform="matrix(5.925926, 0, 0, 6, -0.000003, -0.000004)">
         <rect x="0" y="0" width="108" height="60" style="fill: #e5e5e5"/>
         <circle style="fill: #a5a5a5; stroke: white; stroke-width: .5px" cx="46" cy="13" r="6"/>
         <circle style="fill: #a5a5a5; stroke: white; stroke-width: .5px" cx="62" cy="13" r="6"/>

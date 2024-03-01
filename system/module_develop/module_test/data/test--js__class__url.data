@@ -1,0 +1,12 @@
+tests
+- js__class__url|Test_JS
+    id: js__class__url
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: URL
+    type: js
+    path: frontend/components/Events_Test__Class_URL.js
+    scenario
+    - return|Test_step_Return
+        value: false

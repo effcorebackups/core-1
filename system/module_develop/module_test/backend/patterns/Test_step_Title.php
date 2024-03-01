@@ -14,11 +14,11 @@ class Test_step_Title {
     public $args = [];
     public $is_apply_tokens = true;
 
-    function run(&$test, $dpath, &$c_results) {
-        $c_results['reports'][$dpath]['dpath'] = '### dpath: '.$dpath;
-        $c_results['reports'][$dpath][] = $this->title instanceof Text ?
-                                          $this->title->render() :
-                                          $this->title;
+    function run(&$test, $dpath) {
+        yield new Text_simple('');
+        yield Test_message::send_dpath($dpath);
+        yield $this->title instanceof Text ?
+              $this->title : new Text($this->title);
     }
 
 }

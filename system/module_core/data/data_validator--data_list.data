@@ -1,0 +1,62 @@
+data_validators
+- data_list|Data_validator
+    id: data_list
+    scenario
+    # check "data|data/*"
+    - is-data|Validator_step_Validate
+        check: current
+        where: dpath
+        match: %^data(/.+|)$%
+        on_failure
+        # when NOT "data"
+        - error_register|Validator_step_Error_register
+            break: nested
+            message|Text_multiline
+              text
+              - 0: Item "%%_dpath_value" is positioned outside the allowed boundaries!
+              - 1: Each item must be contained in the "%%_root" array.
+              args
+              - root: data
+        on_success
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # check "data"
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - is-data:root|Validator_step_Validate
+            check: current
+            where: dpath
+            match: data
+            on_success
+            # check "data:__TYPE__"
+            - is-type|Validator_step_Validate
+                check: current
+                where: type
+                match: array
+                on_failure
+                # when "data:__INVALID__TYPE__"
+                - error_register|Validator_step_Error_register
+                    break: nested
+                    message|Text
+                      text: Item "%%_dpath_value" must be of type "%%_type"!
+                      args
+                      - type: array
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        # check "data/item"
+        # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+        - is-data-item|Validator_step_Validate
+            check: current
+            where: dpath
+            match: %^data(/[^/]+)$%
+            on_success
+            # check "data/item:__TYPE__"
+            - is-type|Validator_step_Validate
+                check: current
+                where: type
+                match: %^(string|integer|double)$%
+                on_failure
+                # when "data/item:__INVALID__TYPE__"
+                - error_register|Validator_step_Error_register
+                    break: nested
+                    message|Text
+                      text: Item "%%_dpath_value" must be one of the following types: %%_types!
+                      args
+                      - types: string, integer, double

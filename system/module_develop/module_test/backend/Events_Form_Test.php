@@ -11,8 +11,10 @@ use effcore\Locale;
 use effcore\Markup;
 use effcore\Message;
 use effcore\Page;
+use effcore\Test_message;
 use effcore\Test;
 use effcore\Text_multiline;
+use effcore\Text_simple;
 use effcore\Text;
 use effcore\Timer;
 
@@ -22,6 +24,7 @@ abstract class Events_Form_Test {
         $id = Page::get_current()->args_get('id');
         $form->_test = Test::get($id);
         if ($form->_test) {
+            $form->_test->prepare();
             if ($form->_test->params) {
                 foreach ($form->_test->params as $c_id => $c_param) {
                     $form->child_select('params')->child_insert($c_param, $c_id);
@@ -49,23 +52,28 @@ abstract class Events_Form_Test {
                 $id = Page::get_current()->args_get('id');
                 $test = Test::get($id);
                 if ($test) {
+                    $c_depth = 0;
                     Timer::tap('test_total');
-                    $test_result = $test->run();
-                    Timer::tap('test_total');
-                    # show message
-                    if (!empty($test_result['return']))
-                         Message::insert(new Text_multiline(['The test was successful.', 'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]));
-                    else Message::insert('The test was failed!', 'error');
-                    # make report
-                    if (!empty($test_result['reports'])) {
-                        $items['report']->child_select('document')->children_delete();
-                        foreach ($test_result['reports'] as $c_dpath => $c_part) {
-                            $c_depth = Core::path_get_depth($c_dpath);
-                            if (is_array($c_part)) foreach ($c_part as $c_key => $c_line) $c_part[$c_key] = Core::to_rendered($c_line);
-                            if (is_array($c_part)) $items['report']->child_select('document')->child_insert(new Markup('p', ['data-depth' => $c_depth], new Text_multiline($c_part) ));
-                            else                   $items['report']->child_select('document')->child_insert(new Markup('p', ['data-depth' => $c_depth],                    $c_part  ));
+                    $items['report']->child_select('document')->children_delete();
+                    foreach ($test->run() as $c_tick) {
+                        if ($c_tick === Test::SUCCESSFUL) break;
+                        if ($c_tick === Test::FAILED    ) break;
+                        if ($c_tick instanceof Test_message && $c_tick->type === 'dpath') {
+                            $c_depth = Core::path_get_depth($c_tick->value);
+                            $items['report']->child_select('document')->child_insert(
+                                (new Markup('p', [], str_repeat('  ', $c_depth).'### '.$c_tick->value))->render()
+                            );
+                        }
+                        if ($c_tick instanceof Text_simple) {
+                            if ($c_tick->text === '') $items['report']->child_select('document')->child_insert((new Markup('p', ['data-is-delimiter' => true], ' '                                   ))->render());
+                            if ($c_tick->text !== '') $items['report']->child_select('document')->child_insert((new Markup('p', [                           ], [str_repeat('  ', $c_depth), $c_tick] ))->render());
                         }
                     }
+                    Timer::tap('test_total');
+                    # show message
+                    if     ($c_tick === Test::SUCCESSFUL) Message::insert(new Text_multiline(['The test was successful.', 'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]));
+                    elseif ($c_tick === Test::FAILED    ) Message::insert(new Text_multiline(['The test was failed!',     'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]), 'error');
+                    else                                  Message::insert(new Text_multiline(['The test was completed.',  'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]), 'warning');
                 }
                 break;
         }

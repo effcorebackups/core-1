@@ -6,12 +6,14 @@
 
 namespace effcore\modules\test;
 
+use const effcore\BR;
 use const effcore\NL;
 use effcore\Core;
 use effcore\Request;
 use effcore\Security;
+use effcore\Test_message;
 use effcore\Test;
-use effcore\Text_multiline;
+use effcore\Text_simple;
 use effcore\Timer;
 
 abstract class Events_Command {
@@ -28,32 +30,33 @@ abstract class Events_Command {
         static::_environment_prepare($args);
         $test = Test::get($args[0]);
         if ($test) {
+            $c_depth = 0;
             Timer::tap('test_total');
-            $test_result = $test->run();
+            print 'TEST: '.$test->id.NL;
+            foreach ($test->run() as $c_tick) {
+                if ($c_tick === Test::SUCCESSFUL) break;
+                if ($c_tick === Test::FAILED    ) break;
+                if ($c_tick instanceof Test_message && $c_tick->type === 'dpath') {
+                    $c_depth = Core::path_get_depth($c_tick->value);
+                    print str_repeat('  ', $c_depth);
+                    print '### '.$c_tick->value;
+                    print NL;
+                }
+                if ($c_tick instanceof Text_simple) {
+                    print str_repeat('  ', $c_depth);
+                    print str_replace(BR, NL, $c_tick->render());
+                    print NL;
+                }
+            }
             Timer::tap('test_total');
             $timer_value = Core::format_number(
                 Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN
             );
-            # make report
-            print 'TEST: '.$test->id.NL;
-            if (!empty($test_result['reports'])) {
-                foreach ($test_result['reports'] as $c_dpath => $c_part) {
-                    $c_depth = Core::path_get_depth($c_dpath);
-                    if (is_array($c_part))
-                        foreach ($c_part as $c_key => $c_line) {
-                            if ($c_line instanceof Text_multiline)
-                                $c_line->delimiter = NL;
-                            $c_part[$c_key] = Core::to_rendered($c_line);
-                        }
-                    if (is_array($c_part))
-                         print (new Text_multiline($c_part, [], NL))->render().NL;
-                    else print                     $c_part                    .NL;
-                }
-            }
             # show message
-            if (!empty($test_result['return']))
-                 print 'Total run time: '.$timer_value.' sec.'.NL.'THE TEST WAS SUCCESSFUL.'.NL;
-            else print 'Total run time: '.$timer_value.' sec.'.NL.'THE TEST WAS FAILED!'    .NL;
+            print 'Total run time: '.$timer_value.' sec.'.NL;
+            if     ($c_tick === Test::SUCCESSFUL) print 'THE TEST WAS SUCCESSFUL.'.NL;
+            elseif ($c_tick === Test::FAILED    ) print 'THE TEST WAS FAILED!'    .NL;
+            else                                  print 'THE TEST WAS COMPLETED!' .NL;
         }
     }
 
@@ -63,39 +66,42 @@ abstract class Events_Command {
         Timer::tap('test_total');
         foreach (Test::get_all() as $c_test) {
             if ($c_test->type === 'php') {
+                $c_depth = 0;
                 Timer::tap('test_total_'.$c_test->id);
-                $c_test_result = $c_test->run();
+                print 'TEST: '.$c_test->id.NL;
+                foreach ($c_test->run() as $c_tick) {
+                    if ($c_tick === Test::SUCCESSFUL) break;
+                    if ($c_tick === Test::FAILED    ) break;
+                    if ($c_tick instanceof Test_message && $c_tick->type === 'dpath') {
+                        $c_depth = Core::path_get_depth($c_tick->value);
+                        print str_repeat('  ', $c_depth);
+                        print '### '.$c_tick->value;
+                        print NL;
+                    }
+                    if ($c_tick instanceof Text_simple) {
+                        print str_repeat('  ', $c_depth);
+                        print str_replace(BR, NL, $c_tick->render());
+                        print NL;
+                    }
+                }
                 Timer::tap('test_total_'.$c_test->id);
                 $c_timer_value = Core::format_number(
                     Timer::period_get('test_total_'.$c_test->id, -1, -2), Core::FPART_MAX_LEN
                 );
-                # make report
-                print 'TEST: '.$c_test->id.NL;
-                if (!empty($c_test_result['reports'])) {
-                    foreach ($c_test_result['reports'] as $c_dpath => $c_part) {
-                        $c_depth = Core::path_get_depth($c_dpath);
-                        if (is_array($c_part))
-                            foreach ($c_part as $c_key => $c_line) {
-                                if ($c_line instanceof Text_multiline)
-                                    $c_line->delimiter = NL;
-                                $c_part[$c_key] = Core::to_rendered($c_line);
-                            }
-                        if (is_array($c_part))
-                             print (new Text_multiline($c_part, [], NL))->render().NL;
-                        else print                     $c_part                    .NL;
-                    }
-                }
                 # show message
-                if (!empty($c_test_result['return']))
-                     print 'Total run time: '.$c_timer_value.' sec.'.NL.'THE TEST WAS SUCCESSFUL.'.NL;
-                else print 'Total run time: '.$c_timer_value.' sec.'.NL.'THE TEST WAS FAILED!'    .NL;
+                print 'Total run time: '.$c_timer_value.' sec.'.NL;
+                if     ($c_tick === Test::SUCCESSFUL) print 'THE TEST WAS SUCCESSFUL.'.NL;
+                elseif ($c_tick === Test::FAILED    ) print 'THE TEST WAS FAILED!'    .NL;
+                else                                  print 'THE TEST WAS COMPLETED!' .NL;
                 # fill the $global_report
-                if (!empty($c_test_result['return']))
-                     $global_report[]= str_pad($c_test->id, 30).' | '.str_pad($c_timer_value, 11).' | THE TEST WAS SUCCESSFUL.';
-                else $global_report[]= str_pad($c_test->id, 30).' | '.str_pad($c_timer_value, 11).' | THE TEST WAS FAILED!';
+                if     ($c_tick === Test::SUCCESSFUL) $global_report[]= str_pad($c_test->id, 30).' | '.str_pad($c_timer_value, 11).' | THE TEST WAS SUCCESSFUL.';
+                elseif ($c_tick === Test::FAILED    ) $global_report[]= str_pad($c_test->id, 30).' | '.str_pad($c_timer_value, 11).' | THE TEST WAS FAILED!';
+                else                                  $global_report[]= str_pad($c_test->id, 30).' | '.str_pad($c_timer_value, 11).' | THE TEST WAS COMPLETED!';
                 # break on error if '--force' param is not presented
-                if (empty($c_test_result['return']) && empty($args['force'])) {
-                    break;
+                if ($c_tick === Test::FAILED) {
+                    if (empty($args['force'])) {
+                        break;
+                    }
                 }
                 # test delimiter
                 print NL.NL.NL;
@@ -112,7 +118,7 @@ abstract class Events_Command {
               str_pad('Time (sec.)', 11).' | '.
               str_pad('Result'     , 27).NL;
         print str_repeat('-', 80).NL;
-              foreach ($global_report as $c_line) print $c_line.NL;
+        foreach ($global_report as $c_line) print $c_line.NL;
         print str_repeat('=', 80).NL;
         print 'TOTAL TIME: '.$timer_value.NL;
     }
@@ -146,7 +152,9 @@ abstract class Events_Command {
         print 'FORMAT: ./command test <name>'  .NL.NL;
         print 'THE FOLLOWING NAMES ARE AVAILABLE:'.NL;
         foreach (Test::get_all(false) as $c_test) {
-            print '  - '.$c_test->id.': '.Core::to_rendered($c_test->title).NL;
+            if ($c_test->type === 'php') {
+                print '  - '.$c_test->id.': '.Core::to_rendered($c_test->title).NL;
+            }
         }
     }
 

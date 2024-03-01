@@ -5,21 +5,24 @@
 
 'use strict';
 
+import Core from './Core.jsd';
+
 // ─────────────────────────────────────────────────────────────────────
-// EffURL class
+// URL class
 // ─────────────────────────────────────────────────────────────────────
 
-class EffURL {
+export default class URL {
 
     constructor(url, options = {}) {
-        if (options['completion'] === undefined) options['completion'] = true;
-        if (options['extra']      === undefined) options['extra'] = '\\p{Ll}\\p{Lo}\\p{Lt}\\p{Lu}';
         this.raw = url;
-        this.pattern = new RegExp('^(?:([a-zA-Z]+)://|)' +                                                      // protocol
-                                      '([' + options['extra'] + 'a-zA-Z0-9\\-\\.]{2,200}(?::([0-9]{1,5})|)|)' + // domain + port
-                                     '(/[' + options['extra'] + '\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)' +       // path
-                                '(?:\\?([' + options['extra'] + '\\x21-\\x22\\x24-\\x7e]*)|)' +                 // query
-                                  '(?:#([' + options['extra'] + '\\x21-\\x7e]*)|)$', 'u');                      // anchor
+        if (options.completion === undefined) options.completion = true;
+        if (options.protocols  === undefined) options.protocols  = '[a-zA-Z]+';
+        if (options.extra      === undefined) options.extra      = '\\p{Ll}\\p{Lo}\\p{Lt}\\p{Lu}';
+        this.pattern = new RegExp(`^(?:(${options.protocols})://|)`                                   + // protocol
+                                      `([${options.extra}a-zA-Z0-9\\-\\.]{2,200}(?::([0-9]{1,5})|)|)` + // domain + port
+                                     `(/[${options.extra}\\x21-\\x22\\x24-\\x3e\\x40-\\x7e]*|)`       + // path
+                                `(?:\\?([${options.extra}\\x21-\\x22\\x24-\\x7e]*)|)`                 + // query
+                                  `(?:#([${options.extra}\\x21-\\x7e]*)|)$`, 'u');                      // anchor
         this.parse = url.match(this.pattern)?.map((value) => value === undefined ? '' : value);
         let [, protocol, domain, port, path, query, anchor] = this.parse ?? [, '', '', '', '', '', '', ''];
 
@@ -57,24 +60,24 @@ class EffURL {
     relativeGet() {
         if (!this.has_error) {
             let result = this.path;
-            if (this.query ) result+= '?' + this.query;
-            if (this.anchor) result+= '#' + this.anchor;
+            if (this.query ) result+= `?${this.query}`;
+            if (this.anchor) result+= `#${this.anchor}`;
             return result;
         }
     }
 
     absoluteGet() {
         if (!this.has_error) {
-            let result = this.protocol + '://' + this.domain + this.path;
-            if (this.query ) result+= '?' + this.query;
-            if (this.anchor) result+= '#' + this.anchor;
+            let result = this.protocol + `://${this.domain}${this.path}`;
+            if (this.query ) result+= `?${this.query}`;
+            if (this.anchor) result+= `#${this.anchor}`;
             return result.replace(/[/]*$/g, '');
         }
     }
 
-    queryArgSelect(name       ) {if (this.has_error) return; let args = EffURL.parseQuery(this.query); return args[name] ?? null;}
-    queryArgInsert(name, value) {if (this.has_error) return; let args = EffURL.parseQuery(this.query);        args[name] = value; this.query = EffURL.buildQuery(args); return this;}
-    queryArgDelete(name       ) {if (this.has_error) return; let args = EffURL.parseQuery(this.query); delete args[name];         this.query = EffURL.buildQuery(args); return this;}
+    queryArgSelect(name       ) {if (this.has_error) return; let args = URL.parseQuery(this.query); return args[name] ?? null;}
+    queryArgInsert(name, value) {if (this.has_error) return; let args = URL.parseQuery(this.query);        args[name] = value; this.query = URL.buildQuery(args); return this;}
+    queryArgDelete(name       ) {if (this.has_error) return; let args = URL.parseQuery(this.query); delete args[name];         this.query = URL.buildQuery(args); return this;}
 
     ///////////////////////////
     /// static declarations ///
@@ -97,8 +100,8 @@ class EffURL {
                     let c_pointer;
                     let c_key_group = decodeURIComponent(c_key_group_raw);
                     if (result[c_key_group] === undefined                                                     ) c_pointer = result[c_key_group] = {};
-                    if (result[c_key_group] !== undefined && Effcore.getType(result[c_key_group]) === 'String') c_pointer = result[c_key_group] = {};
-                    if (result[c_key_group] !== undefined && Effcore.getType(result[c_key_group]) !== 'String') c_pointer = result[c_key_group];
+                    if (result[c_key_group] !== undefined && Core.getType(result[c_key_group]) === 'String') c_pointer = result[c_key_group] = {};
+                    if (result[c_key_group] !== undefined && Core.getType(result[c_key_group]) !== 'String') c_pointer = result[c_key_group];
                     for (let i = 0; i < c_group_indexes.length; i++) {
                         let is_last = !(i < c_group_indexes.length - 1);
                         let c_group_index = c_group_indexes[i];
@@ -125,8 +128,8 @@ class EffURL {
         for (let c_key in data) {
             c_path = path ? path + '[' + encodeURIComponent(c_key) + ']' :
                                          encodeURIComponent(c_key);
-            if (Effcore.getType(data[c_key]) === 'Object') Object.assign(result, this.buildQuery(data[c_key], c_path));
-            if (Effcore.getType(data[c_key]) !== 'Object') result[c_path] = encodeURIComponent(data[c_key]);
+            if (Core.getType(data[c_key]) === 'Object') Object.assign(result, this.buildQuery(data[c_key], c_path));
+            if (Core.getType(data[c_key]) !== 'Object') result[c_path] = encodeURIComponent(data[c_key]);
         }
         if (path !== null) return result;
         if (path === null) {

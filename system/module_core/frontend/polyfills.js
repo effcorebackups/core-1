@@ -80,8 +80,8 @@ if (!Object.prototype.hasOwnProperty('maxIndex')) {
     });
 }
 
-if (!Node.prototype.hasOwnProperty('querySelector__withHandler')) {
-    Object.defineProperty(Node.prototype, 'querySelector__withHandler', {
+if (!Node.prototype.hasOwnProperty('querySelectorWithProcessing')) {
+    Object.defineProperty(Node.prototype, 'querySelectorWithProcessing', {
         configurable: true,
         enumerable  : true,
         writable    : true,
@@ -90,21 +90,6 @@ if (!Node.prototype.hasOwnProperty('querySelector__withHandler')) {
             if (result instanceof Node) {
                 handler(result);
             }
-        }
-    });
-}
-
-if (!Document.prototype.hasOwnProperty('createElement__withAttributes')) {
-    Object.defineProperty(Document.prototype, 'createElement__withAttributes', {
-        configurable: true,
-        enumerable  : true,
-        writable    : true,
-        value: function (tag_name, attributes, options) {
-            let node = document.createElement(tag_name, options);
-            if (Effcore.getType(attributes) === 'Object')
-                for (let c_key in attributes)
-                    node.setAttribute(c_key, attributes[c_key]);
-            return node;
         }
     });
 }

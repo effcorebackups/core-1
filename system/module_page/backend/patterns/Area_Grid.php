@@ -53,22 +53,22 @@ class Area_Grid extends Area_group {
                     static::generate_markup__customization($this), 'customizer'
                 );
                 if (!Frontend::select('grid_custom__permanent__page'))
-                     Frontend::insert('grid_custom__permanent__page', null, 'styles', [
+                     Frontend::insert('grid_custom__permanent__page', 'layout_grid_custom_style', null, 'styles', [
                         'path' => '/system/module_page/frontend/layout-grid-custom.cssd',
                         'attributes' => [
                             'rel'   => 'stylesheet',
                             'media' => 'all'],
-                        'weight' => +350], 'layout_grid_custom_style', 'page'
+                        'weight' => +350], 'page'
                      );
                 if (!Frontend::select('grid_custom__page'))
-                     Frontend::insert('grid_custom__page', null, 'styles', [
+                     Frontend::insert('grid_custom__page', 'layout_grid_custom_virtual_style', null, 'styles', [
                         'path' => '/system/module_page/frontend/layout-grid-custom.cssv?'.
                         'col_count='.$this->col_count.'&'.
                         'row_count='.$this->row_count,
                         'attributes' => [
                             'rel'   => 'stylesheet',
                             'media' => 'all'],
-                        'weight' => +300], 'layout_grid_custom_virtual_style', 'page'
+                        'weight' => +300], 'page'
                      );
             }
 

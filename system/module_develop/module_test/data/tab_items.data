@@ -3,5 +3,6 @@ tab_items
     id: test_execution
     id_parent: null
     id_tab: tests
+    action_name: 
     title: Execution
     weight: +500

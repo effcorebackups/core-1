@@ -4,6 +4,10 @@ events
       for: locale
       handler: \effcore\modules\locale\Events_Module::on_enable
   # ═════════════════════════════════════════════════════════════════════
+  on_form_build
+  - locale_by_language|Event
+      for: locale_by_language
+      handler: \effcore\modules\locale\Events_Form_Locale_by_language::on_build
   on_form_init
   - locale_general|Event
       for: locale_general

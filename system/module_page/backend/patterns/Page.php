@@ -101,7 +101,7 @@ class Page extends Node implements has_Data_cache {
         header('content-type: text/html; charset='.$this->charset);
 
         # show important messages
-        if ($settings->show_warning_if_not_https && !empty($this->is_https) && Url::get_current()->protocol !== 'https') {
+        if ($settings->show_warning_if_not_https && !empty($this->is_https) && URL::get_current()->protocol !== 'https') {
             Message::insert(
                 'This page should be use HTTPS protocol!', 'warning'
             );
@@ -113,12 +113,12 @@ class Page extends Node implements has_Data_cache {
         # global styles
         $file_global_cssd = new File(Dynamic::DIR_FILES.'global.cssd');
         if ($file_global_cssd->is_exists()) {
-            Frontend::insert('page_all__global__page', null, 'styles', [
+            Frontend::insert('page_all__global__page', 'page_style', null, 'styles', [
                 'path' => '/dynamic/files/global.cssd',
                 'attributes' => [
                     'rel'   => 'stylesheet',
                     'media' => 'all'],
-                'weight' => -600], 'page_style', 'page');
+                'weight' => -600], 'page');
         }
 
         # render page
@@ -143,7 +143,7 @@ class Page extends Node implements has_Data_cache {
         $html_attributes = [];
         $html_attributes['data-user-has-avatar'] = isset(User::get_current()->avatar_path) ? true : null;
         $html_attributes['data-page-palette-is-dark'] = $is_dark_palette ? true : null; # note: refreshed after page reload
-        $html_attributes['data-css-path'] = Security::sanitize_id(Url::UTF8_encode(trim(Url::get_current()->path, '/')));
+        $html_attributes['data-css-path'] = Security::sanitize_id(URL::UTF8_encode(trim(URL::get_current()->path, '/')));
         $template->arg_set('html_custom_attributes',
             Core::data_to_attributes($html_attributes)
         );
@@ -261,7 +261,7 @@ class Page extends Node implements has_Data_cache {
     }
 
     static function init_current() {
-        $path_current = Url::get_current()->path;
+        $path_current = URL::get_current()->path;
         $page = static::get_by_url($path_current, true);
         if ($page) {
             if (Access::check($page->access)) {

@@ -13,7 +13,7 @@ use effcore\Message;
 use effcore\Page;
 use effcore\Text;
 use effcore\Text_multiline;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Instance_delete {
 
@@ -89,13 +89,13 @@ abstract class Events_Form_Instance_delete {
                 # redirect if no error
                 if ($form->_result !== null) {
                     if (empty(Page::get_current()->args_get('back_delete_is_canceled'))) {
-                        Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                        URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                     }
                 }
                 break;
             case 'cancel':
                 if (empty(Page::get_current()->args_get('back_delete_is_canceled'))) {
-                    Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                    URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                 }
                 break;
         }

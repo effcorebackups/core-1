@@ -11,7 +11,7 @@ use effcore\Page;
 use effcore\Selection;
 use effcore\Tab_item;
 use effcore\Tabs;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page {
 
@@ -30,7 +30,7 @@ abstract class Events_Page {
                         $breadcrumbs->link_insert(
                             $c_child->id,
                             $c_child->title,
-                            $c_child->href_default_get()
+                            $c_child->href_get_default()
                         );
                     }
                 }
@@ -49,7 +49,7 @@ abstract class Events_Page {
             $row_id_last = array_pop($row_ids);
             if ($row_id_last) {
                 $breadcrumbs->link_update($row_id_last,                        null,
-                    $back_return_0 ?: (Url::back_url_get() ?: ($back_return_n ?: null))
+                    $back_return_0 ?: (URL::back_url_get() ?: ($back_return_n ?: null))
                 );
             }
         }

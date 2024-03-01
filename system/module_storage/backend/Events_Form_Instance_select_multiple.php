@@ -16,7 +16,7 @@ use effcore\Page;
 use effcore\Selection;
 use effcore\Text_multiline;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use stdClass;
 
 abstract class Events_Form_Instance_select_multiple {
@@ -46,9 +46,9 @@ abstract class Events_Form_Instance_select_multiple {
                     $selection->fields['code']['actions']->weight = -500;
                     $selection->fields['code']['actions']->closure = function ($c_cell_id, $c_row, $c_instance, $origin) use ($form) {
                         $c_actions_list = new Actions_list;
-                        if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert('delete', 'delete', $c_instance->make_url_for_delete().'?'.Url::back_part_make());
-                        if ($form->_has_access_select                                   ) $c_actions_list->action_insert('select', 'review', $c_instance->make_url_for_select().'?'.Url::back_part_make());
-                        if ($form->_has_access_update                                   ) $c_actions_list->action_insert('update', 'change', $c_instance->make_url_for_update().'?'.Url::back_part_make());
+                        if ($form->_has_access_delete && empty($c_instance->is_embedded)) $c_actions_list->action_insert('delete', 'delete', $c_instance->make_url_for_delete().'?'.URL::back_part_make());
+                        if ($form->_has_access_select                                   ) $c_actions_list->action_insert('select', 'review', $c_instance->make_url_for_select().'?'.URL::back_part_make());
+                        if ($form->_has_access_update                                   ) $c_actions_list->action_insert('update', 'change', $c_instance->make_url_for_update().'?'.URL::back_part_make());
                         return $c_actions_list;
                     };
                     $selection->build();
@@ -142,7 +142,7 @@ abstract class Events_Form_Instance_select_multiple {
                 $form->components_init();
                 break;
             case 'insert':
-                Url::go($entity->make_url_for_insert().'?'.Url::back_part_make());
+                URL::go($entity->make_url_for_insert().'?'.URL::back_part_make());
                 break;
         }
     }

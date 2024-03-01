@@ -25,8 +25,8 @@ class Breadcrumbs extends Markup {
             foreach ($this->links as $c_row_id => $c_link) {
                 if ($this->is_remove_last_link && $c_link === end($this->links)) break;
                 $c_link_markup = new Markup('a', ['href' => $c_link->url], new Text($c_link->title, [], true, true), $c_link->weight ?? 0);
-                if (Url::is_active      ($c_link->url)) $c_link_markup->attribute_insert('aria-current'       , 'true');
-                if (Url::is_active_trail($c_link->url)) $c_link_markup->attribute_insert('data-selected-trail', 'true');
+                if (URL::is_active      ($c_link->url)) $c_link_markup->attribute_insert('aria-current'       , 'true');
+                if (URL::is_active_trail($c_link->url)) $c_link_markup->attribute_insert('data-selected-trail', 'true');
                 $this->child_insert($c_link_markup); }
             Event::start('on_breadcrumbs_build_after', $this->id, ['breadcrumbs' => &$this]);
             $this->is_builded = true;

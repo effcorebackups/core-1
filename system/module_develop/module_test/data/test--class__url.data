@@ -4,7 +4,7 @@ tests
     title|Text
       text: Class "%%_name"
       args
-      - name: Url
+      - name: URL
     scenario
     # ═════════════════════════════════════════════════════════════════════
     - title-construct|Test_step_Title
@@ -13,7 +13,7 @@ tests
           args
           - name: $url->construct()
     - code-construct|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__construct
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__construct
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-has_error|Test_step_Title
         title|Text
@@ -21,7 +21,7 @@ tests
           args
           - name: $url->has_error
     - code-has_error|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__has_error
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__has_error
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-absolute_get|Test_step_Title
         title|Text
@@ -29,7 +29,7 @@ tests
           args
           - name: $url->absolute_get()
     - code-absolute_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__absolute_get
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__absolute_get
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-relative_get|Test_step_Title
         title|Text
@@ -37,7 +37,7 @@ tests
           args
           - name: $url->relative_get()
     - code-relative_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__relative_get
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__relative_get
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-file_type_get|Test_step_Title
         title|Text
@@ -45,7 +45,7 @@ tests
           args
           - name: $url->file_type_get()
     - code-file_type_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__file_type_get
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__file_type_get
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-file_info_get|Test_step_Title
         title|Text
@@ -53,7 +53,7 @@ tests
           args
           - name: $url->file_info_get()
     - code-file_info_get|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__file_info_get
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__file_info_get
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-query_args|Test_step_Title
         title|Text
@@ -61,7 +61,7 @@ tests
           args
           - name: $url->query_arg_*()
     - code-query_args|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Url::test_step_code__query_args
+        handler: \effcore\modules\test\Events_Test__Class_URL::test_step_code__query_args
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
-        value: 1
+        value: true

@@ -10,15 +10,16 @@ translations
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.
 >>>>> Текст параграфа. Текст параграфа. Текст параграфа. Текст параграфа.&NewLine;
-    - - request header param "%%_value": - header-параметр запиту "%%_value"
+    - - request header "%%_value": - заголовок запиту "%%_value"
     - - request post param "%%_name" = "%%_value": - post-параметр запиту "%%_name" = "%%_value"
-    - - response header param "%%_name" = "%%_value": - header-параметр відповіді "%%_name" = "%%_value"
+    - - response header "%%_name" = "%%_value": - заголовок відповіді "%%_name" = "%%_value"
     - - response param "%%_name" = "%%_value": - параметр відповіді "%%_name" = "%%_value"
-    - state of "%%_of" is\: "%%_state": стан "%%_of": "%%_state"
     - + the extension is part of the PHP core: + розширення є частиною ядра PHP
     - ± the extension is enabled by default: ± розширення увімкнено за умовчанням
     - − the extension is not enabled by default: − розширення не ввімкнено за умовчанням
+    - action "%%_name" #%%_num: дія "%%_name" №%%_num
     - action "%%_name" will be started: дія "%%_name" буде запущена
+    - action "%%_name": дія "%%_name"
     - action with row_id = "%%_row_id" will be started: дія з row_id = "%%_row_id" буде запущена
     - All releases: Усі випуски
     - All types of messages you can see above.: Всі типи повідомлень Ви можете побачити вище.
@@ -39,9 +40,9 @@ translations
     - Checkbox 2 (checked): Прапорець 2 (відзначений)
     - Checkbox 3 (disabled): Прапорець 3 (вимкнений)
     - Checkbox 4 (disabled + checked): Прапорець 4 (вимкнений + відзначений)
+    - checking of item "%%_id": перевірка пункту
     - checking of item "%%_id"\: "%%_result": перевірка пункту "%%_id": "%%_result"
     - checking on "%%_operand_1" %%_operator "%%_operand_2": перевірка на "%%_operand_1" %%_operator "%%_operand_2"
-    - Class "%%_name" (JS): Клас "%%_name" (JS)
     - Class "%%_name": Клас "%%_name"
     - Classes: Класи
     - Collations: Порівняння
@@ -96,7 +97,6 @@ translations
     - found user ID = "%%_id_user" by nickname = "%%_nickname": знайдено ID користувача = "%%_id_user" за псевдонімом = "%%_nickname"
     - Full report: Повний звіт
     - FUNCTION "%%_name": ФУНКЦІЯ "%%_name"
-    - gotten value\: %%_value: отримане значення: %%_value
     - Group 1: Група 1
     - Group 2 (inserted from code): Група 2 (вставлена з коду)
     - head cell #%%_number: великий осередок №%%_number
@@ -120,7 +120,7 @@ translations
     - item #3: пункт №3
     - Join: З'єднання
     - Joins: З'єднання
-    - JS functioning (JS): JS-функціонування (JS)
+    - JS functioning: JS-функціонування
     - Main content of Micro Tab #%%_num: Основний зміст мікровкладки №%%_num
     - make request to "%%_url": зробити запит на "%%_url"
     - Markup dynamic: Розмітка динамічна
@@ -184,6 +184,7 @@ translations
     - Radiobutton 3 (disabled): Перемикач 3 (вимкнений)
     - RAM load dynamics: Динаміка завантаження ОЗУ
     - real checking on "%%_operand_real_1" %%_operator "%%_operand_real_2": реальна перевірка на "%%_operand_real_1" %%_operator "%%_operand_real_2"
+    - received value\: %%_value: отримане значення: %%_value
     - REGISTERED USER + ROLE: ЗАРЕЄСТРУВАНИЙ КОРИСТУВАЧ + РОЛЬ
     - REGISTERED USER: ЗАРЕЄСТРУВАНИЙ КОРИСТУВАЧ
     - Relation (tree view): Зв'язок (у вигляді дерева)
@@ -211,6 +212,7 @@ translations
     - some description: якийсь опис
     - speed of "%%_name"\: %%_value: швидкість "%%_name": %%_value
     - stack: стек
+    - state of "%%_of" is\: "%%_state": стан "%%_of": "%%_state"
     - storage "%%_name" was initialized: сховище "%%_name" було ініціалізовано
     - string with parameter = %%_n: рядок із параметром = %%_n
     - string with plural value = %%_number second%%_plural(number\|s): рядок з численним числом = %%_number секунд%%_plural(number|a-i)
@@ -229,6 +231,7 @@ translations
     - text with translation: текст з перекладом
     - The report was generated in real time.: Звіт був створений у режимі реального часу.
     - The system can search for the used functions only for enabled PHP modules!: Система може шукати функції, що використовуються тільки для включених PHP-модулів!
+    - The test was completed.: Тест був завершеним.
     - The test was failed!: Тест був провалений!
     - The test was successful.: Тест був успішним.
     - The test will not succeed if the "Registration via EMail address" option is enabled!: Тест не виконатись успішно якщо включена опція "Реєстрація через адресу електронної пошти"!
@@ -238,13 +241,11 @@ translations
     - there will be try to delete all roles: буде спроба видалити всі ролі
     - This description is always shown.: Цей опис завжди показується.
     - This description is shown on top.: Цей опис показаний зверху.
+    - Title with token\: "current iteration" = "%%_value": Заголовок з токеном: "поточна ітерація" = "%%_value"
     - To improve performance, the console in the file types ".cssd" and ".jsd" will only be displayed in the "show for everyone" mode.: Для підвищення продуктивності консоль у файлах типу ".cssd" та ".jsd" відображатиметься лише в режимі "показати всім".
     - Total generation time: Загальний час генерації
     - Total run time\: %%_time sec.: Загальний час виконання: %%_time сек.
     - Traits: Трейти
-    - transposition "action after": перестановка "action after"
-    - transposition "action before": перестановка "action before"
-    - transposition "action" #%%_num: перестановка "action" №%%_num
     - TRANSPOSITION %%_cur FROM %%_max \| %%_state: ПЕРЕСТАНОВКА %%_cur З %%_max | %%_state
     - TRANSPOSITIONS [-1 … length + 2]: ПЕРЕСТАНОВКИ [-1 … length + 2]
     - TRANSPOSITIONS OF "..": ПЕРЕСТАНОВКИ ".."

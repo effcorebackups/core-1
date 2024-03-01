@@ -18,7 +18,7 @@ use effcore\Page;
 use effcore\Security;
 use effcore\Text_multiline;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 use ReflectionClass;
 
 abstract class Events_Form_Instance_update {
@@ -152,13 +152,13 @@ abstract class Events_Form_Instance_update {
                 # redirect if no error
                 if ($form->_result !== null) {
                     if ($form->is_redirect_enabled) {
-                        Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                        URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                     }
                 }
                 break;
             case 'cancel':
                 if ($form->is_redirect_enabled) {
-                    Url::go(Url::back_url_get() ?: $entity->make_url_for_select_multiple());
+                    URL::go(URL::back_url_get() ?: $entity->make_url_for_select_multiple());
                 }
                 break;
         }

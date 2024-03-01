@@ -20,7 +20,7 @@ use effcore\Node;
 use effcore\Security;
 use effcore\Text_simple;
 use effcore\Text;
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Form_Modules_Install {
 
@@ -71,7 +71,7 @@ abstract class Events_Form_Modules_Install {
                         if ($c_is_enabled) {
                             $c_result->child_insert(new Markup('x-param', ['data-type' => 'url'], [
                                 new Markup('x-title', [], $c_title),
-                                new Markup('x-value', [], new Markup('a', ['href' => $c_url], Url::url_to_markup($c_url)))
+                                new Markup('x-value', [], new Markup('a', ['href' => $c_url], URL::url_to_markup($c_url)))
                             ]), 'url_'.Security::sanitize_id($c_title, '_')); }}}
                 $form->child_select('info')->child_select($c_group_id)->child_insert($c_result, 'module_'.$c_module->id);
             }

@@ -6,13 +6,13 @@
 
 namespace effcore\modules\page;
 
-use effcore\Url;
+use effcore\URL;
 
 abstract class Events_Page_SEO {
 
     static function on_redirect($event, $page) {
         $type = $page->args_get('type');
-        if ($type === null) Url::go($page->args_get('base').'/meta');
+        if ($type === null) URL::go($page->args_get('base').'/meta');
     }
 
 }
