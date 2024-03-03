@@ -12,7 +12,8 @@ class Field_Checkbox extends Field_Radiobutton {
 
     public $title;
     public $title_position = 'bottom';
-    public $attributes = ['data-type' => 'checkbox'];
+    public $attributes = [
+        'data-type' => 'checkbox'];
     public $element_attributes = [
         'type'  => 'checkbox',
         'name'  => 'checkbox',

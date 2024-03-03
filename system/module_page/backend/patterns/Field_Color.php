@@ -12,7 +12,8 @@ class Field_Color extends Field_Text {
 
     public $title = 'Color';
     public $description = 'Color should be in the format "#abcdef", where "ab" is the value of the red component, "cd" — green and "ef" — blue.';
-    public $attributes = ['data-type' => 'color'];
+    public $attributes = [
+        'data-type' => 'color'];
     public $element_attributes = [
         'type'     => 'color',
         'name'     => 'color',

@@ -11,7 +11,8 @@ namespace effcore;
 class Field_URL extends Field_Text {
 
     public $title = 'URL';
-    public $attributes = ['data-type' => 'url'];
+    public $attributes = [
+        'data-type' => 'url'];
     public $element_attributes = [
         'type'      => 'text',
         'name'      => 'url',

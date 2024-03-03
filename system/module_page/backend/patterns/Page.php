@@ -134,18 +134,18 @@ class Page extends Node implements has_Data_cache {
         }
 
         $frontend = Frontend::markup_get($this->used_blocks_dpath, $this->used_blocks_cssid);
-        $template->arg_set('lang'   , $this->lang_code ?: Language::code_get_current());
-        $template->arg_set('dir'    , $this->text_direction);
         $template->arg_set('icons'  , $frontend->icons  ->render());
         $template->arg_set('styles' , $frontend->styles ->render());
         $template->arg_set('scripts', $frontend->scripts->render());
 
         $html_attributes = [];
+        $html_attributes['lang'] = $this->lang_code ?: Language::code_get_current();
+        $html_attributes['dir'] = $this->text_direction;
         $html_attributes['data-user-has-avatar'] = isset(User::get_current()->avatar_path) ? true : null;
         $html_attributes['data-page-palette-is-dark'] = $is_dark_palette ? true : null; # note: refreshed after page reload
         $html_attributes['data-css-path'] = Security::sanitize_id(URL::UTF8_encode(trim(URL::get_current()->path, '/')));
-        $template->arg_set('html_custom_attributes',
-            Core::data_to_attributes($html_attributes)
+        $template->arg_set('html_attributes',
+            $html_attributes
         );
 
         $template->arg_set('title',
@@ -157,17 +157,16 @@ class Page extends Node implements has_Data_cache {
         if (Request::value_get('manage_layout', 0, '_GET') === 'true')
             if (Access::check((object)['roles' => ['registered' => 'registered']]))
                 $body_attributes['data-is-managed-layout'] = true;
-        $template->arg_set('body_custom_attributes',
-            Core::data_to_attributes($body_attributes)
+        $template->arg_set('body_attributes',
+            $body_attributes
         );
 
         $template->arg_set('body',
             $this->_markup->render()
         );
 
-        $meta_charset  = (new Markup_simple('meta', ['charset' => $this->charset]))->render();
-        $meta_viewport = (new Markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]))->render();
-        $template->arg_set('meta', $meta_charset.$meta_viewport);
+        $template->arg_set('meta_charset',  (new Markup_simple('meta', ['charset' => $this->charset]))->render());
+        $template->arg_set('meta_viewport', (new Markup_simple('meta', ['name' => 'viewport', 'content' => $settings->page_meta_viewport]))->render());
 
         $file_meta = new File(Dynamic::DIR_FILES.'meta.html');
         if ($this->is_use_global_meta && $file_meta->is_exists()) {

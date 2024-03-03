@@ -13,7 +13,9 @@ class Selection extends Markup implements has_Data_cache {
     const DEFAULT_LIMIT = 50;
 
     public $tag_name = 'x-selection';
-    public $attributes = ['data-selection' => true];
+    public $attributes = [
+        'data-selection' => true
+    ];
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $id;
     public $description;

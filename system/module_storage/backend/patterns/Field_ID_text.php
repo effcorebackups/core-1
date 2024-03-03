@@ -14,7 +14,8 @@ class Field_ID_text extends Field_Text {
     const CHARACTERS_ALLOWED_FOR_DESCRIPTION = '"a-z", "0-9", "_"';
 
     public $title = 'ID';
-    public $attributes = ['data-type' => 'id_text'];
+    public $attributes = [
+        'data-type' => 'id_text'];
     public $element_attributes = [
         'type'      => 'text',
         'name'      => 'id',

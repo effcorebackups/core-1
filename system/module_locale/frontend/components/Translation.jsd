@@ -1,0 +1,17 @@
+
+//////////////////////////////////////////////////////////////////
+/// Copyright © 2017—2024 Maxim Rysevets. All rights reserved. ///
+//////////////////////////////////////////////////////////////////
+
+'use strict';
+
+import Translations from '/api/locale/translations/get/%%_lang_code_global?format=jsonp';
+
+export default class Translation {
+
+    static get(text) {
+        return Translations.status === 'ok' && Translations.data[text] ?
+                                               Translations.data[text] : text;
+    }
+
+}

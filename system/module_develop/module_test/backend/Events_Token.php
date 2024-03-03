@@ -7,6 +7,7 @@
 namespace effcore\modules\test;
 
 use effcore\Captcha;
+use effcore\Cookies;
 use effcore\Core;
 use effcore\Module;
 use effcore\Request;
@@ -56,6 +57,7 @@ abstract class Events_Token {
             if ($type === 'web_server_name' && $last_response) {
                 return $last_response['headers']['x-web-server-name'] ?? Request::web_server_get_info()->name;
             }
+
             if ($type === 'form_validation_id' && $last_response && $args->get_count() === 2) {
                 return $last_response['headers']['x-form-validation-id--'.$args->get(1)] ?? '';
             }
@@ -67,7 +69,7 @@ abstract class Events_Token {
                         foreach ($c_response['headers']['set-cookie'] as $c_cookie)
                             $result[array_key_first($c_cookie['parsed'])] =
                                               reset($c_cookie['parsed']);
-                return Core::data_to_attributes($result, false, '; ', '', '');
+                return Cookies::render($result);
             }
         }
     }

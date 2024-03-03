@@ -14,7 +14,8 @@ class Widget_Files_audios extends Widget_Files {
 
     public $title = 'Audios';
     public $item_title = 'Audio';
-    public $attributes = ['data-type' => 'items-files-audios'];
+    public $attributes = [
+        'data-type' => 'items-files-audios'];
     public $name_complex = 'widget_files_audios';
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $upload_dir = 'audios/';
@@ -58,27 +59,27 @@ class Widget_Files_audios extends Widget_Files {
             $result = Template::make_new(Template::pick_name('picture'), [
                 'id'         => $row_id,
                 'src'        => $url ? $url.'?cover=middle' : '',
-                'attributes' => Core::data_to_attributes([
+                'attributes' => [
                     'alt'       => new Text('cover'),
                     'width'     => '300',
                     'height'    => '300',
                     'data-type' => 'cover'
-                ])
+                ]
             ])->render();
             $result.= Template::make_new(Template::pick_name('audio'), [
                 'id'         => $row_id,
                 'src'        => $url,
-                'attributes' => Core::data_to_attributes([
+                'attributes' => [
                     'data-path-cover-small'  => $url ? $url.'?cover=small'  : '',
                     'data-path-cover-middle' => $url ? $url.'?cover=middle' : '',
                     'data-path-cover-big'    => $url ? $url.'?cover=big'    : '',
-                ] + $item->settings)
+                ] + $item->settings
             ])->render();
         } else {
             $result = Template::make_new(Template::pick_name('audio'), [
                 'id'         => $row_id,
                 'src'        => $url,
-                'attributes' => Core::data_to_attributes($item->settings)
+                'attributes' => $item->settings
             ])->render();
         }
         return $result;

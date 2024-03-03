@@ -5,6 +5,7 @@ request_settings
   - =: col_count
   - =: color
   - =: cover
+  - =: format
   - =: manage_layout
   - =: opacity
   - =: page

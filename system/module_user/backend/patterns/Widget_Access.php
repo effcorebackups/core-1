@@ -12,7 +12,8 @@ class Widget_Access extends Control implements Control_complex {
 
     public $tag_name = 'x-group';
     public $title = 'Access';
-    public $title_attributes = ['data-group-title' => true];
+    public $title_attributes = [
+        'data-group-title' => true];
     public $description = 'Access settings are not applied if nothing is selected!';
     public $name_complex = 'access';
     public $checked_roles = [];

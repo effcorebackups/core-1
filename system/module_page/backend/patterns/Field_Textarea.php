@@ -11,7 +11,8 @@ namespace effcore;
 class Field_Textarea extends Field_Text {
 
     public $title = 'Text area';
-    public $attributes = ['data-type' => 'textarea'];
+    public $attributes = [
+        'data-type' => 'textarea'];
     public $element_class = '\\effcore\\Markup';
     public $element_tag_name = 'textarea';
     public $element_attributes = [

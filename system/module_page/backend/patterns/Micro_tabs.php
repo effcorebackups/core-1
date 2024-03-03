@@ -10,7 +10,8 @@ namespace effcore;
 
 class Micro_tabs extends Node {
 
-    public $element_attributes = ['role' => 'micro_tabs-item'];
+    public $element_attributes = [
+        'data-role' => 'micro_tabs-item'];
     public $items   = [];
     public $checked = [];
 

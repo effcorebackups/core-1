@@ -13,7 +13,8 @@ use stdClass;
 class Breadcrumbs extends Markup {
 
     public $tag_name = 'nav';
-    public $attributes = ['aria-label' => 'breadcrumb'];
+    public $attributes = [
+        'aria-label' => 'breadcrumb'];
     public $id;
     public $links = [];
     public $is_remove_last_link = true;

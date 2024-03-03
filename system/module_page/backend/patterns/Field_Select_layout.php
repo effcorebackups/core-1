@@ -12,7 +12,8 @@ class Field_Select_layout extends Field_Select {
 
     public $title = 'Layout';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'layout'];
+    public $attributes = [
+        'data-type' => 'layout'];
     public $element_attributes = [
         'name'     => 'layout',
         'required' => true

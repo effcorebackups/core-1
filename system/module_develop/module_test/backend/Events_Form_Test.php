@@ -73,7 +73,7 @@ abstract class Events_Form_Test {
                     # show message
                     if     ($c_tick === Test::SUCCESSFUL) Message::insert(new Text_multiline(['The test was successful.', 'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]));
                     elseif ($c_tick === Test::FAILED    ) Message::insert(new Text_multiline(['The test was failed!',     'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]), 'error');
-                    else                                  Message::insert(new Text_multiline(['The test was completed.',  'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]), 'warning');
+                    else                                  Message::insert(new Text_multiline(['The test was completed.',  'Total run time: %%_time sec.'], ['time' => Locale::format_number(Timer::period_get('test_total', -1, -2), Core::FPART_MAX_LEN)]), 'notice');
                 }
                 break;
         }

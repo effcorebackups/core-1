@@ -12,9 +12,12 @@ class Widget_Selection_query extends Control implements Control_complex {
 
     public $tag_name = 'x-widget';
     public $title_tag_name = 'label';
-    public $title_attributes = ['data-widget-title' => true];
+    public $title_attributes = [
+        'data-widget-title' => true];
     public $content_tag_name = 'x-widget-content';
-    public $content_attributes = ['data-widget-content' => true, 'data-nested-content' => true];
+    public $content_attributes = [
+        'data-widget-content' => true,
+        'data-nested-content' => true];
     public $name_complex = 'query_settings';
     public $attributes = [
         'data-type' => 'query-settings',

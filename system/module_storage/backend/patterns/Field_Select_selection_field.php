@@ -14,7 +14,8 @@ class Field_Select_selection_field extends Field_Select {
 
     public $title = 'Selection field';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'selection_field'];
+    public $attributes = [
+        'data-type' => 'selection_field'];
     public $element_attributes = [
         'name'     => 'selection_field',
         'required' => true

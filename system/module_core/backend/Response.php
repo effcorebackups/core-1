@@ -8,6 +8,15 @@ namespace effcore;
 
 abstract class Response {
 
+    const EXIT_STATE_OK      = 0b00;
+    const EXIT_STATE_WARNING = 0b01;
+    const EXIT_STATE_ERROR   = 0b10;
+
+    const FORMAT_JSON      = 'json';
+    const FORMAT_JSONP     = 'jsonp';
+    const FORMAT_SERIALIZE = 'serialize';
+    const FORMAT_DATA      = 'data';
+
     static function send_header_and_exit($type, $title = null, $message = null, $p = '') {
         Timer::tap('total');
         if (Module::is_enabled('test')) {
@@ -37,8 +46,8 @@ abstract class Response {
             $color_id__text        = Color_profile::get_color_info( Color_profile::get_current()->id, 'text'       )->color_id ?? '';
             $color_id__link        = Color_profile::get_color_info( Color_profile::get_current()->id, 'link'       )->color_id ?? '';
             $color_id__link_active = Color_profile::get_color_info( Color_profile::get_current()->id, 'link_active')->color_id ?? '';
-            $content               = (Template::make_new($template_name, ['attributes' => Core::data_to_attributes([
-                'lang'              => Language::code_get_current()]),
+            $content = (Template::make_new($template_name, [
+                'attributes'        => Template_markup::attributes_render(['lang' => Language::code_get_current()]),
                 'message'           => is_object($message) && method_exists($message, 'render') ? $message->render() : (new Text($message))->render(),
                 'title'             => is_object($title  ) && method_exists($title  , 'render') ? $title  ->render() : (new Text($title  ))->render(),
                 'color_page'        => isset($colors[$color_id__page       ]) ? $colors[$color_id__page       ]->value_hex : 'white',
@@ -53,6 +62,38 @@ abstract class Response {
             header('content-length: 0');
         }
         exit();
+    }
+
+    static function send_and_exit($data, $state = self::EXIT_STATE_OK, $format = self::FORMAT_JSON) {
+        switch ($format) {
+            case static::FORMAT_JSON:
+                header('content-type: application/json');
+                if ($state === static::EXIT_STATE_OK     ) print json_encode(['status' => 'ok',      'data' => $data]);
+                if ($state === static::EXIT_STATE_WARNING) print json_encode(['status' => 'warning', 'data' => $data]);
+                if ($state === static::EXIT_STATE_ERROR  ) print json_encode(['status' => 'error',   'data' => $data]);
+                exit();
+            case static::FORMAT_JSONP:
+                header('content-type: application/javascript');
+                if ($state === static::EXIT_STATE_OK     ) print 'export default '.json_encode(['status' => 'ok',      'data' => $data]);
+                if ($state === static::EXIT_STATE_WARNING) print 'export default '.json_encode(['status' => 'warning', 'data' => $data]);
+                if ($state === static::EXIT_STATE_ERROR  ) print 'export default '.json_encode(['status' => 'error',   'data' => $data]);
+                exit();
+            case static::FORMAT_SERIALIZE:
+                header('content-type: text/plain');
+                if ($state === static::EXIT_STATE_OK     ) print serialize(['status' => 'ok',      'data' => $data]);
+                if ($state === static::EXIT_STATE_WARNING) print serialize(['status' => 'warning', 'data' => $data]);
+                if ($state === static::EXIT_STATE_ERROR  ) print serialize(['status' => 'error',   'data' => $data]);
+                exit();
+            case static::FORMAT_DATA:
+                header('content-type: text/plain');
+                if ($state === static::EXIT_STATE_OK     ) print Storage_Data::data_to_text(['status' => 'ok',      'data' => $data], 'root');
+                if ($state === static::EXIT_STATE_WARNING) print Storage_Data::data_to_text(['status' => 'warning', 'data' => $data], 'root');
+                if ($state === static::EXIT_STATE_ERROR  ) print Storage_Data::data_to_text(['status' => 'error',   'data' => $data], 'root');
+                exit();
+            default:
+                print 'UNKNOWN FORMAT';
+                exit();
+        }
     }
 
 }

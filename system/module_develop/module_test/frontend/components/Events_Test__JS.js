@@ -6,6 +6,7 @@
 'use strict';
 
 import Core from '/system/module_core/frontend/components/Core.jsd';
+import Translation from '/system/module_locale/frontend/components/Translation.jsd';
 
 // ─────────────────────────────────────────────────────────────────────
 // Class Events_Test__JS
@@ -73,11 +74,11 @@ export default class Events_Test__JS {
             let c_value = data[c_key].value;
             let с_received = Array.isArray(c_value);
             let c_result = с_received === c_expected;
-            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('success')});
-            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('failure')});
+            if (c_result === true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('success')});
+            if (c_result !== true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('failure')});
             if (c_result !== true) {
-                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : c_expected ? 'true' : 'false' });
-                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : с_received ? 'true' : 'false' });
+                yield Core.argsApply(Translation.get('expected value: %%_value'), {'value' : c_expected ? 'true' : 'false' });
+                yield Core.argsApply(Translation.get('received value: %%_value'), {'value' : с_received ? 'true' : 'false' });
                 yield false;
             }
         }
@@ -135,11 +136,11 @@ export default class Events_Test__JS {
             let c_value = data[c_key].value;
             let с_received = Object.prototype.toString.call(c_value);
             let c_result = с_received === c_expected;
-            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('success')});
-            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('failure')});
+            if (c_result === true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('success')});
+            if (c_result !== true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('failure')});
             if (c_result !== true) {
-                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : c_expected});
-                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : с_received});
+                yield Core.argsApply(Translation.get('expected value: %%_value'), {'value' : c_expected});
+                yield Core.argsApply(Translation.get('received value: %%_value'), {'value' : с_received});
                 yield false;
             }
         }
@@ -197,11 +198,11 @@ export default class Events_Test__JS {
             let c_value = data[c_key].value;
             let с_received = Core.getType(c_value);
             let c_result = с_received === c_expected;
-            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('success')});
-            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('failure')});
+            if (c_result === true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('success')});
+            if (c_result !== true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('failure')});
             if (c_result !== true) {
-                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : c_expected});
-                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : с_received});
+                yield Core.argsApply(Translation.get('expected value: %%_value'), {'value' : c_expected});
+                yield Core.argsApply(Translation.get('received value: %%_value'), {'value' : с_received});
                 yield false;
             }
         }
@@ -259,11 +260,11 @@ export default class Events_Test__JS {
             let c_value = data[c_key].value;
             let с_received = typeof(c_value);
             let c_result = с_received === c_expected;
-            if (c_result === true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('success')});
-            if (c_result !== true) yield Core.argsApply(Core.getTranslation('checking of item "@@_id": "@@_result"'), {'id' : c_key, 'result' : Core.getTranslation('failure')});
+            if (c_result === true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('success')});
+            if (c_result !== true) yield Core.argsApply(Translation.get('checking of item "%%_id": "%%_result"'), {'id' : c_key, 'result' : Translation.get('failure')});
             if (c_result !== true) {
-                yield Core.argsApply(Core.getTranslation('expected value: "@@_value"'), {'value' : c_expected});
-                yield Core.argsApply(Core.getTranslation('received value: "@@_value"'), {'value' : с_received});
+                yield Core.argsApply(Translation.get('expected value: %%_value'), {'value' : c_expected});
+                yield Core.argsApply(Translation.get('received value: %%_value'), {'value' : с_received});
                 yield false;
             }
         }

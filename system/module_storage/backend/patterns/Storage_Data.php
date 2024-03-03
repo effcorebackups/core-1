@@ -347,7 +347,7 @@ class Storage_Data implements has_Data_cache {
             elseif (is_string($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.str_replace(NL, NL.'////', $c_value);
             elseif (is_int   ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.Core::format_number($c_value);
             elseif (is_float ($c_value)                         ) $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').($c_key === $c_value ? '=' : str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.Core::format_number($c_value, Core::FPART_MAX_LEN);
-            else                                                  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': __UNSUPPORTED_TYPE__';
+            else                                                  $result[] = str_repeat('  ', $depth).(is_array($data) ? '- ' : '  ').(                            str_replace([':', '|'], ['\\:', '\\|'], $c_key)).': '.Core::LABEL_UNSUPPORTED_TYPE;
         }
         return implode(NL, $result);
     }

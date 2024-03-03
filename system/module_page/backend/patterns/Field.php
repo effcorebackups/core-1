@@ -58,7 +58,8 @@ class Field extends Control {
 
     public $tag_name = 'x-field';
     public $title_tag_name = 'label';
-    public $title_attributes = ['data-field-title' => true];
+    public $title_attributes = [
+        'data-field-title' => true];
     public $name_prefix = null; # unused inherited property
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $element_class = '\\effcore\\Markup_simple';
@@ -368,7 +369,6 @@ class Field extends Control {
     function render_opener() {
         return (new Markup_simple('input', [
             'type'             => 'checkbox',
-            'role'             => 'button',
             'data-opener-type' => 'description',
             'title'            => new Text('press to show description')
         ]))->render();

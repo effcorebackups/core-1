@@ -168,7 +168,7 @@ if (!Storage::get('sql')->is_installed()) {
 if (Storage::get('sql')->is_installed()) {
     if (Cron::get_auto_run_frequency()) {
         if (!Cron::is_runned()) {
-            if (!preg_match('%^/manage/cron/.*$%', URL::get_current()->path)) {
+            if (!preg_match('%^/api/core/cron/run/.*$%', URL::get_current()->path)) {
                 Cron::run();
             }
         }

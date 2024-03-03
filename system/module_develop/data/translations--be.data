@@ -45,6 +45,7 @@ translations
     - checking on "%%_operand_1" %%_operator "%%_operand_2": праверка на "%%_operand_1" %%_operator "%%_operand_2"
     - Class "%%_name": Клас "%%_name"
     - Classes: Класы
+    - code = "%%_code" + format = "%%_format": код = "%%_code" + фармат = "%%_format"
     - Collations: Параўнанні
     - Color for generation: Колер для генерацыі
     - Console: Кансоль

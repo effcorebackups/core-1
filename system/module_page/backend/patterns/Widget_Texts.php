@@ -12,7 +12,8 @@ use stdClass;
 
 class Widget_Texts extends Widget_Items {
 
-    public $attributes = ['data-type' => 'items-texts'];
+    public $attributes = [
+        'data-type' => 'items-texts'];
     public $name_complex = 'widget_texts';
 
     ###########################

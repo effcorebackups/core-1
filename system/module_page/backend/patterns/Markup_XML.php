@@ -11,6 +11,9 @@ namespace effcore;
 class Markup_XML extends Markup {
 
     public $template = 'markup_xml';
-    public $is_xml_style = true;
+
+    function render_attributes() {
+        return Template_markup::attributes_render($this->attributes_select(), true);
+    }
 
 }

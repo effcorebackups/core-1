@@ -44,7 +44,8 @@ class Field_File extends Field {
 
     public $title = 'File';
     public $item_title = 'File';
-    public $attributes = ['data-type' => 'file'];
+    public $attributes = [
+        'data-type' => 'file'];
     public $element_attributes = [
         'type' => 'file',
         'name' => 'file'];
@@ -59,7 +60,8 @@ class Field_File extends Field {
     public $max_length_type = 10;
     public $characters_allowed = 'a-zA-Z0-9_\\-\\.';
     public $characters_allowed_for_decsription = '"a-z", "A-Z", "0-9", "_", "-", "."';
-    public $types_allowed = ['txt' => 'txt'];
+    public $types_allowed = [
+        'txt' => 'txt'];
     public $has_widget_insert = true;
     public $has_widget_manage = true;
     public $result;

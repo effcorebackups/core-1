@@ -5,3 +5,9 @@ tokens
 - translation
     type: code
     handler: \effcore\modules\locale\Events_Token::on_apply
+- lang_code_global
+    type: code
+    handler: \effcore\modules\locale\Events_Token::on_apply
+- lang_code_page
+    type: code
+    handler: \effcore\modules\locale\Events_Token::on_apply

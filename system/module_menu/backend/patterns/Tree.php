@@ -11,7 +11,8 @@ namespace effcore;
 class Tree extends Node {
 
     public $template = 'tree';
-    public $attributes = ['role' => 'tree'];
+    public $attributes = [
+        'role' => 'tree'];
     public $id;
     public $description;
     public $access;

@@ -17,7 +17,8 @@ class Pager extends Markup {
     const ERR_CODE_MAX_LT_MIN = 0b1000;
 
     public $tag_name = 'nav';
-    public $attributes = ['aria-label' => 'pager'];
+    public $attributes = [
+        'aria-label' => 'pager'];
     public $error_code = self::ERR_CODE_OK;
 
     public $cur;

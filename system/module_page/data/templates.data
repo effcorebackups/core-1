@@ -9,20 +9,27 @@ templates
 - markup_html__embedded
     name: markup_html__embedded
     type: text
-    data: <%%_tag_name %%_attributes>
->>>>>>>>>>>>%%_children
->>>>>>>>>></%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
     is_ready_for_selection: true
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - markup_xml_simple__embedded
     name: markup_xml_simple__embedded
     type: text
-    data: <%%_tag_name %%_attributes />
+    data: <%%_tag_name %%_attributes/>
 - markup_xml__embedded
     name: markup_xml__embedded
     type: text
-    data: <%%_tag_name %%_attributes>
->>>>>>>>>>>>%%_children
->>>>>>>>>></%%_tag_name>
+    data: <%%_tag_name %%_attributes>%%_children</%%_tag_name>
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+- markup_json_simple__embedded
+    name: markup_json_simple__embedded
+    type: text
+    data: {"tag_name":"%%_tag_name","attributes":%%_attributes}
+- markup_json__embedded
+    name: markup_json__embedded
+    type: text
+    data: {"tag_name":"%%_tag_name","attributes":%%_attributes,"children":%%_children}
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - canvas_svg__embedded
     name: canvas_svg__embedded
     type: file
@@ -42,10 +49,10 @@ templates
       tag_name: x-text
       attributes
       - data-id: %%_id
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_text
     is_ready_for_selection: true
 - picture__embedded
@@ -56,8 +63,8 @@ templates
       attributes
       - data-id: %%_id
       - src: %%_src
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
     is_ready_for_selection: true
 - picture_in_link__embedded
     name: picture_in_link__embedded
@@ -67,16 +74,16 @@ templates
       attributes
       - data-id: picture-%%_id
       - href: %%_url
-      - custom_attributes|Text_RAW
-          text: %%_link_attributes
+      - custom_attributes|Injection
+          name: link_attributes
       children
       - picture|Markup_simple
           tag_name: img
           attributes
           - data-id: %%_id
           - src: %%_src
-          - custom_attributes|Text_RAW
-              text: %%_attributes
+          - custom_attributes|Injection
+              name: attributes
     is_ready_for_selection: true
 - picture_or_picture_in_link__embedded
     name: picture_or_picture_in_link__embedded
@@ -91,8 +98,8 @@ templates
       attributes
       - data-id: %%_id
       - src: %%_src
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
     is_ready_for_selection: true
 - video__embedded
     name: video__embedded
@@ -103,19 +110,20 @@ templates
       - data-id: %%_id
       - src: %%_src
       - poster: %%_poster
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
     is_ready_for_selection: true
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - galleries_group__embedded
     name: galleries_group__embedded
     type: markup
     data|Markup
       tag_name: x-galleries-group
       attributes
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_children
     is_ready_for_selection: true
 - gallery__embedded
@@ -125,10 +133,10 @@ templates
       tag_name: x-gallery
       attributes
       - data-id: %%_id
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_children
     is_ready_for_selection: true
 - gallery_item__embedded
@@ -140,7 +148,7 @@ templates
       - data-num: %%_num
       - data-type: %%_type
       children
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_children
     is_ready_for_selection: true
 # ─────────────────────────────────────────────────────────────────────
@@ -152,18 +160,18 @@ templates
     data|Markup
       tag_name: %%_tag_name
       attributes
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - title_header|Text_RAW
+      - title_header|Text_simple
           text: %%_title_header
-      - description_header|Text_RAW
+      - description_header|Text_simple
           text: %%_description_header
-      - children|Text_RAW
+      - children|Text_simple
           text: %%_children
-      - title_footer|Text_RAW
+      - title_footer|Text_simple
           text: %%_title_footer
-      - description_footer|Text_RAW
+      - description_footer|Text_simple
           text: %%_description_footer
     is_ready_for_selection: true
 - container_content__embedded
@@ -171,15 +179,15 @@ templates
     type: markup
     data|Node
       children
-      - title_header|Text_RAW
+      - title_header|Text_simple
           text: %%_title_header
-      - description_header|Text_RAW
+      - description_header|Text_simple
           text: %%_description_header
-      - children|Text_RAW
+      - children|Text_simple
           text: %%_children
-      - title_footer|Text_RAW
+      - title_footer|Text_simple
           text: %%_title_footer
-      - description_footer|Text_RAW
+      - description_footer|Text_simple
           text: %%_description_footer
     is_ready_for_selection: true
 - actions_list__embedded
@@ -188,12 +196,12 @@ templates
     data|Markup
       tag_name: %%_tag_name
       attributes
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - title|Text_RAW
+      - title|Text_simple
           text: %%_self
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_children
 - block__embedded
     name: block__embedded
@@ -202,16 +210,16 @@ templates
     data|Markup
       tag_name: %%_tag_name
       attributes
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - header|Text_RAW
+      - header|Text_simple
           text: %%_header
-      - title|Text_RAW
+      - title|Text_simple
           text: %%_self
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_children
-      - footer|Text_RAW
+      - footer|Text_simple
           text: %%_footer
 - form__embedded
     name: form__embedded
@@ -219,12 +227,12 @@ templates
     data|Markup
       tag_name: %%_tag_name
       attributes
-      - custom_attributes|Text_RAW
-          text: %%_attributes
+      - custom_attributes|Injection
+          name: attributes
       children
-      - title|Text_RAW
+      - title|Text_simple
           text: %%_self
-      - content|Text_RAW
+      - content|Text_simple
           text: %%_children
 # ─────────────────────────────────────────────────────────────────────
 # page types
@@ -241,37 +249,40 @@ templates
       - html|Markup
           tag_name: html
           attributes
-          - lang: %%_lang
-          - dir: %%_dir
-          - custom_attributes|Text_RAW
-              text: %%_html_custom_attributes
+          - custom_attributes|Injection
+              name: html_attributes
           children
           - head|Markup
               tag_name: head
               children
-              - meta|Text_RAW
-                  text: %%_meta
-              - meta_custom_global|Text_RAW
+              - meta_charset|Text_simple
+                  text: %%_meta_charset
+              - meta_viewport|Text_simple
+                  text: %%_meta_viewport
+              - meta_custom_global|Text_simple
                   text: %%_meta_custom_global
-              - meta_custom|Text_RAW
+              - meta_custom|Text_simple
                   text: %%_meta_custom
               - title|Markup
                   tag_name: title
                   children
-                  - content: %%_title
-              - icons|Text_RAW
+                  - content|Text_simple
+                      text: %%_title
+              - icons|Text_simple
                   text: %%_icons
-              - styles|Text_RAW
+              - styles|Text_simple
                   text: %%_styles
-              - scripts|Text_RAW
+              - scripts|Text_simple
                   text: %%_scripts
           - body|Markup
               tag_name: body
               attributes
-              - custom_attributes|Text_RAW
-                  text: %%_body_custom_attributes
+              - custom_attributes|Injection
+                  name: body_attributes
               children
-              - content: %%_body
+              - content|Text_simple
+                  text: %%_body
+# ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - page_access_forbidden__embedded
     name: page_access_forbidden__embedded
     type: file

@@ -42,7 +42,7 @@ abstract class Events_Page_Info {
         $is_required_update      = Update::is_required();
         $is_cron_runned          = Cron::is_runned();
         $cron_url = Request::scheme_get().'://'.
-                    Request::host_get(false).'/manage/cron/'.
+                    Request::host_get(false).'/api/core/cron/run/'.
                     User::key_get('cron');
         $fix_link_for_cron   = new Markup('a', ['href' => $cron_url                    , 'target' => 'cron'  ], 'fix');
         $fix_link_for_update = new Markup('a', ['href' => '/manage/modules/update/data', 'target' => 'update'], 'fix');

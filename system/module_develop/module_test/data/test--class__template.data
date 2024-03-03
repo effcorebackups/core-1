@@ -1,0 +1,27 @@
+tests
+- class__template|Test
+    id: class__template
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Template
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-attributes_render_html|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Template_markup::attributes_render_html()
+    - code-attributes_render_html|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Template::test_step_code__attributes_render_html
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-attributes_render_json|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Template_markup::attributes_render_json()
+    - code-attributes_render_json|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Template::test_step_code__attributes_render_json
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: true

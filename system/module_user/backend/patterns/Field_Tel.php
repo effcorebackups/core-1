@@ -12,7 +12,8 @@ class Field_Tel extends Field_Text {
 
     public $title = 'Telephone number';
     public $description = 'Field value should be represented in the international format of telephone numbers.';
-    public $attributes = ['data-type' => 'tel'];
+    public $attributes = [
+        'data-type' => 'tel'];
     public $element_attributes = [
         'type'      => 'tel',
         'name'      => 'tel',

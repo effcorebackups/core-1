@@ -11,7 +11,8 @@ namespace effcore;
 class Field_Time_local extends Field_Time {
 
     public $title = 'Local Time';
-    public $attributes = ['data-type' => 'time-local'];
+    public $attributes = [
+        'data-type' => 'time-local'];
     public $is_UTC = true;
 
     function build() {

@@ -387,21 +387,6 @@ abstract class Request {
 
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 
-    static function cookie_get_info($string) {
-        $result = [];
-        foreach (explode('; ', $string) as $c_part) {
-            $c_matches = [];
-            preg_match('%^(?<name>[^=]+)='.
-                         '(?<value>.*)$%S', $c_part, $c_matches);
-            if ($c_matches)
-                $result[$c_matches['name']] =
-                        $c_matches['value'];
-        }
-        return $result;
-    }
-
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-
     static function make($url, $headers = [], $post = [], $settings = []) {
         $result = ['info' => [], 'headers' => []];
         $curl = curl_init();
@@ -426,7 +411,7 @@ abstract class Request {
             $c_matches = [];
             preg_match('%^(?<name>[^:]+): (?<value>.*)$%S', $c_header, $c_matches);
             if ($c_matches && strtolower($c_matches['name']) !== 'set-cookie') $result['headers'][strtolower($c_matches['name'])]   =           trim($c_matches['value'], CR.NL.'"');
-            if ($c_matches && strtolower($c_matches['name']) === 'set-cookie') $result['headers'][strtolower($c_matches['name'])][] = ['raw' => trim($c_matches['value'], CR.NL.'"'), 'parsed' => static::cookie_get_info(trim($c_matches['value'], CR.NL.'"'))];
+            if ($c_matches && strtolower($c_matches['name']) === 'set-cookie') $result['headers'][strtolower($c_matches['name'])][] = ['raw' => trim($c_matches['value'], CR.NL.'"'), 'parsed' => Cookies::parse(trim($c_matches['value'], CR.NL.'"'))];
             return strlen($c_header);
         });
         # prepare return

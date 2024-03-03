@@ -14,7 +14,8 @@ class Field_Select_block_preset extends Field_Select {
 
     public $title = 'Block preset';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'block_preset'];
+    public $attributes = [
+        'data-type' => 'block_preset'];
     public $element_attributes = [
         'name'     => 'block_preset',
         'required' => true];

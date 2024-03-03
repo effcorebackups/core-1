@@ -11,7 +11,8 @@ namespace effcore;
 class Field_ID_number extends Field_Number {
 
     public $title = 'ID';
-    public $attributes = ['data-type' => 'id_number'];
+    public $attributes = [
+        'data-type' => 'id_number'];
     public $element_attributes = [
         'type'     => 'number',
         'name'     => 'id',

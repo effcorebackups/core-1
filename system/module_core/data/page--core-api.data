@@ -1,0 +1,17 @@
+pages
+- core_api|Page
+    id: core_api
+    title: Core API
+    url: %^(?<base>/api/core)
+>>>>>>>>>>/(?<object>cron)
+>>>>>>>>>>/(?<method>run)
+>>>>>>>>>>/(?<key>[a-f0-9]{40})$%
+    access
+      roles
+      - =: anonymous
+      - =: registered
+    blocks
+    - content
+      - on_cron_run|Block
+          type: code
+          source: \effcore\modules\core\Events_API::on_cron_run

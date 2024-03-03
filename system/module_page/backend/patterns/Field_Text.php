@@ -11,7 +11,8 @@ namespace effcore;
 class Field_Text extends Field {
 
     public $title = 'Text';
-    public $attributes = ['data-type' => 'text'];
+    public $attributes = [
+        'data-type' => 'text'];
     public $element_attributes = [
         'type'      => 'text',
         'name'      => 'text',

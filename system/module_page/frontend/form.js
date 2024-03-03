@@ -5,7 +5,7 @@
 
 'use strict';
 
-import Core from '/system/module_core/frontend/components/Core.jsd';
+import Translation from '/system/module_locale/frontend/components/Translation.jsd';
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // insert checkbox "check_all"
                 let check_all = document.createElement('input');
                     check_all.type = 'checkbox';
-                    check_all.title = Core.getTranslation('select all rows');
+                    check_all.title = Translation.get('select all rows');
                     check_all.checked = decorator.querySelectorAll(query_checker).length === 0;
                 head_cell.append(check_all);
                 // when clicking on "check_all"

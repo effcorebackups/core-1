@@ -12,16 +12,19 @@ class Block extends Markup {
 
     public $tag_name = 'section';
     public $template = 'block';
-    public $attributes = ['data-block' => true];
+    public $attributes = [
+        'data-block' => true];
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $title;
     public $title_is_visible = 1;
     public $title_is_apply_translation = 1;
     public $title_is_apply_tokens = 0;
     public $title_tag_name = 'h2';
-    public $title_attributes = ['data-block-title' => true];
+    public $title_attributes = [
+        'data-block-title' => true];
     public $content_tag_name = 'x-section-content';
-    public $content_attributes = ['data-block-content' => true];
+    public $content_attributes = [
+        'data-block-content' => true];
     public $display;
     public $type; # copy | link | code | text
     public $source;

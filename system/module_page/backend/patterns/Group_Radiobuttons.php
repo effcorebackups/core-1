@@ -14,14 +14,17 @@ class Group_Radiobuttons extends Control implements Control_complex {
     public $attributes = [
         'data-type' => 'radiobuttons',
         'role'      => 'radiogroup'];
-    public $title_attributes = ['data-group-title' => true];
+    public $title_attributes = [
+        'data-group-title' => true];
     public $content_tag_name = 'x-group-content';
-    public $content_attributes = ['data-group-content' => true];
+    public $content_attributes = [
+        'data-group-content' => true];
     public $name_prefix = null; # unused inherited property
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $field_class = '\\effcore\\Field_Radiobutton';
     public $field_tag_name = 'x-field';
-    public $field_attributes = ['data-type' => 'radiobutton'];
+    public $field_attributes = [
+        'data-type' => 'radiobutton'];
     public $field_title_tag_name = 'label';
     public $field_title_position = 'bottom';
     public $element_attributes = [];

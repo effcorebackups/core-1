@@ -14,7 +14,8 @@ class Field_Weight extends Field_Number {
     const INPUT_MAX_WEIGHT = +1000;
 
     public $title = 'Weight';
-    public $attributes = ['data-type' => 'weight'];
+    public $attributes = [
+        'data-type' => 'weight'];
     public $element_attributes = [
         'type'     => 'number',
         'name'     => 'weight',

@@ -12,7 +12,8 @@ class Field_Radiobutton extends Field {
 
     public $title;
     public $title_position = 'bottom';
-    public $attributes = ['data-type' => 'radiobutton'];
+    public $attributes = [
+        'data-type' => 'radiobutton'];
     public $element_attributes = [
         'type' => 'radio',
         'name' => 'radio'

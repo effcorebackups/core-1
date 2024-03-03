@@ -14,7 +14,8 @@ class Widget_Selection_query_conditions extends Widget_Items {
 
     public $title = 'Conditions';
     public $item_title = 'condition';
-    public $attributes = ['data-type' => 'items-query-conditions'];
+    public $attributes = [
+        'data-type' => 'items-query-conditions'];
     public $name_complex = 'widget_selection_query_conditions';
     public $state = 'closed';
     public $_instance;

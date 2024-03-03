@@ -16,7 +16,8 @@ class Field_Date extends Field_Text {
     const INPUT_MAX_DATE = '9999-12-31';
 
     public $title = 'Date';
-    public $attributes = ['data-type' => 'date'];
+    public $attributes = [
+        'data-type' => 'date'];
     public $element_attributes = [
         'type'     => 'date',
         'name'     => 'date',

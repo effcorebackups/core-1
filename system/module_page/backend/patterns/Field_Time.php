@@ -16,7 +16,8 @@ class Field_Time extends Field_Text {
     const INPUT_MAX_TIME = '23:59:59';
 
     public $title = 'Time';
-    public $attributes = ['data-type' => 'time'];
+    public $attributes = [
+        'data-type' => 'time'];
     public $element_attributes = [
         'type'     => 'time',
         'name'     => 'time',

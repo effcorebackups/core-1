@@ -14,7 +14,8 @@ class Tabs extends Node {
     public $template = 'tabs';
     public $template_top_items = 'tab_top_items';
     public $template_sub_items = 'tab_sub_items';
-    public $attributes = ['role' => 'tablist'];
+    public $attributes = [
+        'role' => 'tablist'];
     public $origin = 'nosql'; # nosql | dynamic
 
     function __construct($id = null, $attributes = [], $weight = +0) {

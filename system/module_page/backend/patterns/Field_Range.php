@@ -14,7 +14,8 @@ class Field_Range extends Field_Number {
     const INPUT_MAX_RANGE = 100;
 
     public $title = 'Range';
-    public $attributes = ['data-type' => 'range'];
+    public $attributes = [
+        'data-type' => 'range'];
     public $element_attributes = [
         'type'     => 'range',
         'name'     => 'range',

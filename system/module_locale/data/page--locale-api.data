@@ -1,0 +1,17 @@
+pages
+- locale_api|Page
+    id: locale_api
+    title: Locale API
+    url: %^(?<base>/api/locale)
+>>>>>>>>>>/(?<object>translations)
+>>>>>>>>>>/(?<method>get)
+>>>>>>>>>>/(?<key>[a-z]{2})$%
+    access
+      roles
+      - =: anonymous
+      - =: registered
+    blocks
+    - content
+      - on_translations_get|Block
+          type: code
+          source: \effcore\modules\locale\Events_API::on_translations_get

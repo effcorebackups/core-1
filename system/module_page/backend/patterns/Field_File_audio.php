@@ -12,7 +12,8 @@ class Field_File_audio extends Field_File {
 
     public $title = 'Audio';
     public $item_title = 'Audio';
-    public $attributes = ['data-type' => 'file-audio'];
+    public $attributes = [
+        'data-type' => 'file-audio'];
     public $element_attributes = [
         'type' => 'file',
         'name' => 'audio'];

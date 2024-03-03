@@ -16,7 +16,8 @@ class Field_Select_timezone extends Field_Select {
     public $title = 'Time zone';
     public $title__not_selected = '- select -';
     public $sort = 'by_zones'; # by_zones | by_names
-    public $attributes = ['data-type' => 'timezone'];
+    public $attributes = [
+        'data-type' => 'timezone'];
     public $element_attributes = [
         'name'     => 'timezone',
         'required' => true

@@ -67,6 +67,8 @@ class Template {
 
     static function pick_name($name) {
         static::init();
+        if (PAGE_RETURN_FORMAT === 'json' && ($name === 'markup_html_simple' || $name === 'markup_xml_simple')) $name = 'markup_json_simple';
+        if (PAGE_RETURN_FORMAT === 'json' && ($name === 'markup_html'        || $name === 'markup_xml'       )) $name = 'markup_json';
         if (isset(static::$cache[$name             ])) return $name;
         if (isset(static::$cache[$name.'__embedded'])) return $name.'__embedded';
         return null;

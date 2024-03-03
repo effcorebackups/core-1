@@ -224,7 +224,6 @@ abstract class Console {
     static function render_info_opener() {
         return (new Markup_simple('input', [
             'type'             => 'checkbox',
-            'role'             => 'button',
             'data-opener-type' => 'info',
             'title'            => new Text('press to show more information')
         ]))->render();

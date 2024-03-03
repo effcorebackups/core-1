@@ -1,0 +1,19 @@
+tests
+- class__frontend|Test
+    id: class__frontend
+    title|Text
+      text: Class "%%_name"
+      args
+      - name: Frontend
+    scenario
+    # ═════════════════════════════════════════════════════════════════════
+    - title-path_resolve|Test_step_Title
+        title|Text
+          text: METHOD "%%_name"
+          args
+          - name: Frontend::path_resolve()
+    - code-path_resolve|Test_step_Code
+        handler: \effcore\modules\test\Events_Test__Class_Frontend::test_step_code__path_resolve
+    # ═════════════════════════════════════════════════════════════════════
+    - return|Test_step_Return
+        value: true

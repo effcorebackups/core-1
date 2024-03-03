@@ -15,7 +15,8 @@ class Button_default extends Button {
         'tabindex'  => -1,
         'data-type' => 'default',
         'type'      => 'submit',
-        'name'      => 'button'];
+        'name'      => 'button'
+    ];
 
     function __construct($attributes = [], $weight = +0) {
         parent::__construct(null, $attributes, $weight);

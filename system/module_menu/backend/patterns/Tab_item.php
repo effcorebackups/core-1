@@ -12,7 +12,8 @@ class Tab_item extends Node {
 
     public $template = 'tab_item';
     public $template_children = 'tab_item_children';
-    public $element_attributes = ['role' => 'tab'];
+    public $element_attributes = [
+        'role' => 'tab'];
     public $id;
     public $id_parent;
     public $id_tab;

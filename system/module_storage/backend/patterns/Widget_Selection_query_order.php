@@ -14,7 +14,8 @@ class Widget_Selection_query_order extends Widget_Items {
 
     public $title = 'Sequence';
     public $item_title = 'order';
-    public $attributes = ['data-type' => 'items-query-order'];
+    public $attributes = [
+        'data-type' => 'items-query-order'];
     public $name_complex = 'widget_selection_query_order';
     public $state = 'closed';
     public $_instance;

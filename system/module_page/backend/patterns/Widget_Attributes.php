@@ -14,7 +14,8 @@ class Widget_Attributes extends Widget_Items {
 
     public $title = 'Attributes';
     public $item_title = 'Attribute';
-    public $attributes = ['data-type' => 'items-attributes'];
+    public $attributes = [
+        'data-type' => 'items-attributes'];
     public $name_complex = 'widget_attributes';
     public $state = 'closed';
     public $attribute_name_maxlength = 0xff;
@@ -38,7 +39,7 @@ class Widget_Attributes extends Widget_Items {
 
     static function value_to_markup($value) {
         if ($value) {
-            return Core::data_to_attributes(
+            return Template_markup::attributes_render(
                 static::value_to_attributes($value)
             );
         }

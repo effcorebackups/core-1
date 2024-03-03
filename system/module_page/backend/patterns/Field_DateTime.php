@@ -16,7 +16,8 @@ class Field_DateTime extends Field_Text {
     const INPUT_MAX_DATETIME = '9999-12-31 00:00:00';
 
     public $title = 'Date/Time';
-    public $attributes = ['data-type' => 'datetime'];
+    public $attributes = [
+        'data-type' => 'datetime'];
     public $element_attributes = [
         'type'     => 'datetime-local',
         'name'     => 'datetime',

@@ -40,6 +40,9 @@ page_width_max(context)             : %%_page_width_max(context)
 entity_title_context                : %%_entity_title_context
 entity_title_plural_context         : %%_entity_title_plural_context
 ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+lang_code_global                                                                 : %%_lang_code_global
+lang_code_page(front)                                                            : %%_lang_code_page(front)
+lang_code_page(unknown_id)                                                       : %%_lang_code_page(unknown_id)
 translation(string in English #1)                                                : %%_translation(string in English #1)
 translation(string in English #2)                                                : %%_translation(string in English #2)
 translation(string in English #3)                                                : %%_translation(string in English #3)

@@ -12,7 +12,8 @@ class Tree_item extends Node {
 
     public $template = 'tree_item';
     public $template_children = 'tree_item_children';
-    public $element_attributes = ['role' => 'treeitem'];
+    public $element_attributes = [
+        'role' => 'treeitem'];
     public $id;
     public $id_parent;
     public $id_tree;

@@ -15,6 +15,11 @@ frontend
         weight: +600
         attributes
         - type: module
+    - class__Message
+        path: frontend/components/Message.js
+        weight: +600
+        attributes
+        - type: module
     - polyfills
         path: frontend/polyfills.js
         weight: +600

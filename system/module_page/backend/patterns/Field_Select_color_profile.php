@@ -12,7 +12,8 @@ class Field_Select_color_profile extends Field_Select {
 
     public $title = 'Color profile';
     public $title__not_selected = '- no -';
-    public $attributes = ['data-type' => 'color_profile'];
+    public $attributes = [
+        'data-type' => 'color_profile'];
     public $element_attributes = [
         'name'     => 'color_profile',
         'required' => true

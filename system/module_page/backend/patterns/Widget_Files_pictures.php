@@ -14,7 +14,8 @@ class Widget_Files_pictures extends Widget_Files {
 
     public $title = 'Pictures';
     public $item_title = 'Picture';
-    public $attributes = ['data-type' => 'items-files-pictures'];
+    public $attributes = [
+        'data-type' => 'items-files-pictures'];
     public $name_complex = 'widget_files_pictures';
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $upload_dir = 'pictures/';
@@ -60,16 +61,16 @@ class Widget_Files_pictures extends Widget_Files {
             'id'  => $row_id,
             'url' => $url, /* link to original size if JS is disabled */
             'src' => $url ? $url.'?thumb=middle' : '',
-            'link_attributes' => Core::data_to_attributes([
+            'link_attributes' => [
                 'data-type' => 'picture-wrapper',
                 'title'     => new Text($item->settings['title']),
-                'target'    => $item->settings['target']]),
-            'attributes' => Core::data_to_attributes([
+                'target'    => $item->settings['target']],
+            'attributes' => [
                 'alt'                    => new Text($item->settings['alt']),
                 'data-path-thumb-small'  => $url ? $url.'?thumb=small'  : '',
                 'data-path-thumb-middle' => $url ? $url.'?thumb=middle' : '',
                 'data-path-thumb-big'    => $url ? $url.'?thumb=big'    : '',
-            ])
+            ]
         ])->render();
     }
 

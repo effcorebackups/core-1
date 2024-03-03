@@ -26,8 +26,8 @@ x-form-message {
 
 /* micro_tabs */
 
-input[type='radio'][role='micro_tabs-item'] {display: none}
-input[type='radio'][role='micro_tabs-item'] + [data-field-title] {
+input[type='radio'][data-role='micro_tabs-item'] {display: none}
+input[type='radio'][data-role='micro_tabs-item'] + [data-field-title] {
   display: inline-block;
   padding: 15px 15px 10px 15px;
   border-radius: 15px 15px 0 0;
@@ -36,8 +36,8 @@ input[type='radio'][role='micro_tabs-item'] + [data-field-title] {
   color: %%_color(tabs_link);
 }
 
-input[type='radio'][role='micro_tabs-item']         + [data-field-title]:hover {color: %%_color(tabs_link_active_no_bg)}
-input[type='radio'][role='micro_tabs-item']:checked + [data-field-title] {
+input[type='radio'][data-role='micro_tabs-item']         + [data-field-title]:hover {color: %%_color(tabs_link_active_no_bg)}
+input[type='radio'][data-role='micro_tabs-item']:checked + [data-field-title] {
   text-decoration: none;
   color: %%_color(tabs_link_active) !important;
   background: %%_color(main);
@@ -45,15 +45,15 @@ input[type='radio'][role='micro_tabs-item']:checked + [data-field-title] {
 
 [data-micro_tabs-content-id] {display: none; margin-top: 0}
 [data-micro_tabs-content-id] [data-fieldset-content] {padding-top: 15px; border-top-color: %%_color(main)}
-input[type='radio'][role='micro_tabs-item'][value='1']:checked ~ [data-micro_tabs-content-id='1'],
-input[type='radio'][role='micro_tabs-item'][value='2']:checked ~ [data-micro_tabs-content-id='2'],
-input[type='radio'][role='micro_tabs-item'][value='3']:checked ~ [data-micro_tabs-content-id='3'],
-input[type='radio'][role='micro_tabs-item'][value='4']:checked ~ [data-micro_tabs-content-id='4'],
-input[type='radio'][role='micro_tabs-item'][value='5']:checked ~ [data-micro_tabs-content-id='5'],
-input[type='radio'][role='micro_tabs-item'][value='6']:checked ~ [data-micro_tabs-content-id='6'],
-input[type='radio'][role='micro_tabs-item'][value='7']:checked ~ [data-micro_tabs-content-id='7'],
-input[type='radio'][role='micro_tabs-item'][value='8']:checked ~ [data-micro_tabs-content-id='8'],
-input[type='radio'][role='micro_tabs-item'][value='9']:checked ~ [data-micro_tabs-content-id='9'] {display: block}
+input[type='radio'][data-role='micro_tabs-item'][value='1']:checked ~ [data-micro_tabs-content-id='1'],
+input[type='radio'][data-role='micro_tabs-item'][value='2']:checked ~ [data-micro_tabs-content-id='2'],
+input[type='radio'][data-role='micro_tabs-item'][value='3']:checked ~ [data-micro_tabs-content-id='3'],
+input[type='radio'][data-role='micro_tabs-item'][value='4']:checked ~ [data-micro_tabs-content-id='4'],
+input[type='radio'][data-role='micro_tabs-item'][value='5']:checked ~ [data-micro_tabs-content-id='5'],
+input[type='radio'][data-role='micro_tabs-item'][value='6']:checked ~ [data-micro_tabs-content-id='6'],
+input[type='radio'][data-role='micro_tabs-item'][value='7']:checked ~ [data-micro_tabs-content-id='7'],
+input[type='radio'][data-role='micro_tabs-item'][value='8']:checked ~ [data-micro_tabs-content-id='8'],
+input[type='radio'][data-role='micro_tabs-item'][value='9']:checked ~ [data-micro_tabs-content-id='9'] {display: block}
 
 
 
@@ -352,10 +352,10 @@ x-group[data-type='palette'] [data-group-title] {
 }
 
 x-group[data-type='palette'] [data-group-content] {
+  box-sizing: border-box;
   max-width: 600px;
   margin-top: 10px;
   padding: 12px 0 12px 35px;
-  box-sizing: border-box;
   border-top: 5px solid %%_color(main);
 }
 
@@ -409,7 +409,7 @@ x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-body
 x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-body img[data-type='thumbnail'] {display: inline-block; margin-right: 10px; vertical-align: middle}
 
 x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-foot {grid-row-start: 3; grid-column-start: 1; grid-column-end: 4; overflow: auto}
-x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-foot x-field[data-type='text'] input[type='text'] {width: 100%}
+x-widget[data-type^='items'] x-widgets-group[data-type='manage'] x-widget x-foot x-field[data-type='text'] input[type='text'] {box-sizing: border-box; width: 100%}
 
 
 

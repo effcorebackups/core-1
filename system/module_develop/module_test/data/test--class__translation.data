@@ -5,6 +5,20 @@ tests
       text: Class "%%_name"
       args
       - name: Translation
+    params
+    - proxy|Field_Text
+        title: Proxy server
+        description|Text
+          text: Examples: %%_examples
+          args
+          - examples: "127.0.0.1:8888" | "127.0.0.1:4321"
+        element_attributes
+        - name: proxy
+        - required: false
+    - is_https|Field_Switcher
+        title: HTTPS
+        element_attributes
+        - name: is_https
     scenario
     # ═════════════════════════════════════════════════════════════════════
     - title-apply|Test_step_Title
@@ -54,6 +68,260 @@ tests
           - name: Translation::filter()
     - code-filter|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Translation::test_step_code__filter
+    # ─────────────────────────────────────────────────────────────────────
+    # API "/api/locale/translations/get/en?format=*"
+    # ─────────────────────────────────────────────────────────────────────
+    - title-api_locale_translations_en|Test_step_Title
+        title: API: /api/locale/translations/get/en?format=*
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-en_default|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: en
+          - format: json (by default)
+    - request_url-en_default|Test_step_Request
+        url: /api/locale/translations/get/en
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-en_default|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: {"status":"ok","data":[]}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-en_json|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: en
+          - format: json
+    - request_url-en_json|Test_step_Request
+        url: /api/locale/translations/get/en?format=json
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-en_json|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: {"status":"ok","data":[]}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-en_jsonp|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: en
+          - format: jsonp
+    - request_url-en_jsonp|Test_step_Request
+        url: /api/locale/translations/get/en?format=jsonp
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-en_jsonp|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: export default {"status":"ok","data":[]}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-en_serialize|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: en
+          - format: serialize
+    - request_url-en_serialize|Test_step_Request
+        url: /api/locale/translations/get/en?format=serialize
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-en_serialize|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: a:2:{s:6:"status";s:2:"ok";s:4:"data";a:0:{}}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-en_data|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: en
+          - format: data
+    - request_url-en_data|Test_step_Request
+        url: /api/locale/translations/get/en?format=data
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-en_data|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: root
+///////////////- status: ok
+///////////////- data|_empty_array
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-en_unknown|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: en
+          - format: unknown
+    - request_url-en_unknown|Test_step_Request
+        url: /api/locale/translations/get/en?format=unknown
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-en_unknown|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: UNKNOWN FORMAT
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ─────────────────────────────────────────────────────────────────────
+    # API "/api/locale/translations/get/xx?format=*"
+    # ─────────────────────────────────────────────────────────────────────
+    - title-api_locale_translations_xx|Test_step_Title
+        title: API: /api/locale/translations/get/xx?format=*
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-xx_default|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: xx
+          - format: json (by default)
+    - request_url-xx_default|Test_step_Request
+        url: /api/locale/translations/get/xx
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-xx_default|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: {"status":"error","data":"wrong lang code"}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-xx_json|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: xx
+          - format: json
+    - request_url-xx_json|Test_step_Request
+        url: /api/locale/translations/get/xx?format=json
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-xx_json|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: {"status":"error","data":"wrong lang code"}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-xx_jsonp|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: xx
+          - format: jsonp
+    - request_url-xx_jsonp|Test_step_Request
+        url: /api/locale/translations/get/xx?format=jsonp
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-xx_jsonp|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: export default {"status":"error","data":"wrong lang code"}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-xx_serialize|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: xx
+          - format: serialize
+    - request_url-xx_serialize|Test_step_Request
+        url: /api/locale/translations/get/xx?format=serialize
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-xx_serialize|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: a:2:{s:6:"status";s:5:"error";s:4:"data";s:15:"wrong lang code";}
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-xx_data|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: xx
+          - format: data
+    - request_url-xx_data|Test_step_Request
+        url: /api/locale/translations/get/xx?format=data
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-xx_data|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: root
+///////////////- status: error
+///////////////- data: wrong lang code
+        on_failure
+        - return_result|Test_step_Return
+            value: false
+    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
+    - title-xx_unknown|Test_step_Title
+        title|Text
+          text: code = "%%_code" + format = "%%_format"
+          args
+          - code: xx
+          - format: unknown
+    - request_url-xx_unknown|Test_step_Request
+        url: /api/locale/translations/get/xx?format=unknown
+        is_https|Param_from_form
+          name: is_https
+        proxy|Param_from_form
+          name: proxy
+    - response_check-xx_unknown|Test_step_Check
+        check: token
+        where: %%_test_response(content)
+        match: UNKNOWN FORMAT
+        on_failure
+        - return_result|Test_step_Return
+            value: false
     # ═════════════════════════════════════════════════════════════════════
     - return|Test_step_Return
         value: true

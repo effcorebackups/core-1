@@ -14,7 +14,8 @@ class Field_Select_entity_field extends Field_Select {
 
     public $title = 'Entity field';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'entity_field'];
+    public $attributes = [
+        'data-type' => 'entity_field'];
     public $element_attributes = [
         'name'     => 'entity_field',
         'required' => true

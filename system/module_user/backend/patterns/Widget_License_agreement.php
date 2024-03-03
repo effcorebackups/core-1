@@ -11,7 +11,8 @@ namespace effcore;
 class Widget_License_agreement extends Control {
 
     public $tag_name = 'x-widget';
-    public $attributes = ['data-type' => 'license_agreement'];
+    public $attributes = [
+        'data-type' => 'license_agreement'];
     public $main_title = 'License agreement';
     public $text_agree = 'I accept the terms of the license agreement.';
 

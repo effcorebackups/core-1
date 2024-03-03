@@ -11,7 +11,9 @@ namespace effcore;
 class Field_Date_local extends Field_Date {
 
     public $title = 'Local Date';
-    public $attributes = ['data-type' => 'date-local'];
+    public $attributes = [
+        'data-type' => 'date-local'
+    ];
 
     function build() {
         if (!$this->is_builded) {

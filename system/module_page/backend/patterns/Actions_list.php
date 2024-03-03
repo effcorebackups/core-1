@@ -15,8 +15,10 @@ class Actions_list extends Markup {
     public $title = 'actions';
     public $tag_name = 'x-actions';
     public $title_tag_name = 'x-actions-title';
-    public $title_attributes = ['data-actions-title' => true];
-    public $action_title_attributes = ['data-action-title' => true];
+    public $title_attributes = [
+        'data-actions-title' => true];
+    public $action_title_attributes = [
+        'data-action-title' => true];
     public $template = 'actions_list';
     public $actions = [];
 

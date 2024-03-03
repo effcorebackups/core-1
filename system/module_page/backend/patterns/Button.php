@@ -13,7 +13,8 @@ class Button extends Markup {
     public $tag_name = 'button';
     public $attributes = [
         'type' => 'submit',
-        'name' => 'button'];
+        'name' => 'button'
+    ];
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $title = 'button';
     public $break_on_request_value_set = false;

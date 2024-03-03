@@ -57,3 +57,9 @@ Console::init();
 if (in_array('container', stream_get_wrappers(), true) !== true) {
     stream_wrapper_register('container', '\\effcore\\File_container');
 }
+
+if (function_exists('getallheaders')) {
+    switch (array_change_key_case(getallheaders(), CASE_LOWER)['x-return-format'] ?? 'html') {
+        case 'json': define('effcore\\PAGE_RETURN_FORMAT', 'json'); break;
+        default    : define('effcore\\PAGE_RETURN_FORMAT', 'html'); }
+} else               define('effcore\\PAGE_RETURN_FORMAT', 'html');

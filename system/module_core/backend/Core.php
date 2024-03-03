@@ -23,6 +23,9 @@ abstract class Core {
     const SORT_ASC = 0;
     const SORT_DSC = 1;
 
+    const LABEL_UNSUPPORTED_TYPE = '__UNSUPPORTED_TYPE__';
+    const LABEL_NO_RENDERER      = '__NO_RENDERER__';
+
     ###################
     ### environment ###
     ###################
@@ -284,45 +287,6 @@ abstract class Core {
         return $type;
     }
 
-    static function data_to_attributes($data, $is_xml_style = false, $join_part = ' ', $name_wrapper = '', $value_wrapper = '"') {
-        $result = [];
-        foreach ((array)$data as $c_name => $c_value) {
-            switch (gettype($c_value)) {
-                case 'array'  :
-                    if (count($c_value)) {
-                        $c_nested_result = [];
-                        foreach ($c_value as $c_nested_name => $c_nested_value) {
-                            switch (gettype($c_nested_value)) {
-                                case 'NULL'   : break;
-                                case 'boolean': if ($c_nested_value) $c_nested_result[] = $c_nested_name;                                                                                    break;
-                                case 'integer': $c_nested_result[] =      static::format_number($c_nested_value);                                                                            break;
-                                case 'double' : $c_nested_result[] =      static::format_number($c_nested_value, static::FPART_MAX_LEN);                                                     break;
-                                case 'string' : $c_nested_result[] = str_replace('"', '&quot;', $c_nested_value);                                                                            break;
-                                case 'object' : $c_nested_result[] = str_replace('"', '&quot;', (method_exists($c_nested_value, 'render') ? $c_nested_value->render() : '__NO_RENDERER__')); break;
-                                default       : $c_nested_result[] = '__UNSUPPORTED_TYPE__';                                                                                                 break; }}
-                        $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.implode(' ', array_filter($c_nested_result, 'strlen')).$value_wrapper; }
-                    break;
-                case 'NULL'   : break;
-                case 'boolean':
-                    if ($c_value && $is_xml_style !== true) $result[] = $name_wrapper.$c_name.$name_wrapper;
-                    if ($c_value && $is_xml_style === true) $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.$c_name.$value_wrapper;
-                    break;
-                case 'integer': $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.     static::format_number($c_value)                       .$value_wrapper; break;
-                case 'double' : $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.     static::format_number($c_value, static::FPART_MAX_LEN).$value_wrapper; break;
-                case 'string' : $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', $c_value                       ).$value_wrapper; break;
-                case 'object' :
-                    if ($c_value instanceof Text_RAW === true) $result[] = $c_value->render();
-                    if ($c_value instanceof Text_RAW !== true) $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.str_replace('"', '&quot;', (method_exists($c_value, 'render') ? $c_value->render() : '__NO_RENDERER__')).$value_wrapper;
-                    break;
-                default:
-                    $result[] = $name_wrapper.$c_name.$name_wrapper.'='.$value_wrapper.'__UNSUPPORTED_TYPE__'.$value_wrapper;
-                    break;
-            }
-        }
-        if ($join_part) return implode($join_part, $result);
-        else            return                     $result;
-    }
-
     static function data_to_code($data, $prefix = '', $array_defaults = null) {
         $result = '';
         switch (gettype($data)) {
@@ -428,7 +392,6 @@ abstract class Core {
                                  ':"'.$class_name.'":'.(int)(count($result_children) / 2).':{'.
                                                        implode('', $result_children).'}';
                 break;
-            default:
         }
         return $result;
     }

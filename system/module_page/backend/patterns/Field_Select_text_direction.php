@@ -11,7 +11,8 @@ namespace effcore;
 class Field_Select_text_direction extends Field_Select {
 
     public $title = 'Text direction';
-    public $attributes = ['data-type' => 'text_direction'];
+    public $attributes = [
+        'data-type' => 'text_direction'];
     public $element_attributes = [
         'name'     => 'text_direction',
         'required' => true

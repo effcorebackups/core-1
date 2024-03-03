@@ -15,11 +15,13 @@ class Form extends Markup implements has_Data_cache {
 
     public $tag_name = 'form';
     public $template = 'form';
-    public $attributes = ['accept-charset' => 'UTF-8'];
+    public $attributes = [
+        'accept-charset' => 'UTF-8'];
     public $title;
     public $title_tag_name = 'h2';
     public $title_is_visible = 1;
-    public $title_attributes = ['data-form-title' => true];
+    public $title_attributes = [
+        'data-form-title' => true];
     public $clicked_button;
     public $number;
     public $validation_id;

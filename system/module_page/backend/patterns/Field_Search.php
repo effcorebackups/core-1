@@ -11,7 +11,8 @@ namespace effcore;
 class Field_Search extends Field_Text {
 
     public $title = 'Search';
-    public $attributes = ['data-type' => 'search'];
+    public $attributes = [
+        'data-type' => 'search'];
     public $element_attributes = [
         'type'      => 'search',
         'name'      => 'search',

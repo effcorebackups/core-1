@@ -87,14 +87,6 @@ tests
     - code-arrobj_select_values_recursive|Test_step_Code
         handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__arrobj_select_values_recursive
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
-    - title-data_to_attributes|Test_step_Title
-        title|Text
-          text: METHOD "%%_name"
-          args
-          - name: Core::data_to_attributes()
-    - code-data_to_attributes|Test_step_Code
-        handler: \effcore\modules\test\Events_Test__Class_Core::test_step_code__data_to_attributes
-    # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     - title-ip_to_hex|Test_step_Title
         title|Text
           text: METHOD "%%_name"

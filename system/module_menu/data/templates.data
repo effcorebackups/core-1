@@ -1,34 +1,116 @@
 templates
 - tree__embedded
     name: tree__embedded
-    type: text
-    data: <x-tree %%_attributes>%%_self<ul>%%_children</ul></x-tree>
+    type: markup
+    data|Markup
+      tag_name: x-tree
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - title|Text_simple
+          text: %%_self
+      - content_wrapper|Markup
+          tag_name: ul
+          attributes
+          - custom_attributes|Injection
+              name: content_wrapper_attributes
+          children
+          - content|Text_simple
+              text: %%_children
 - tree_item__embedded
     name: tree_item__embedded
-    type: text
-    data: <li %%_attributes>%%_self%%_children</li>
+    type: markup
+    data|Markup
+      tag_name: li
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - title|Text_simple
+          text: %%_self
+      - content|Text_simple
+          text: %%_children
 - tree_item_children__embedded
     name: tree_item_children__embedded
-    type: text
-    data: <ul>%%_children</ul>
+    type: markup
+    data|Markup
+      tag_name: ul
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - content|Text_simple
+          text: %%_children
 # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
 - tabs__embedded
     name: tabs__embedded
-    type: text
-    data: <x-tabs %%_attributes>%%_top_items%%_sub_items</x-tabs>
+    type: markup
+    data|Markup
+      tag_name: x-tabs
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - top_items|Text_simple
+          text: %%_top_items
+      - sub_items|Text_simple
+          text: %%_sub_items
 - tab_top_items__embedded
     name: tab_top_items__embedded
-    type: text
-    data: <x-top-items><ul>%%_children</ul></x-top-items>
+    type: markup
+    data|Markup
+      tag_name: x-top-items
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - content_wrapper|Markup
+          tag_name: ul
+          attributes
+          - custom_attributes|Injection
+              name: content_wrapper_attributes
+          children
+          - content|Text_simple
+              text: %%_children
 - tab_sub_items__embedded
     name: tab_sub_items__embedded
-    type: text
-    data: <x-sub-items><ul>%%_children</ul></x-sub-items>
+    type: markup
+    data|Markup
+      tag_name: x-sub-items
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - content_wrapper|Markup
+          tag_name: ul
+          attributes
+          - custom_attributes|Injection
+              name: content_wrapper_attributes
+          children
+          - content|Text_simple
+              text: %%_children
 - tab_item__embedded
     name: tab_item__embedded
-    type: text
-    data: <li %%_attributes>%%_self%%_children</li>
+    type: markup
+    data|Markup
+      tag_name: li
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - title|Text_simple
+          text: %%_self
+      - content|Text_simple
+          text: %%_children
 - tab_item_children__embedded
     name: tab_item_children__embedded
-    type: text
-    data: <ul>%%_children</ul>
+    type: markup
+    data|Markup
+      tag_name: ul
+      attributes
+      - custom_attributes|Injection
+          name: attributes
+      children
+      - content|Text_simple
+          text: %%_children

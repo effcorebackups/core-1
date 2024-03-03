@@ -137,12 +137,17 @@ class Node extends Node_simple {
         }
     }
 
-    function render_children($children, $join = true) {
+    function render_children($children) {
         $rendered = [];
-        foreach ($children as $c_child)
-            $rendered[] = $this->render_child($c_child);
-        return $join ? implode('', $rendered) :
-                                   $rendered;
+        foreach ($children as $c_child) {
+            $c_result = $this->render_child($c_child);
+            if ($c_result !== '' &&
+                $c_result !== null) {
+                $rendered[] = $c_result;
+            }
+        }
+        if (PAGE_RETURN_FORMAT === 'html') return     implode('',  $rendered);
+        if (PAGE_RETURN_FORMAT === 'json') return '['.implode(',', $rendered).']';
     }
 
     function render_child($child) {

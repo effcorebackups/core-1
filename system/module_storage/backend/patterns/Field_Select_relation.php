@@ -13,7 +13,8 @@ class Field_Select_relation extends Field_Select {
     public $title = 'Relation';
     public $title_with_id = true;
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'relation'];
+    public $attributes = [
+        'data-type' => 'relation'];
     public $element_attributes = [
         'name'     => 'relation',
         'required' => true];

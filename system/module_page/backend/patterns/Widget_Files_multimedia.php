@@ -16,7 +16,8 @@ class Widget_Files_multimedia extends Widget_Files {
 
     public $title = 'Multimedia';
     public $item_title = 'Multimedia';
-    public $attributes = ['data-type' => 'items-files-multimedia'];
+    public $attributes = [
+        'data-type' => 'items-files-multimedia'];
     public $name_complex = 'widget_files_multimedia';
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $upload_dir = 'multimedia/';

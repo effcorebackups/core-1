@@ -14,7 +14,8 @@ class Field_Nickname extends Field_Text {
     const CHARACTERS_ALLOWED_FOR_DESCRIPTION = '"a-z", "A-Z", "0-9", "_", "-"';
 
     public $title = 'Nickname';
-    public $attributes = ['data-type' => 'nickname'];
+    public $attributes = [
+        'data-type' => 'nickname'];
     public $element_attributes = [
         'type'      => 'text',
         'name'      => 'nickname',

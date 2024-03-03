@@ -12,7 +12,8 @@ class Field_Select_language extends Field_Select {
 
     public $title = 'Language';
     public $title__not_selected = '- select -';
-    public $attributes = ['data-type' => 'language'];
+    public $attributes = [
+        'data-type' => 'language'];
     public $element_attributes = [
         'name'     => 'lang_code',
         'required' => true

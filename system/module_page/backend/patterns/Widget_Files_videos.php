@@ -14,7 +14,8 @@ class Widget_Files_videos extends Widget_Files {
 
     public $title = 'Videos';
     public $item_title = 'Video';
-    public $attributes = ['data-type' => 'items-files-videos'];
+    public $attributes = [
+        'data-type' => 'items-files-videos'];
     public $name_complex = 'widget_files_videos';
     # ◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦
     public $upload_dir = 'videos/';
@@ -59,18 +60,18 @@ class Widget_Files_videos extends Widget_Files {
                 'id'         => $row_id,
                 'src'        => $url,
                 'poster'     => $url ? $url.'?poster=big' : '',
-                'attributes' => Core::data_to_attributes([
+                'attributes' => [
                     'data-path-poster-small'  => $url ? $url.'?poster=small'  : '',
                     'data-path-poster-middle' => $url ? $url.'?poster=middle' : '',
                     'data-path-poster-big'    => $url ? $url.'?poster=big'    : '',
-                ] + $item->settings)
+                ] + $item->settings
             ])->render();
         } else {
             return Template::make_new(Template::pick_name('video'), [
                 'id'         => $row_id,
                 'src'        => $url,
                 'poster'     => Core::to_url_from_path($settings->thumbnail_path_poster_default),
-                'attributes' => Core::data_to_attributes($item->settings)
+                'attributes' => $item->settings
             ])->render();
         }
     }
